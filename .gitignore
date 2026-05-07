@@ -1,0 +1,19 @@
+# Source files — not needed on website
+*.psd
+*.ai
+*.indd
+
+# Large presentation exports in project root folders (not in images/ subfolders)
+assets/projects/*/Presentation*.png
+assets/projects/*/Presentation*.jpg
+!assets/projects/*/images/Presentation*.png
+!assets/projects/*/images/Presentation*.jpg
+!assets/projects/*/images/Presentation *.png
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node
+node_modules/

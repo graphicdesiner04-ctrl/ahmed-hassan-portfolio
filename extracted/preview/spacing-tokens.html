@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--color-bg); padding: 24px 28px; font-family: var(--font-family); }
+  .grid { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { background: var(--color-accent); width: 28px; }
+  .token { font-size: 10px; font-weight: 500; color: var(--color-text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .val   { font-size: 10px; color: var(--color-text-muted); font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="item"><div class="bar" style="height:4px;"></div><div class="token">sp-1</div><div class="val">4px</div></div>
+  <div class="item"><div class="bar" style="height:8px;"></div><div class="token">sp-2</div><div class="val">8px</div></div>
+  <div class="item"><div class="bar" style="height:12px;"></div><div class="token">sp-3</div><div class="val">12px</div></div>
+  <div class="item"><div class="bar" style="height:16px;"></div><div class="token">sp-4</div><div class="val">16px</div></div>
+  <div class="item"><div class="bar" style="height:24px;"></div><div class="token">sp-6</div><div class="val">24px</div></div>
+  <div class="item"><div class="bar" style="height:32px;"></div><div class="token">sp-8</div><div class="val">32px</div></div>
+  <div class="item"><div class="bar" style="height:48px;"></div><div class="token">sp-12</div><div class="val">48px</div></div>
+  <div class="item"><div class="bar" style="height:64px;"></div><div class="token">sp-16</div><div class="val">64px</div></div>
+  <div class="item"><div class="bar" style="height:96px;"></div><div class="token">sp-24</div><div class="val">96px</div></div>
+</div>
+</body>
+</html>

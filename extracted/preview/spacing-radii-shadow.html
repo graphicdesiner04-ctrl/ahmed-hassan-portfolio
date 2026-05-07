@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--color-bg); padding: 28px; font-family: var(--font-family); }
+  .section { margin-bottom: 24px; }
+  .section-title { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 14px; }
+  .row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 72px; height: 52px; background: var(--color-surface); border: 1px solid var(--color-border); }
+  .label { font-size: 10px; color: var(--color-text-muted); font-family: monospace; text-align: center; }
+  .divider { height: 1px; background: var(--color-border); margin: 20px 0; }
+</style>
+</head>
+<body>
+  <div class="section">
+    <div class="section-title">Corner Radii</div>
+    <div class="row">
+      <div class="item"><div class="box" style="border-radius:0px;"></div><div class="label">0px<br>card / btn</div></div>
+      <div class="item"><div class="box" style="border-radius:2px;"></div><div class="label">2px<br>chip / tag</div></div>
+      <div class="item"><div class="box" style="border-radius:4px;"></div><div class="label">4px<br>sm (rare)</div></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section">
+    <div class="section-title">Shadow System</div>
+    <div class="row">
+      <div class="item"><div class="box" style="box-shadow:none;background:#FDFAF7;"></div><div class="label">none<br>default</div></div>
+      <div class="item"><div class="box" style="box-shadow:0 2px 16px rgba(62,47,40,0.06);background:#FDFAF7;"></div><div class="label">soft<br>subtle lift</div></div>
+      <div class="item"><div class="box" style="box-shadow:0 8px 40px rgba(62,47,40,0.10);background:#FDFAF7;"></div><div class="label">card<br>hover state</div></div>
+      <div class="item"><div class="box" style="box-shadow:0 16px 64px rgba(62,47,40,0.16);background:#FDFAF7;"></div><div class="label">strong<br>modal / overlay</div></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="section" style="margin-bottom:0;">
+    <div class="section-title">Borders</div>
+    <div class="row">
+      <div class="item"><div class="box" style="border:1px solid #E8D9CC;"></div><div class="label">1px #E8D9CC<br>standard</div></div>
+      <div class="item"><div class="box" style="border:1px solid #F0E6DE;"></div><div class="label">1px #F0E6DE<br>light</div></div>
+      <div class="item"><div class="box" style="border-bottom:1px solid #C9A882;border-top:none;border-left:none;border-right:none;"></div><div class="label">accent rule<br>accent</div></div>
+    </div>
+  </div>
+</body>
+</html>
