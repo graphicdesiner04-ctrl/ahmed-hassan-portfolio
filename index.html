@@ -653,8 +653,8 @@ footer a{color:var(--purple3);text-decoration:none;}
 }
 .po-close:hover{background:rgba(124,58,237,.3);}
 .po-title{font-size:14px;font-weight:600;color:var(--grey);}
-.po-body{padding:40px clamp(20px,5vw,60px);}
-.po-cover{width:100%;max-height:70vh;object-fit:contain;border-radius:12px;margin-bottom:32px;}
+.po-body{padding:0;}
+.po-cover{display:none;}
 .po-desc{font-size:15px;line-height:1.8;color:var(--grey);max-width:700px;}
 html[lang="ar"] .po-desc{font-family:var(--font-ar);}
 .po-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
@@ -665,8 +665,17 @@ html[lang="ar"] .po-desc{font-family:var(--font-ar);}
   font-size:12px;color:var(--purple3);
 }
 html[lang="ar"] .po-tag{font-family:var(--font-ar);}
-.po-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:32px;}
-.po-images img{border-radius:10px;width:100%;}
+.po-images{display:flex;flex-direction:column;gap:0;margin-top:0;}
+.po-images img{width:100%;display:block;object-fit:contain;}
+.po-meta-bar{
+  padding:24px clamp(20px,5vw,60px) 40px;
+  display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.po-desc{font-size:15px;line-height:1.8;color:var(--grey);max-width:700px;}
+html[lang="ar"] .po-desc{font-family:var(--font-ar);}
+.po-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.po-tag{padding:6px 14px;border-radius:100px;border:1px solid rgba(124,58,237,.3);background:rgba(124,58,237,.08);font-size:12px;color:var(--purple3);}
+html[lang="ar"] .po-tag{font-family:var(--font-ar);}
 
 /* ═══ LOADER ════════════════════════════════════════════════ */
 #loader{
@@ -1247,13 +1256,24 @@ function openProject(idx){
   const link  = p.url || p.link || 'https://www.behance.net/ahmedhassanbahaa';
   document.getElementById('po-name').textContent = title;
   document.getElementById('po-behance-link').href = link;
+  // build images list: cover first (if not already in images), then all slides
+  const allImgs = (p.images && p.images.length)
+    ? p.images
+    : (img ? [img] : []);
+
   document.getElementById('po-body').innerHTML = `
-    ${img?`<img class="po-cover" src="${img}" alt="${title}" onerror="this.remove()">`:''}
-    <p class="po-desc" ${LANG==='ar'?'dir="rtl"':''}>${desc}</p>
-    ${tags.length?`<div class="po-tags">${tags.map(t=>`<span class="po-tag">${t}</span>`).join('')}</div>`:''}
-    ${(p.images||[]).length?`<div class="po-images">${p.images.map(src=>`<img src="${src}" loading="lazy" onerror="this.remove()">`).join('')}</div>`:''}
-    <div style="margin-top:28px;"><a href="${link}" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;">
-      <span>View on Behance ↗</span></a></div>`;
+    <div class="po-images">
+      ${img && !allImgs.includes(img) ? `<img src="${img}" alt="${title}" onerror="this.remove()">` : ''}
+      ${allImgs.map(src=>`<img src="${src}" loading="lazy" onerror="this.remove()">`).join('')}
+    </div>
+    <div class="po-meta-bar">
+      <div>
+        <p class="po-desc" ${LANG==='ar'?'dir="rtl"':''}>${desc}</p>
+        ${tags.length?`<div class="po-tags">${tags.map(t=>`<span class="po-tag">${t}</span>`).join('')}</div>`:''}
+      </div>
+      <a href="${link}" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;white-space:nowrap;">
+        View on Behance ↗</a>
+    </div>`;
   document.getElementById('project-overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
