@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "عمر الشريف",
+    "company": "Apex Marketing Agency",
+    "rating": 5,
+    "text": "تعامل احترافي من أول يوم. أحمد يفهم ما يريده العميل بسرعة ويُنجز الشغل بدقة وإبداع. نتعامل معه بشكل منتظم.",
+    "textAr": "تعامل احترافي من أول يوم. أحمد يفهم ما يريده العميل بسرعة ويُنجز الشغل بدقة وإبداع. نتعامل معه بشكل منتظم.",
+    "date": "مارس 2025"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Al-Mansouri",
+    "company": "Luini Bakery",
+    "rating": 5,
+    "text": "Ahmed completely transformed our brand identity. The social media designs get incredible engagement every time.",
+    "textAr": "أحمد غيّر هوية براندنا تماماً. تصاميم السوشيال ميديا اللي يعملها تحصل على تفاعل ممتاز كل مرة.",
+    "date": "يناير 2025"
+  },
+  {
+    "id": 3,
+    "name": "ريم العتيبي",
+    "company": "Al Yamamah Services · السعودية",
+    "rating": 5,
+    "text": "صُممت هوية الشركة بالكامل على يد أحمد وكانت النتيجة فوق التوقعات. سرعة في التسليم واهتمام بأدق التفاصيل.",
+    "textAr": "صُممت هوية الشركة بالكامل على يد أحمد وكانت النتيجة فوق التوقعات. سرعة في التسليم واهتمام بأدق التفاصيل.",
+    "date": "نوفمبر 2024"
+  },
+  {
+    "id": 4,
+    "name": "Khaled Hassan",
+    "company": "Gulf Real Estate Co.",
+    "rating": 5,
+    "text": "Fast, creative, and very easy to communicate with. The social media package he delivered doubled our online reach.",
+    "textAr": "سريع ومبدع وسهل التواصل معه. باكدج السوشيال ميديا اللي سلّمه ضاعف وجودنا على الإنترنت.",
+    "date": "أكتوبر 2024"
+  },
+  {
+    "id": 5,
+    "name": "منى الزهراني",
+    "company": "Resalah Interior Design",
+    "rating": 5,
+    "text": "البروفايل اللي صممه لشركتنا كان على مستوى عالمي. التصميم يعكس هوية الشركة بشكل دقيق جداً. شكراً أحمد!",
+    "textAr": "البروفايل اللي صممه لشركتنا كان على مستوى عالمي. التصميم يعكس هوية الشركة بشكل دقيق جداً. شكراً أحمد!",
+    "date": "سبتمبر 2024"
+  },
+  {
+    "id": 6,
+    "name": "Faisal Al-Dosari",
+    "company": "Eilaf Fashion",
+    "rating": 5,
+    "text": "The brand identity Ahmed created for us stands out from everyone in the market. Highly recommended for any serious brand.",
+    "textAr": "الهوية البصرية اللي صممها أحمد لبراندنا مختلفة عن الكل في السوق. أنصح بيه لأي براند يريد يبرز.",
+    "date": "أغسطس 2024"
+  }
+]

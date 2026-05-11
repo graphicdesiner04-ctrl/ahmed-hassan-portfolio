@@ -109,23 +109,41 @@ textarea{resize:vertical;min-height:64px;}
   </div>
 
   <div class="wrap">
-    <div class="stats">
-      <div class="sc"><div class="n" id="s0">—</div><div class="l">Total</div></div>
-      <div class="sc"><div class="n" id="s1">—</div><div class="l">Social</div></div>
-      <div class="sc"><div class="n" id="s2">—</div><div class="l">Print</div></div>
-      <div class="sc"><div class="n" id="s3">—</div><div class="l">Logo / Branding</div></div>
-      <div class="sc"><div class="n" id="s4">—</div><div class="l">Saudi 🇸🇦</div></div>
+    <!-- Tabs -->
+    <div style="display:flex;gap:8px;margin-bottom:24px;">
+      <button class="btn sm btn-p" id="tab-proj" onclick="switchTab('proj')">📁 المشاريع</button>
+      <button class="btn sm btn-g" id="tab-rev"  onclick="switchTab('rev')">⭐ التقييمات</button>
     </div>
 
-    <div style="overflow-x:auto">
-      <table class="tbl">
-        <thead><tr>
-          <th>#</th><th>صورة</th><th>اسم المشروع</th>
-          <th>فئة</th><th>سنة</th><th>SA</th><th>إجراءات</th>
-        </tr></thead>
-        <tbody id="tbody"></tbody>
-      </table>
+    <!-- Projects tab -->
+    <div id="pane-proj">
+      <div class="stats">
+        <div class="sc"><div class="n" id="s0">—</div><div class="l">Total</div></div>
+        <div class="sc"><div class="n" id="s1">—</div><div class="l">Social</div></div>
+        <div class="sc"><div class="n" id="s2">—</div><div class="l">Print</div></div>
+        <div class="sc"><div class="n" id="s3">—</div><div class="l">Logo / Branding</div></div>
+        <div class="sc"><div class="n" id="s4">—</div><div class="l">Saudi 🇸🇦</div></div>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="tbl">
+          <thead><tr>
+            <th>#</th><th>صورة</th><th>اسم المشروع</th>
+            <th>فئة</th><th>سنة</th><th>SA</th><th>إجراءات</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
     </div>
+
+    <!-- Reviews tab -->
+    <div id="pane-rev" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h3 style="font-size:15px;font-weight:700">التقييمات المنشورة</h3>
+        <button class="btn sm btn-p" onclick="openRevAdd()">＋ إضافة تقييم</button>
+      </div>
+      <div id="rev-list" style="display:flex;flex-direction:column;gap:12px"></div>
+    </div>
+
   </div>
 </div>
 
@@ -208,8 +226,8 @@ async function doLogin(){
 async function startDash(){
   document.getElementById('login').style.display = 'none';
   document.getElementById('dash').style.display  = 'block';
-  toast('⏳ جاري تحميل المشاريع...');
-  await loadFromGitHub();
+  toast('⏳ جاري تحميل البيانات...');
+  await Promise.all([loadFromGitHub(), loadReviews()]);
   render();
 }
 
@@ -316,21 +334,95 @@ function del(i){
   toast('🗑 حُذف — اضغط نشر للتطبيق');
 }
 
-/* ─── Push to GitHub ─── */
+/* ─── Tab switcher ─── */
+function switchTab(t){
+  F('pane-proj').style.display = t==='proj'?'block':'none';
+  F('pane-rev').style.display  = t==='rev' ?'block':'none';
+  F('tab-proj').className = 'btn sm '+(t==='proj'?'btn-p':'btn-g');
+  F('tab-rev').className  = 'btn sm '+(t==='rev' ?'btn-p':'btn-g');
+  if(t==='rev') renderRevList();
+}
+
+/* ─── Reviews ─── */
+const REV_FILE = 'reviews.json';
+let REVIEWS = [], revSha = '';
+
+async function loadReviews(){
+  const token = localStorage.getItem('adm_token');
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${REV_FILE}`,{
+    headers:{ Authorization:`token ${token}` }
+  });
+  const d = await r.json();
+  if(!d.sha) return;
+  revSha = d.sha;
+  try { REVIEWS = JSON.parse(atob(d.content.replace(/\n/g,''))); } catch(e){ REVIEWS=[]; }
+}
+
+function renderRevList(){
+  if(!REVIEWS.length){ F('rev-list').innerHTML='<p style="color:var(--gr);padding:20px 0">لا توجد تقييمات بعد</p>'; return; }
+  F('rev-list').innerHTML = REVIEWS.map((r,i)=>`
+    <div style="background:#13131f;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:16px;">
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <strong style="font-size:13px">${r.name||'—'}</strong>
+          <span style="font-size:11px;color:var(--gr)">${r.company||''}</span>
+          <span style="font-size:13px;color:#f59e0b">${'★'.repeat(r.rating||5)}</span>
+          <span style="font-size:10px;color:var(--gr);margin-inline-start:auto">${r.date||''}</span>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.6">${r.text||''}</p>
+        ${r.textAr&&r.textAr!==r.text?`<p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:6px;line-height:1.6" dir="rtl">${r.textAr}</p>`:''}
+      </div>
+      <button class="btn sm btn-r" onclick="delRev(${i})">🗑</button>
+    </div>`).join('');
+}
+
+function openRevAdd(){
+  const name    = prompt('اسم العميل:'); if(!name) return;
+  const company = prompt('الشركة / المسمى:') || '';
+  const rating  = parseInt(prompt('التقييم (1-5):','5'))||5;
+  const text    = prompt('نص التقييم (EN):'); if(!text) return;
+  const textAr  = prompt('نص التقييم (AR) — اتركه فارغاً للتخطي:') || text;
+  const date    = prompt('التاريخ (مثال: يناير 2025):') || '';
+  REVIEWS.push({ id: Date.now(), name, company, rating, text, textAr, date });
+  renderRevList();
+  toast('✓ أُضيف التقييم — اضغط "نشر" لحفظه');
+}
+
+function delRev(i){
+  if(!confirm(`حذف تقييم "${REVIEWS[i].name}"؟`)) return;
+  REVIEWS.splice(i,1); renderRevList();
+  toast('🗑 حُذف — اضغط "نشر" للتطبيق');
+}
+
 async function pushToGitHub(){
   const btn = F('sbtn');
   btn.textContent='⏳ جاري الرفع...'; btn.disabled=true;
-  const content = `/* projects.js — admin dashboard ${new Date().toISOString().slice(0,10)} */\nconst ALL_PROJECTS = ${JSON.stringify(PROJECTS,null,2)};`;
+  const token = localStorage.getItem('adm_token');
+
+  // Push projects.js
+  const projContent = `/* projects.js — admin dashboard ${new Date().toISOString().slice(0,10)} */\nconst ALL_PROJECTS = ${JSON.stringify(PROJECTS,null,2)};`;
+  // Push reviews.json
+  const revContent  = JSON.stringify(REVIEWS, null, 2);
+
   try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{
-      method:'PUT',
-      headers:{ Authorization:`token ${localStorage.getItem('adm_token')}`, 'Content-Type':'application/json' },
-      body: JSON.stringify({ message:'Update projects via admin dashboard', content: btoa(unescape(encodeURIComponent(content))), sha: fileSha })
-    });
-    const d = await r.json();
-    if(d.content){ fileSha=d.content.sha; toast('✅ تم النشر على GitHub بنجاح! سيتحدث الموقع خلال دقيقة.'); }
-    else toast('❌ '+(d.message||'خطأ غير معروف'));
-  } catch(e){ toast('❌ خطأ: '+e.message); }
+    const push = async (path, sha, content, isBinary=false) => {
+      const encoded = isBinary ? content : btoa(unescape(encodeURIComponent(content)));
+      const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{
+        method:'PUT',
+        headers:{ Authorization:`token ${token}`, 'Content-Type':'application/json' },
+        body: JSON.stringify({ message:`Update ${path} via admin`, content: encoded, sha })
+      });
+      return r.json();
+    };
+    const [d1, d2] = await Promise.all([
+      push(FILE,    fileSha, projContent),
+      push(REV_FILE, revSha, revContent)
+    ]);
+    if(d1.content) fileSha = d1.content.sha;
+    if(d2.content) revSha  = d2.content.sha;
+    if(d1.content && d2.content) toast('✅ تم النشر بنجاح! المشاريع + التقييمات');
+    else toast('❌ '+(d1.message||d2.message||'خطأ'));
+  } catch(e){ toast('❌ '+e.message); }
   btn.textContent='💾 نشر على GitHub'; btn.disabled=false;
 }
 

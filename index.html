@@ -487,6 +487,119 @@ html[lang="en"] .pc-sub{font-family:var(--font-en);font-size:10px;}
 }
 .pc:hover .pc-arr{background:rgba(255,255,255,.2);transform:rotate(45deg);}
 
+/* ═══ REVIEWS ════════════════════════════════════════════════ */
+#reviews{background:linear-gradient(to bottom,var(--bg) 0%,rgba(124,58,237,.04) 50%,var(--bg) 100%);}
+.rev-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin:48px 0 40px;
+}
+@media(max-width:900px){.rev-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.rev-grid{grid-template-columns:1fr;}}
+
+.rev-card{
+  background:var(--bg2);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  padding:26px 24px 22px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.rev-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--purple2));opacity:.6;
+}
+.rev-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(124,58,237,.3);
+  box-shadow:0 20px 40px rgba(0,0,0,.35),0 0 20px rgba(124,58,237,.08);
+}
+.rev-quote{font-size:40px;line-height:1;color:var(--purple);opacity:.35;margin-bottom:-8px;font-family:serif;}
+.rev-stars{display:flex;gap:3px;}
+.rev-star{font-size:15px;color:#f59e0b;}
+.rev-star.off{color:rgba(255,255,255,.15);}
+.rev-text{
+  font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.75);
+  flex:1;
+}
+html[lang="ar"] .rev-text{font-family:var(--font-ar);font-size:14px;}
+.rev-author{
+  display:flex;align-items:center;gap:12px;
+  padding-top:14px;border-top:1px solid rgba(255,255,255,.07);
+}
+.rev-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.rev-name{font-size:13px;font-weight:700;color:#fff;}
+html[lang="ar"] .rev-name{font-family:var(--font-ar);}
+.rev-company{font-size:11px;color:var(--grey2);margin-top:1px;}
+
+/* Submit CTA */
+.rev-cta{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  flex-wrap:wrap;
+  padding:28px;
+  background:rgba(124,58,237,.07);
+  border:1px solid rgba(124,58,237,.2);
+  border-radius:16px;
+  text-align:center;
+}
+.rev-cta-text{font-size:15px;color:rgba(255,255,255,.7);}
+html[lang="ar"] .rev-cta-text{font-family:var(--font-ar);}
+
+/* Review Modal */
+#rev-modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:600;
+  align-items:center;justify-content:center;padding:20px;
+}
+#rev-modal.open{display:flex;}
+.rev-mbox{
+  background:var(--bg2);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  width:100%;max-width:560px;
+  max-height:92vh;overflow-y:auto;
+  padding:30px;
+}
+.rev-mbox h3{font-size:19px;font-weight:800;margin-bottom:20px;}
+html[lang="ar"] .rev-mbox h3{font-family:var(--font-ar);}
+.rev-form{display:flex;flex-direction:column;gap:14px;}
+.rev-form input,.rev-form textarea{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;padding:12px 16px;
+  color:#fff;font-size:13px;font-family:inherit;outline:none;
+  transition:border-color .2s;
+}
+.rev-form input:focus,.rev-form textarea:focus{border-color:var(--purple);}
+.rev-form textarea{resize:vertical;min-height:100px;}
+/* Star picker */
+.star-pick{display:flex;gap:6px;flex-direction:row-reverse;justify-content:flex-end;}
+.star-pick input{display:none;}
+.star-pick label{font-size:28px;color:rgba(255,255,255,.2);cursor:pointer;transition:.15s;line-height:1;}
+.star-pick input:checked ~ label,
+.star-pick label:hover,.star-pick label:hover ~ label{color:#f59e0b;}
+.rev-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:500px){.rev-form-row{grid-template-columns:1fr;}}
+.rev-fbtns{display:flex;justify-content:flex-end;gap:10px;margin-top:6px;}
+.rev-success{
+  text-align:center;padding:30px 20px;
+  display:none;flex-direction:column;gap:12px;align-items:center;
+}
+.rev-success.show{display:flex;}
+.rev-success-icon{font-size:52px;}
+.rev-success h4{font-size:18px;font-weight:700;}
+html[lang="ar"] .rev-success h4{font-family:var(--font-ar);}
+.rev-success p{font-size:13px;color:var(--grey);max-width:320px;line-height:1.6;}
+html[lang="ar"] .rev-success p{font-family:var(--font-ar);}
+
 /* ═══ ABOUT ══════════════════════════════════════════════════ */
 
 /* Big photo banner */
@@ -910,6 +1023,109 @@ html[lang="ar"] .ld-name-ar{display:block;}
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="sec-wrap">
+    <div class="rv">
+      <div class="sec-badge ar">آراء العملاء</div>
+      <div class="sec-badge en">Client Reviews</div>
+      <h2 class="sec-title">
+        <span class="ar">ماذا يقول <span class="accent-text">عملاؤنا؟</span></span>
+        <span class="en">What Our <span class="accent-text">Clients Say</span></span>
+      </h2>
+      <p class="sec-sub ar" style="margin:10px auto 0">تقييمات حقيقية من عملاء حقيقيين</p>
+      <p class="sec-sub en" style="margin:10px auto 0">Real feedback from real clients</p>
+    </div>
+
+    <div class="rev-grid rv" id="rev-grid" style="transition-delay:.1s">
+      <!-- filled by JS -->
+    </div>
+
+    <div class="rev-cta rv" style="transition-delay:.2s">
+      <p class="rev-cta-text ar">هل تعاملت معي من قبل؟ شاركنا تجربتك</p>
+      <p class="rev-cta-text en">Worked with me before? Share your experience</p>
+      <button class="btn-primary" onclick="openRevModal()">
+        <span class="ar">✦ اكتب تقييمك</span>
+        <span class="en">✦ Leave a Review</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Review submission modal -->
+<div id="rev-modal" onclick="if(event.target.id==='rev-modal')closeRevModal()">
+  <div class="rev-mbox">
+
+    <!-- form state -->
+    <div id="rev-form-wrap">
+      <h3>
+        <span class="ar">✦ اكتب تقييمك</span>
+        <span class="en">✦ Leave a Review</span>
+      </h3>
+      <form class="rev-form" onsubmit="submitReview(event)">
+        <div class="rev-form-row">
+          <div>
+            <label style="font-size:11px;color:var(--grey2);display:block;margin-bottom:5px">
+              <span class="ar">الاسم *</span><span class="en">Name *</span>
+            </label>
+            <input id="rv-name" required placeholder="أحمد / Ahmed">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--grey2);display:block;margin-bottom:5px">
+              <span class="ar">الشركة / المسمى</span><span class="en">Company / Title</span>
+            </label>
+            <input id="rv-company" placeholder="شركة xyz / Freelancer">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;color:var(--grey2);display:block;margin-bottom:8px">
+            <span class="ar">تقييمك ★</span><span class="en">Your Rating ★</span>
+          </label>
+          <div class="star-pick" id="star-pick">
+            <input type="radio" id="s5" name="rating" value="5" checked><label for="s5">★</label>
+            <input type="radio" id="s4" name="rating" value="4"><label for="s4">★</label>
+            <input type="radio" id="s3" name="rating" value="3"><label for="s3">★</label>
+            <input type="radio" id="s2" name="rating" value="2"><label for="s2">★</label>
+            <input type="radio" id="s1" name="rating" value="1"><label for="s1">★</label>
+          </div>
+        </div>
+        <div>
+          <label style="font-size:11px;color:var(--grey2);display:block;margin-bottom:5px">
+            <span class="ar">تجربتك مع الشغل *</span><span class="en">Your Experience *</span>
+          </label>
+          <textarea id="rv-text" required
+            placeholder="شاركنا تجربتك مع التصميم والتعامل... / Share your experience with the design and communication..."></textarea>
+        </div>
+        <div class="rev-fbtns">
+          <button type="button" class="btn-ghost" onclick="closeRevModal()">
+            <span class="ar">إلغاء</span><span class="en">Cancel</span>
+          </button>
+          <button type="submit" class="btn-primary">
+            <span class="ar">إرسال التقييم ←</span><span class="en">Submit Review →</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- success state -->
+    <div class="rev-success" id="rev-success">
+      <div class="rev-success-icon">🎉</div>
+      <h4>
+        <span class="ar">شكراً جزيلاً!</span>
+        <span class="en">Thank you!</span>
+      </h4>
+      <p>
+        <span class="ar">تم استلام تقييمك وسيظهر على الموقع بعد المراجعة ✓</span>
+        <span class="en">Your review has been received and will appear after approval ✓</span>
+      </p>
+      <button class="btn-primary" style="margin-top:8px" onclick="closeRevModal()">
+        <span class="ar">إغلاق</span><span class="en">Close</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
 <!-- ABOUT -->
 <section id="about">
 
@@ -1322,6 +1538,86 @@ function closeOverlay(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeOverlay(); });
+
+/* ── Reviews ─────────────────────────────────────────────── */
+(function loadReviews(){
+  fetch('reviews.json?v='+Date.now())
+    .then(r=>r.json())
+    .then(data=>renderReviews(data))
+    .catch(()=>renderReviews([]));
+})();
+
+function renderReviews(data){
+  const grid = document.getElementById('rev-grid');
+  if(!grid) return;
+  if(!data.length){
+    grid.innerHTML='<p style="color:var(--grey2);grid-column:1/-1;text-align:center;padding:30px 0">لا توجد تقييمات بعد — كن أول من يقيّم!</p>';
+    return;
+  }
+  grid.innerHTML = data.map(r=>{
+    const stars = [1,2,3,4,5].map(n=>`<span class="rev-star${n>(r.rating||5)?' off':''}"">★</span>`).join('');
+    const initials = (r.name||'?').trim().charAt(0).toUpperCase();
+    const text = (LANG==='ar' && r.textAr) ? r.textAr : (r.text||'');
+    const date = r.date ? `<span style="font-size:10px;color:var(--grey2);margin-inline-start:auto">${r.date}</span>` : '';
+    return `<div class="rev-card rv">
+      <div class="rev-quote">"</div>
+      <div class="rev-stars">${stars}</div>
+      <p class="rev-text">${text}</p>
+      <div class="rev-author">
+        <div class="rev-avatar">${initials}</div>
+        <div>
+          <div class="rev-name">${r.name||'—'}</div>
+          <div class="rev-company">${r.company||''}</div>
+        </div>
+        ${date}
+      </div>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+}
+
+function openRevModal(){
+  document.getElementById('rev-success').classList.remove('show');
+  document.getElementById('rev-form-wrap').style.display='block';
+  document.getElementById('rev-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeRevModal(){
+  document.getElementById('rev-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function submitReview(e){
+  e.preventDefault();
+  const name    = document.getElementById('rv-name').value.trim();
+  const company = document.getElementById('rv-company').value.trim();
+  const rating  = document.querySelector('#star-pick input:checked')?.value||5;
+  const text    = document.getElementById('rv-text').value.trim();
+  const stars   = '★'.repeat(+rating)+'☆'.repeat(5-+rating);
+
+  // Send via email (fallback — zero setup required)
+  const subject = encodeURIComponent(`⭐ تقييم جديد من ${name}`);
+  const body    = encodeURIComponent(
+    `الاسم: ${name}\nالشركة: ${company||'—'}\nالتقييم: ${stars}\n\n${text}\n\n——\nأرسل من موقع Portfolio`
+  );
+
+  // Try Formspree first if configured, fallback to mailto
+  const FID = 'YOUR_FORMSPREE_ID'; // ← استبدل بـ form ID من formspree.io (مجاني)
+  if(FID !== 'YOUR_FORMSPREE_ID'){
+    const fd = new FormData();
+    fd.append('name',name); fd.append('company',company);
+    fd.append('rating',rating); fd.append('review',text);
+    fetch(`https://formspree.io/f/${FID}`,{method:'POST',body:fd,headers:{Accept:'application/json'}})
+      .catch(()=>{});
+  } else {
+    window.open(`mailto:ahmed.hassan.bahaa@gmail.com?subject=${subject}&body=${body}`);
+  }
+
+  // Show success
+  document.getElementById('rv-form-wrap').style.display='none';
+  document.getElementById('rv-success').classList.add('show');
+  e.target.reset();
+}
 
 /* ── Contact form ────────────────────────────────────────── */
 function sendForm(e){
