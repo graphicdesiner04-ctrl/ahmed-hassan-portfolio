@@ -448,15 +448,45 @@ html[lang="ar"] .flt{font-family:var(--font-ar);}
 .pc.cat-Logo::before{background:linear-gradient(90deg,#92400e,#f59e0b);}
 .pc.cat-Branding::before{background:linear-gradient(90deg,#1e3a8a,#60a5fa);}
 
+/* ── Device mockup ── */
+.pc-mockup{
+  position:absolute;inset:0;z-index:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:14px 20px 90px;
+}
+.pc-device{
+  border-radius:18px;
+  border:5px solid rgba(255,255,255,.13);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),inset 0 0 0 1px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.7);
+  overflow:hidden;position:relative;
+  transform:perspective(700px) rotateY(-10deg) rotateX(4deg);
+  transition:transform .5s ease;
+  flex-shrink:0;
+}
+.pc:hover .pc-device{transform:perspective(700px) rotateY(-5deg) rotateX(2deg);}
+/* notch */
+.pc-device::before{content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);width:25%;height:7px;background:rgba(0,0,0,.6);border-radius:4px;z-index:3;}
+/* home bar */
+.pc-device::after{content:'';position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:20%;height:4px;background:rgba(255,255,255,.18);border-radius:2px;z-index:3;}
+.dev-phone{width:46%;aspect-ratio:9/18;}
+.dev-book{width:52%;aspect-ratio:3/4;}
+.dev-book::before,.dev-book::after{display:none;}
+.dev-square{width:50%;aspect-ratio:1/1;}
+.dev-square::before,.dev-square::after{display:none;}
+.pc-device .pc-img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:unset!important;filter:saturate(.9);transition:transform .5s;}
+.pc:hover .pc-device .pc-img{transform:scale(1.04);}
+/* hero/wide: larger device */
+.pc.hero-card .pc-device,.pc.wide .pc-device{width:35%;}
+
 /* ── Always-on overlay gradient ── */
 .pc-overlay{
   position:absolute;inset:0;z-index:1;
   transition:opacity .35s;
 }
-.pc.cat-Social  .pc-overlay{background:linear-gradient(to top,rgba(10,3,25,1) 0%,rgba(10,3,25,.95) 38%,rgba(40,8,90,.65) 65%,rgba(70,15,150,.2) 100%);}
-.pc.cat-Print   .pc-overlay{background:linear-gradient(to top,rgba(0,12,16,1) 0%,rgba(0,12,16,.95) 38%,rgba(0,45,55,.65) 65%,rgba(0,75,85,.2) 100%);}
-.pc.cat-Logo    .pc-overlay{background:linear-gradient(to top,rgba(10,7,0,1) 0%,rgba(10,7,0,.95) 38%,rgba(40,25,0,.65) 65%,rgba(70,42,5,.2) 100%);}
-.pc.cat-Branding .pc-overlay{background:linear-gradient(to top,rgba(3,6,20,1) 0%,rgba(3,6,20,.95) 38%,rgba(10,25,70,.65) 65%,rgba(20,45,120,.2) 100%);}
+.pc.cat-Social  .pc-overlay{background:linear-gradient(to top,rgba(10,3,25,1) 0%,rgba(10,3,25,.92) 40%,rgba(40,8,90,.45) 68%,rgba(70,15,150,.08) 100%);}
+.pc.cat-Print   .pc-overlay{background:linear-gradient(to top,rgba(0,12,16,1) 0%,rgba(0,12,16,.92) 40%,rgba(0,45,55,.45) 68%,rgba(0,75,85,.08) 100%);}
+.pc.cat-Logo    .pc-overlay{background:linear-gradient(to top,rgba(10,7,0,1) 0%,rgba(10,7,0,.92) 40%,rgba(40,25,0,.45) 68%,rgba(70,42,5,.08) 100%);}
+.pc.cat-Branding .pc-overlay{background:linear-gradient(to top,rgba(3,6,20,1) 0%,rgba(3,6,20,.92) 40%,rgba(10,25,70,.45) 68%,rgba(20,45,120,.08) 100%);}
 
 /* ── Card info — always visible ── */
 .pc-info{
@@ -1234,13 +1264,12 @@ function renderProjects(){
       ? {Social:'سوشيال ميديا',Print:'مطبوعات',Branding:'هوية بصرية',Logo:'شعار',Other:'أخرى'}[p.cat]||p.cat
       : p.cat;
 
+    const deviceCls = {Social:'dev-phone',Print:'dev-book',Logo:'dev-square',Branding:'dev-square'}[p.cat]||'dev-phone';
     const imgTag = img
-      ? `<img class="pc-img" src="${img}" alt="${title}" loading="lazy"
-             onerror="this.style.display='none';this.closest('.pc').classList.add('no-img');
-                      this.insertAdjacentHTML('afterend',this.dataset.ph);"
-             data-ph='<div class=&quot;pc-placeholder&quot; style=&quot;background:${bg.replace(/"/g,"'")}&quot;>
-               <div class=&quot;ph-icon&quot;>${meta.icon}</div>
-               <div class=&quot;ph-label&quot;>${catLabel}</div></div>'>`
+      ? `<div class="pc-mockup"><div class="pc-device ${deviceCls}">
+           <img class="pc-img" src="${img}" alt="${title}" loading="lazy"
+             onerror="this.closest('.pc').classList.add('no-img');this.closest('.pc-mockup').remove();">
+         </div></div>`
       : `<div class="pc-placeholder no-img-ph" style="background:${bg}">
            <div class="ph-icon">${meta.icon}</div>
            <div class="ph-label">${catLabel}</div>
