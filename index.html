@@ -370,38 +370,27 @@ html[lang="ar"] .flt{font-family:var(--font-ar);}
   background:var(--bg2);
   transition:transform .35s ease,box-shadow .35s ease,border-color .35s;
   grid-column:span 4;
-  min-height:220px;
+  aspect-ratio:4/3;
 }
-.pc.wide{grid-column:span 6;}
-.pc.hero-card{grid-column:span 12;}
-@media(max-width:1100px){.pc{grid-column:span 6;}.pc.wide{grid-column:span 12;}.pc.hero-card{grid-column:span 12;}}
-@media(max-width:700px){.pc{grid-column:span 12!important;}}
+.pc.wide{grid-column:span 6; aspect-ratio:16/9;}
+.pc.hero-card{grid-column:span 12; aspect-ratio:21/8;}
+@media(max-width:1100px){.pc{grid-column:span 6;aspect-ratio:4/3;}.pc.wide{grid-column:span 12;aspect-ratio:16/9;}.pc.hero-card{grid-column:span 12;aspect-ratio:16/7;}}
+@media(max-width:700px){.pc{grid-column:span 12!important;aspect-ratio:4/3;}}
 
 .pc:hover{
   transform:translateY(-6px);
   border-color:rgba(124,58,237,.4);
   box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(124,58,237,.2),0 0 30px rgba(124,58,237,.1);
 }
-.pc-img{
-  width:100%;aspect-ratio:4/3;object-fit:cover;
-  display:block;
-  transition:transform .5s ease,filter .5s;
-  filter:saturate(.8);
-}
-.pc.hero-card .pc-img,.pc.wide .pc-img{aspect-ratio:16/7;}
-.pc:hover .pc-img{transform:scale(1.05);filter:saturate(1.1);}
-
 /* ── Placeholder card (no image) ─────────────────────────── */
 .pc-placeholder{
-  width:100%;
+  position:absolute;inset:0;
+  width:100%;height:100%;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   gap:14px;
-  position:relative;overflow:hidden;
+  overflow:hidden;
 }
-.pc.hero-card .pc-placeholder{height:380px;}
-.pc.wide    .pc-placeholder{aspect-ratio:16/7;}
-.pc         .pc-placeholder{aspect-ratio:4/3;}
 
 /* animated shimmer lines */
 .pc-placeholder::before{
@@ -448,35 +437,15 @@ html[lang="ar"] .flt{font-family:var(--font-ar);}
 .pc.cat-Logo::before{background:linear-gradient(90deg,#92400e,#f59e0b);}
 .pc.cat-Branding::before{background:linear-gradient(90deg,#1e3a8a,#60a5fa);}
 
-/* ── Device mockup ── */
-.pc-mockup{
-  position:absolute;inset:0;z-index:0;
-  display:flex;align-items:center;justify-content:center;
-  padding:14px 20px 90px;
+/* ── Card image fills card ── */
+.pc-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform .6s ease,filter .6s;
+  filter:saturate(.85);
 }
-.pc-device{
-  border-radius:18px;
-  border:5px solid rgba(255,255,255,.13);
-  box-shadow:0 0 0 1px rgba(255,255,255,.04),inset 0 0 0 1px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.7);
-  overflow:hidden;position:relative;
-  transform:perspective(700px) rotateY(-10deg) rotateX(4deg);
-  transition:transform .5s ease;
-  flex-shrink:0;
-}
-.pc:hover .pc-device{transform:perspective(700px) rotateY(-5deg) rotateX(2deg);}
-/* notch */
-.pc-device::before{content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);width:25%;height:7px;background:rgba(0,0,0,.6);border-radius:4px;z-index:3;}
-/* home bar */
-.pc-device::after{content:'';position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:20%;height:4px;background:rgba(255,255,255,.18);border-radius:2px;z-index:3;}
-.dev-phone{width:46%;aspect-ratio:9/18;}
-.dev-book{width:52%;aspect-ratio:3/4;}
-.dev-book::before,.dev-book::after{display:none;}
-.dev-square{width:50%;aspect-ratio:1/1;}
-.dev-square::before,.dev-square::after{display:none;}
-.pc-device .pc-img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:unset!important;filter:saturate(.9);transition:transform .5s;}
-.pc:hover .pc-device .pc-img{transform:scale(1.04);}
-/* hero/wide: larger device */
-.pc.hero-card .pc-device,.pc.wide .pc-device{width:35%;}
+.pc:hover .pc-img{transform:scale(1.06);filter:saturate(1.05);}
 
 /* ── Always-on overlay gradient ── */
 .pc-overlay{
@@ -517,7 +486,6 @@ html[lang="en"] .pc-sub{font-family:var(--font-en);font-size:10px;}
   transition:background .3s,transform .3s;
 }
 .pc:hover .pc-arr{background:rgba(255,255,255,.2);transform:rotate(45deg);}
-.pc:hover .pc-img{transform:scale(1.05);filter:saturate(1);}
 
 /* ═══ ABOUT ══════════════════════════════════════════════════ */
 
@@ -1254,8 +1222,11 @@ function renderProjects(){
 
   pg.innerHTML = list.map((p,i)=>{
     const title  = LANG==='ar' && p.titleAr ? p.titleAr : p.title;
-    const wide   = p.wide || (i%7===0 && i>0);
     const hero   = i===0;
+    // Magazine pattern: hero → [2×half, 3×third, 2×half, 3×third …]
+    // pos 0,1 → wide (span-6)  |  pos 2,3,4 → normal (span-4)
+    const patPos = (i - 1) % 5;
+    const wide   = p.wide || (!hero && patPos < 2);
     const cls    = hero ? 'hero-card' : (wide ? 'wide' : '');
     const img    = p.coverLg || p.cover || p.image || '';
     const meta   = CAT_META[p.cat] || CAT_META['Other'];
@@ -1264,12 +1235,9 @@ function renderProjects(){
       ? {Social:'سوشيال ميديا',Print:'مطبوعات',Branding:'هوية بصرية',Logo:'شعار',Other:'أخرى'}[p.cat]||p.cat
       : p.cat;
 
-    const deviceCls = {Social:'dev-phone',Print:'dev-book',Logo:'dev-square',Branding:'dev-square'}[p.cat]||'dev-phone';
     const imgTag = img
-      ? `<div class="pc-mockup"><div class="pc-device ${deviceCls}">
-           <img class="pc-img" src="${img}" alt="${title}" loading="lazy"
-             onerror="this.closest('.pc').classList.add('no-img');this.closest('.pc-mockup').remove();">
-         </div></div>`
+      ? `<img class="pc-img" src="${img}" alt="${title}" loading="lazy"
+           onerror="this.closest('.pc').classList.add('no-img');this.remove();">`
       : `<div class="pc-placeholder no-img-ph" style="background:${bg}">
            <div class="ph-icon">${meta.icon}</div>
            <div class="ph-label">${catLabel}</div>
