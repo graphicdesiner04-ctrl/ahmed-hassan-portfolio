@@ -1,10 +1,10 @@
 // ═══════════════════════════════════════════════════════════════
 //  PROJECTS.JS — Ahmed Hassan Bahaa Portfolio
-//  22 مشروع حقيقي مع صور من الفولدرات
+//  مشاريع متعددة مع صور من الفولدرات
 //  لإضافة مشروع جديد: انسخ أي كتلة وعدّل البيانات
 // ═══════════════════════════════════════════════════════════════
 
-// helper — يبني مسار الصورة داخل فولدر المشروع
+// helper — يبني مسار الصورة داخل فولدر /images/ (المشاريع القديمة)
 function imgs(folder, prefix, count, ext) {
   ext = ext || 'png';
   var arr = [];
@@ -13,6 +13,11 @@ function imgs(folder, prefix, count, ext) {
     arr.push('assets/projects/' + folder + '/images/' + prefix + '_' + n + '.' + ext);
   }
   return arr;
+}
+
+// helper — يبني مسارات صور من الجذر المباشر للفولدر (المشاريع الجديدة)
+function flist(folder, files) {
+  return files.map(function(f){ return 'assets/projects/' + folder + '/' + f; });
 }
 
 const PROJECTS = [
@@ -346,14 +351,368 @@ const PROJECTS = [
   },
 
   // ══════════════════════════════════════════════════════
-  //  أضف مشاريع جديدة هنا ↓
-  //  انسخ الكتلة دي وعدّل:
-  //  - id (رقم جديد)
-  //  - title / titleAr
-  //  - cat: 'Social' | 'Print' | 'Branding' | 'Logo'
-  //  - image: مسار صورة الغلاف
-  //  - images: مصفوفة صور المشروع
-  //  - link: رابط Behance
+  //  مشاريع المملكة العربية السعودية — p23 → p39
   // ══════════════════════════════════════════════════════
+
+  // ── سوشيال ميديا السعودية ──────────────────────────
+
+  {
+    id: 23,
+    title: 'Social Media — Al Yamamah (KSA)',
+    titleAr: 'سوشيال ميديا — اليمامة | المملكة',
+    desc: 'Social media content series for Al Yamamah, a Saudi Arabian company. Includes Ramadan campaigns, religious posts and promotional content.',
+    descAr: 'سلسلة محتوى سوشيال ميديا لشركة اليمامة السعودية. تشمل حملات رمضان والمحتوى الديني والترويجي.',
+    cat: 'Social', year: '2025',
+    tags: ['Social Media', 'Saudi Arabia', 'Ramadan Campaign'],
+    tagsAr: ['سوشيال ميديا', 'السعودية', 'حملة رمضان'],
+    image: 'assets/projects/p23 Al Yamamah Social media/Artboard 1.png',
+    images: flist('p23 Al Yamamah Social media', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png',
+      'Artboard 4.png','Artboard 5.png','Artboard 6.png',
+      'Artboard 1-.png','Artboard 2-.png',
+      '-دعاء وحديث 28 copy2.png','-دعاء وحديث 28 copy3.png',
+      'افطار copy.png','حملة عمرة رمضان copy2.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#0d0520 0%,#1a0a35 50%,#0f1040 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 27,
+    title: 'Social Media — Luini Bakery (KSA)',
+    titleAr: 'سوشيال ميديا — لويني بيكري | السعودية',
+    desc: 'Visual identity and social media campaign for Luini Bakery, a Saudi artisan bakery brand. Rich warm tones and appetising imagery.',
+    descAr: 'هوية بصرية وحملة سوشيال ميديا لمخبز لويني السعودي. ألوان دافئة وصور شهية.',
+    cat: 'Social', year: '2025',
+    tags: ['Social Media', 'Saudi Arabia', 'Food & Beverage', 'Bakery'],
+    tagsAr: ['سوشيال ميديا', 'السعودية', 'أغذية', 'مخبز'],
+    image: 'assets/projects/p27 luini Bakery/Artboard 1.png',
+    images: flist('p27 luini Bakery', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png','Artboard 4.png',
+      '51.png','52.png',
+      '2.jpeg','3.jpeg','4.jpeg','5.jpeg','6.jpeg','7.jpeg','8.jpeg',
+      'luini.sa-20250113_110610-136167611.jpg',
+      'luini.sa-20250121_115936-3264591470.jpg',
+      'luini.sa-20250130_182414-272922730.jpg'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#1a0a00 0%,#2a1205 50%,#120800 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 33,
+    title: 'Web Design — Resalah (KSA)',
+    titleAr: 'تصميم ويب — رسالة | السعودية',
+    desc: 'Website UI design for Resalah, a Saudi professional services company. Clean layouts with strong Arabic typography.',
+    descAr: 'تصميم واجهة موقع ويب لشركة رسالة السعودية للخدمات المهنية.',
+    cat: 'Social', year: '2025',
+    tags: ['Web Design', 'UI', 'Saudi Arabia', 'Arabic'],
+    tagsAr: ['تصميم ويب', 'واجهة مستخدم', 'السعودية', 'عربي'],
+    image: 'assets/projects/p33 Resalah Web/Artboard 1.png',
+    images: flist('p33 Resalah Web', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png',
+      'Artboard 3 - Copy.png','Artboard 4.png','Artboard 5.png',
+      'Artboard 6.png','Artboard 7.png','Artboard8.png','5.jpeg'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#061014 0%,#0a1c28 50%,#060c12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 36,
+    title: 'Social Media — Eilaf Cover Web (KSA)',
+    titleAr: 'سوشيال ميديا — غلافات إيلاف | السعودية',
+    desc: 'Website and social media cover designs for Eilaf, a Saudi company. Professional banner layouts with brand consistency.',
+    descAr: 'تصاميم غلافات موقع ويب وسوشيال ميديا لشركة إيلاف السعودية.',
+    cat: 'Social', year: '2025',
+    tags: ['Social Media', 'Cover Design', 'Saudi Arabia'],
+    tagsAr: ['سوشيال ميديا', 'تصميم غلافات', 'السعودية'],
+    image: 'assets/projects/p36 Eilaf Cover web/Artboard 1.png',
+    images: flist('p36 Eilaf Cover web', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png','Artboard 4.png',
+      'Artboard 5.png','Artboard 6.png','Artboard 7.png','Artboard 8.png',
+      'Artboard 9.png','Artboard 10.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#0d0520 0%,#1a0a35 50%,#0f1040 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 361,
+    title: 'Social Media — Elaf Posts (KSA)',
+    titleAr: 'سوشيال ميديا — بوستات إلاف | السعودية',
+    desc: 'Social media posts series for Elaf, a Saudi company. Consistent visual language and brand identity across all posts.',
+    descAr: 'سلسلة بوستات سوشيال ميديا لشركة إلاف السعودية.',
+    cat: 'Social', year: '2025',
+    tags: ['Social Media', 'Posts', 'Saudi Arabia'],
+    tagsAr: ['سوشيال ميديا', 'بوستات', 'السعودية'],
+    image: 'assets/projects/p36 Elaf post/Artboard 1.png',
+    images: flist('p36 Elaf post', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png','Artboard 4.png',
+      'Artboard 5.png','Artboard 6.png','Artboard 7.png','Artboard 8.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#0d0520 0%,#1a0a35 50%,#0f1040 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 37,
+    title: 'Social Media — Alfdal (KSA)',
+    titleAr: 'سوشيال ميديا — الأفضل | السعودية',
+    desc: 'Social media post designs for Alfdal, a Saudi brand. Bold graphics and engaging visual storytelling.',
+    descAr: 'تصاميم بوستات سوشيال ميديا لعلامة الأفضل السعودية.',
+    cat: 'Social', year: '2025',
+    tags: ['Social Media', 'Posts', 'Saudi Arabia'],
+    tagsAr: ['سوشيال ميديا', 'بوستات', 'السعودية'],
+    image: 'assets/projects/p37 Alfdal posts/post 00 copy.png',
+    images: flist('p37 Alfdal posts', [
+      'post 00 copy.png','Artboard 1.png','Artboard 2.png','Artboard 3.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#0d0520 0%,#1a0a35 50%,#0f1040 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 39,
+    title: 'Social Media — Lushly (KSA)',
+    titleAr: 'سوشيال ميديا — لوشلي | السعودية',
+    desc: 'Elegant social media posts for Lushly, a Saudi lifestyle brand. Soft tones and refined design aesthetic.',
+    descAr: 'بوستات سوشيال ميديا أنيقة لعلامة لوشلي السعودية.',
+    cat: 'Social', year: '2025',
+    tags: ['Social Media', 'Lifestyle', 'Saudi Arabia'],
+    tagsAr: ['سوشيال ميديا', 'لايف ستايل', 'السعودية'],
+    image: 'assets/projects/p39 Lushly Posts/Artboard 1.png',
+    images: flist('p39 Lushly Posts', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png',
+      'Artboard 4.png','Artboard 5.png','Artboard 6.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#0d0520 0%,#1a0a35 50%,#0f1040 100%)',
+    saudi: true,
+  },
+
+  // ── مطبوعات السعودية ────────────────────────────────
+
+  {
+    id: 24,
+    title: 'Company Profile — Al Yamamah (KSA)',
+    titleAr: 'ملف الشركة — اليمامة | المملكة',
+    desc: 'Professional company profile for Al Yamamah, a Saudi business corporation. High-end print design with bilingual content.',
+    descAr: 'ملف شركة احترافي لمؤسسة اليمامة السعودية. تصميم طباعي راقٍ بمحتوى ثنائي اللغة.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Saudi Arabia', 'Bilingual'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'السعودية', 'ثنائي اللغة'],
+    image: 'assets/projects/P24 Profile Company Al Yamamh/mOCKUP غشةشةشا copy.png',
+    images: flist('P24 Profile Company Al Yamamh', ['mOCKUP غشةشةشا copy.png']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 25,
+    title: 'Corporate Brochure — Al Yamamah Crosswell (KSA)',
+    titleAr: 'بروشور — اليمامة كروسويل | السعودية',
+    desc: 'Corporate brochure and profile design for Al Yamamah Crosswell, a Saudi company. Clean grid-based editorial layout.',
+    descAr: 'تصميم بروشور وملف مؤسسي لشركة اليمامة كروسويل السعودية.',
+    cat: 'Print', year: '2025',
+    tags: ['Brochure', 'Print', 'Saudi Arabia', 'Corporate'],
+    tagsAr: ['بروشور', 'مطبوعات', 'السعودية', 'مؤسسي'],
+    image: 'assets/projects/p25 Alyamamh Crosswel/Artboard 1.png',
+    images: flist('p25 Alyamamh Crosswel', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png',
+      'Artboard 4.png','Artboard 5.png','Artboard 6.png','Artboard 7.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 26,
+    title: 'Company Profile — Al Yamamah Crosswell Vol.2 (KSA)',
+    titleAr: 'ملف الشركة — اليمامة كروسويل Vol.2 | السعودية',
+    desc: 'Second edition company profile for Al Yamamah Crosswell. Updated brand direction with a premium editorial approach.',
+    descAr: 'الإصدار الثاني من ملف شركة اليمامة كروسويل بتوجه براندي محدّث.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Saudi Arabia'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'السعودية'],
+    image: 'assets/projects/p26 Alyamamh Crosswel/Artboard 1.png',
+    images: flist('p26 Alyamamh Crosswel', [
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png',
+      'Artboard 4.png','Artboard 5.png','Artboard 6.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 262,
+    title: 'Business Card — Hazim (KSA)',
+    titleAr: 'بطاقة أعمال — حازم | السعودية',
+    desc: 'Premium business card design for Hazim, a Saudi professional. Refined typography and high-quality print finish.',
+    descAr: 'تصميم بطاقة أعمال راقية لحازم — مهني سعودي. طباعة فاخرة وبصمة مميزة.',
+    cat: 'Print', year: '2025',
+    tags: ['Business Card', 'Print', 'Saudi Arabia'],
+    tagsAr: ['بطاقة أعمال', 'مطبوعات', 'السعودية'],
+    image: 'assets/projects/p26 Hazim Busniess Card/mOCKUP1.png',
+    images: flist('p26 Hazim Busniess Card', [
+      'mOCKUP1.png','mOCKUP 4.png','02 copy5.png',
+      'WhatsApp Image 2026-05-02 at 1.56.42 PM.jpeg'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#080808 0%,#141414 50%,#0a0a0a 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 28,
+    title: 'Business Card — Rio Media (KSA)',
+    titleAr: 'بطاقة أعمال — ريو ميديا | السعودية',
+    desc: 'Sleek business card design for Rio Media, a Saudi creative agency.',
+    descAr: 'بطاقة أعمال أنيقة لوكالة ريو ميديا الإبداعية السعودية.',
+    cat: 'Print', year: '2025',
+    tags: ['Business Card', 'Print', 'Saudi Arabia', 'Agency'],
+    tagsAr: ['بطاقة أعمال', 'مطبوعات', 'السعودية', 'وكالة'],
+    image: 'assets/projects/p28 Rio media Bussiness Card/0 copy.png',
+    images: flist('p28 Rio media Bussiness Card', ['0 copy.png']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#080808 0%,#141414 50%,#0a0a0a 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 29,
+    title: 'Company Profile — Rio Service (KSA)',
+    titleAr: 'ملف الشركة — ريو للخدمات | السعودية',
+    desc: 'Company profile design for Rio Service Company, a Saudi professional services firm.',
+    descAr: 'تصميم ملف شركة لشركة ريو للخدمات المهنية السعودية.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Saudi Arabia'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'السعودية'],
+    image: 'assets/projects/P29 Rio service profile comapny/RIO SER copy.png',
+    images: flist('P29 Rio service profile comapny', ['RIO SER copy.png']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 30,
+    title: 'Brochure — Rio Print (KSA)',
+    titleAr: 'بروشور — ريو مطبوعات | السعودية',
+    desc: 'High-end print brochure for Rio, a Saudi print and media company. Premium layout with detailed content structure.',
+    descAr: 'بروشور مطبوعات فاخر لشركة ريو السعودية للطباعة والإعلام.',
+    cat: 'Print', year: '2025',
+    tags: ['Brochure', 'Print', 'Saudi Arabia'],
+    tagsAr: ['بروشور', 'مطبوعات', 'السعودية'],
+    image: 'assets/projects/p30 Rio pourshure print/brochure_1101510231 - Copy copy.jpg',
+    images: flist('p30 Rio pourshure print', ['brochure_1101510231 - Copy copy.jpg']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 31,
+    title: 'Company Profile — Resalah Landscape (KSA)',
+    titleAr: 'ملف الشركة — رسالة لاندسكيب | السعودية',
+    desc: 'Landscape-format company profile for Resalah, a Saudi professional services company. Horizontal editorial layout.',
+    descAr: 'ملف شركة بتخطيط أفقي لشركة رسالة السعودية.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Saudi Arabia', 'Landscape'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'السعودية', 'أفقي'],
+    image: 'assets/projects/p31 Resalah profile Landscape/m2.png',
+    images: flist('p31 Resalah profile Landscape', ['m2.png']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 32,
+    title: 'Company Profile — Resalah Arabic (KSA)',
+    titleAr: 'ملف الشركة — رسالة عربي | السعودية',
+    desc: 'Arabic-language company profile for Resalah, a Saudi company. RTL layout with premium typography.',
+    descAr: 'ملف شركة باللغة العربية لشركة رسالة السعودية. تخطيط RTL وطباعة راقية.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Saudi Arabia', 'Arabic'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'السعودية', 'عربي'],
+    image: 'assets/projects/p32 Resalah Profile AR/m1.png',
+    images: flist('p32 Resalah Profile AR', ['m1.png']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 34,
+    title: 'Company Profile — Resalah Interior Design (KSA)',
+    titleAr: 'ملف الشركة — رسالة للتصميم الداخلي | السعودية',
+    desc: 'Sophisticated company profile for Resalah Interior Design, a Saudi luxury interiors firm. Full editorial treatment across 16 spreads.',
+    descAr: 'ملف شركة متكامل لشركة رسالة للتصميم الداخلي الفاخر السعودية. 16 صفحة بأسلوب تحريري راقٍ.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Interior Design', 'Saudi Arabia'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'تصميم داخلي', 'السعودية'],
+    image: 'assets/projects/p34 Resalah Profile Introir design/التصميم الداخلي.png',
+    images: flist('p34 Resalah Profile Introir design', [
+      'التصميم الداخلي.png',
+      'Artboard 1.png','Artboard 2.png','Artboard 3.png','Artboard 4.png',
+      'Artboard 5.png','Artboard 6.png','Artboard 7.png','Artboard 8.png',
+      'Artboard 9.png','Artboard 10.png','Artboard 11.png','Artboard 12.png',
+      'Artboard 13.png','Artboard 14.png','Artboard 15.png','Artboard 16.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  {
+    id: 35,
+    title: 'Company Profile — Resalah Aluminium (KSA)',
+    titleAr: 'ملف الشركة — رسالة للألمنيوم | السعودية',
+    desc: 'Complete company profile for Resalah Aluminium, a Saudi manufacturing company. Extensive multi-page document covering full brand identity.',
+    descAr: 'ملف شركة متكامل لشركة رسالة للألمنيوم السعودية. وثيقة ضخمة متعددة الصفحات تغطي الهوية البصرية الكاملة.',
+    cat: 'Print', year: '2025',
+    tags: ['Company Profile', 'Print', 'Industrial', 'Saudi Arabia'],
+    tagsAr: ['ملف شركة', 'مطبوعات', 'صناعي', 'السعودية'],
+    image: 'assets/projects/p35 Resalah Profile Alumunium/Artboard 2.png',
+    images: flist('p35 Resalah Profile Alumunium', [
+      'Artboard 2.png','Artboard 3.png','Artboard 4.png','Artboard 5.png',
+      'Artboard 6.png','Artboard 7.png','Artboard 8.png','Artboard 9.png',
+      'Artboard 10.png','Artboard 11.png','Artboard 12.png','Artboard 13.png',
+      'Artboard ٢٠ copy 2.png','Artboard ٢٠ copy 3.png','Artboard ٢٠ copy 4.png',
+      'Artboard ٢٠ copy 5.png','Artboard ٢٠ copy 6.png','Artboard ٢٠ copy 7.png',
+      'Artboard ٢٠ copy 8.png','Artboard ٢٠ copy 9.png','Artboard ٢٠ copy 10.png'
+    ]),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#060e14 0%,#0a1428 50%,#060a12 100%)',
+    saudi: true,
+  },
+
+  // ── شعارات وهوية السعودية ────────────────────────────
+
+  {
+    id: 38,
+    title: 'Logo Identity — Lushly (KSA)',
+    titleAr: 'هوية الشعار — لوشلي | السعودية',
+    desc: 'Brand logo and visual identity for Lushly, a Saudi lifestyle brand. Minimal mark with elegant typographic application.',
+    descAr: 'شعار وهوية بصرية لعلامة لوشلي السعودية. علامة بسيطة مع تطبيق طباعي أنيق.',
+    cat: 'Logo', year: '2025',
+    tags: ['Logo', 'Brand Identity', 'Saudi Arabia', 'Lifestyle'],
+    tagsAr: ['شعار', 'هوية بصرية', 'السعودية', 'لايف ستايل'],
+    image: 'assets/projects/p38 Lushly Logo/logo Identity copy.png',
+    images: flist('p38 Lushly Logo', ['logo Identity copy.png']),
+    link: 'https://www.behance.net/ahmedhassanbahaa',
+    _bg: 'linear-gradient(135deg,#07051c 0%,#100a30 50%,#080618 100%)',
+    saudi: true,
+  },
 
 ];

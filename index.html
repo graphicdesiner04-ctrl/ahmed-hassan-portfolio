@@ -666,7 +666,24 @@ html[lang="ar"] .po-desc{font-family:var(--font-ar);}
 }
 html[lang="ar"] .po-tag{font-family:var(--font-ar);}
 .po-images{display:flex;flex-direction:column;gap:0;margin-top:0;}
-.po-images img{width:100%;display:block;object-fit:contain;}
+.po-images img{
+  width:100%;display:block;object-fit:contain;
+  background:#111118;
+}
+/* Clean separator between slides */
+.po-images img + img{
+  border-top:2px solid rgba(124,58,237,.08);
+}
+/* Saudi badge in overlay */
+.po-saudi-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(0,110,60,.25),rgba(0,80,40,.15));
+  border:1px solid rgba(0,180,80,.3);
+  font-size:11px;font-weight:600;letter-spacing:.08em;
+  color:#4ade80;text-transform:uppercase;
+  margin-bottom:12px;
+}
 .po-meta-bar{
   padding:24px clamp(20px,5vw,60px) 40px;
   display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;
@@ -867,9 +884,11 @@ html[lang="ar"] .ld-name-ar{display:block;}
       </div>
       <div class="proj-filters" id="filters">
         <button class="flt active" data-cat="all"><span class="ar">الكل</span><span class="en">All</span></button>
-        <button class="flt" data-cat="Social"><span class="ar">سوشيال</span><span class="en">Social</span></button>
-        <button class="flt" data-cat="Branding"><span class="ar">هوية بصرية</span><span class="en">Branding</span></button>
+        <button class="flt" data-cat="Social"><span class="ar">سوشيال ميديا</span><span class="en">Social</span></button>
         <button class="flt" data-cat="Print"><span class="ar">مطبوعات</span><span class="en">Print</span></button>
+        <button class="flt" data-cat="Logo"><span class="ar">شعارات</span><span class="en">Logo</span></button>
+        <button class="flt" data-cat="Branding"><span class="ar">هوية بصرية</span><span class="en">Branding</span></button>
+        <button class="flt" data-cat="saudi"><span class="ar">🇸🇦 السعودية</span><span class="en">🇸🇦 Saudi</span></button>
       </div>
     </div>
     <div class="pg" id="pg"></div>
@@ -1185,7 +1204,11 @@ const CAT_META = {
 
 function renderProjects(){
   const pg = document.getElementById('pg');
-  const list = activeCat==='all' ? ALL_PROJECTS : ALL_PROJECTS.filter(p=>p.cat===activeCat || (activeCat==='Branding' && p.cat==='Logo'));
+  let list;
+  if(activeCat==='all') list = ALL_PROJECTS;
+  else if(activeCat==='saudi') list = ALL_PROJECTS.filter(p=>p.saudi);
+  else if(activeCat==='Branding') list = ALL_PROJECTS.filter(p=>p.cat==='Branding'||p.cat==='Logo');
+  else list = ALL_PROJECTS.filter(p=>p.cat===activeCat);
   if(!list.length){ pg.innerHTML='<p style="color:var(--grey2);padding:40px 0;text-align:center;">لا توجد مشاريع</p>'; return; }
 
   pg.innerHTML = list.map((p,i)=>{
@@ -1220,7 +1243,7 @@ function renderProjects(){
       <div class="pc-overlay"></div>
       <div class="pc-arr">↗</div>
       <div class="pc-info">
-        <div class="pc-cat">${p.cat||''}</div>
+        <div class="pc-cat">${p.cat||''}${p.saudi?' 🇸🇦':''}</div>
         <div class="pc-title">${title}</div>
         <div class="pc-meta">
           <span class="pc-year">${p.year||''}</span>
@@ -1261,6 +1284,10 @@ function openProject(idx){
     ? p.images
     : (img ? [img] : []);
 
+  const saudiBadge = p.saudi
+    ? `<div class="po-saudi-badge">🇸🇦 ${LANG==='ar'?'مشروع سعودي':'Saudi Arabia Project'}</div>`
+    : '';
+
   document.getElementById('po-body').innerHTML = `
     <div class="po-images">
       ${img && !allImgs.includes(img) ? `<img src="${img}" alt="${title}" onerror="this.remove()">` : ''}
@@ -1268,11 +1295,12 @@ function openProject(idx){
     </div>
     <div class="po-meta-bar">
       <div>
+        ${saudiBadge}
         <p class="po-desc" ${LANG==='ar'?'dir="rtl"':''}>${desc}</p>
         ${tags.length?`<div class="po-tags">${tags.map(t=>`<span class="po-tag">${t}</span>`).join('')}</div>`:''}
       </div>
       <a href="${link}" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;white-space:nowrap;">
-        View on Behance ↗</a>
+        ${LANG==='ar'?'عرض على Behance ↗':'View on Behance ↗'}</a>
     </div>`;
   document.getElementById('project-overlay').classList.add('open');
   document.body.style.overflow='hidden';
