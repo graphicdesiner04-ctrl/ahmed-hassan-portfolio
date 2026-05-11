@@ -5,9 +5,30 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>أحمد حسن بهاء — مصمم جرافيك</title>
 <meta name="description" content="أحمد حسن بهاء — مصمم جرافيك مصري متخصص في الهوية البصرية وسوشيال ميديا والمطبوعات">
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/">
+<meta property="og:title"       content="أحمد حسن بهاء — مصمم جرافيك">
+<meta property="og:description" content="مصمم جرافيك مصري متخصص في الهوية البصرية وسوشيال ميديا والمطبوعات · +30 مشروع منجز">
+<meta property="og:image"       content="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height"content="628">
+<meta property="og:locale"      content="ar_EG">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="أحمد حسن بهاء — مصمم جرافيك">
+<meta name="twitter:description"content="مصمم جرافيك مصري متخصص في الهوية البصرية وسوشيال ميديا والمطبوعات">
+<meta name="twitter:image"      content="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/assets/og-image.jpg">
+
+<!-- Preload critical assets -->
+<link rel="preload" as="image" href="assets/ahmed-hassan-photo.jpg">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Cairo:wght@400;600;700;900&display=swap">
+
+<!-- Fonts — non-blocking -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"></noscript>
 
 <style>
 /* ═══ TOKENS ═══════════════════════════════════════════════ */
@@ -856,6 +877,17 @@ html[lang="ar"] .ld-name-ar{display:block;}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
 .rv.vis{opacity:1;transform:translateY(0);}
 
+/* ═══ PERFORMANCE ═══════════════════════════════════════════ */
+/* Reduce paint cost on off-screen sections */
+#about,#contact,#reviews{content-visibility:auto;contain-intrinsic-size:0 600px;}
+/* GPU-hint for animated elements */
+.pc,.rev-card,.hero-photo-card{will-change:transform;}
+/* Respect reduced-motion preference */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+  .rv{opacity:1;transform:none;}
+}
+
 /* ═══ RESPONSIVE NAV ════════════════════════════════════════ */
 @media(max-width:600px){
   .nav-avail .ar,.nav-avail .en{display:none;}
@@ -918,7 +950,8 @@ html[lang="ar"] .ld-name-ar{display:block;}
     <div class="photo-blob photo-blob-1"></div>
     <div class="photo-blob photo-blob-2"></div>
     <div class="hero-photo-card">
-      <img src="assets/ahmed-hassan-photo.png" alt="Ahmed Hassan Bahaa"
+      <img src="assets/ahmed-hassan-photo.jpg" alt="Ahmed Hassan Bahaa"
+           fetchpriority="high" decoding="async"
            onerror="this.style.background='linear-gradient(135deg,#1a1a2e,#2d1b69)';this.style.minHeight='320px';this.remove()">
     </div>
     <!-- Floating badges -->
@@ -1132,7 +1165,7 @@ html[lang="ar"] .ld-name-ar{display:block;}
   <!-- Big photo banner -->
   <div class="about-banner rv">
     <div class="about-banner-img-wrap">
-      <img src="assets/ahmed-about-photo.png" alt="أحمد حسن بهاء" class="about-banner-img">
+      <img src="assets/ahmed-about-photo.jpg" alt="أحمد حسن بهاء" class="about-banner-img" loading="lazy" decoding="async">
       <div class="about-banner-overlay"></div>
       <!-- Floating stat chips on photo -->
       <div class="ab-chip ab-chip-1 rv" style="transition-delay:.3s">
@@ -1312,8 +1345,8 @@ html[lang="ar"] .ld-name-ar{display:block;}
 </a>
 
 <!-- SCRIPTS -->
-<script src="config.js"></script>
-<script src="projects.js"></script>
+<script src="config.js" defer></script>
+<script src="projects.js" defer></script>
 <script>
 /* ═══ INIT ══════════════════════════════════════════════════ */
 let LANG = document.documentElement.lang || 'ar';
@@ -1484,7 +1517,8 @@ function renderProjects(){
   pg.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 }
 
-loadProjects();
+// Defer-safe: projects.js loads after HTML parse → wait for DOMContentLoaded
+document.addEventListener('DOMContentLoaded', loadProjects);
 
 /* ── Filter ──────────────────────────────────────────────── */
 document.getElementById('filters').addEventListener('click',e=>{
