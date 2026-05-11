@@ -438,45 +438,56 @@ html[lang="ar"] .flt{font-family:var(--font-ar);}
   color:rgba(124,58,237,.6);font-weight:600;z-index:1;
 }
 
-/* no-img: always show info */
-.pc.no-img .pc-info{opacity:1!important;transform:none!important;}
+/* no-img fallback */
 .pc.no-img .pc-overlay{opacity:1!important;}
 
-.pc-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(13,13,26,.97) 0%,rgba(13,13,26,.5) 50%,transparent 100%);
-  opacity:0;transition:opacity .35s;
-}
-.pc:hover .pc-overlay{opacity:1;}
+/* ── Accent top line per category ── */
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:4;border-radius:16px 16px 0 0;}
+.pc.cat-Social::before{background:linear-gradient(90deg,#7c3aed,#a855f7);}
+.pc.cat-Print::before{background:linear-gradient(90deg,#0f766e,#2dd4bf);}
+.pc.cat-Logo::before{background:linear-gradient(90deg,#92400e,#f59e0b);}
+.pc.cat-Branding::before{background:linear-gradient(90deg,#1e3a8a,#60a5fa);}
 
+/* ── Always-on overlay gradient ── */
+.pc-overlay{
+  position:absolute;inset:0;z-index:1;
+  transition:opacity .35s;
+}
+.pc.cat-Social  .pc-overlay{background:linear-gradient(to top,rgba(10,3,25,1) 0%,rgba(10,3,25,.95) 38%,rgba(40,8,90,.65) 65%,rgba(70,15,150,.2) 100%);}
+.pc.cat-Print   .pc-overlay{background:linear-gradient(to top,rgba(0,12,16,1) 0%,rgba(0,12,16,.95) 38%,rgba(0,45,55,.65) 65%,rgba(0,75,85,.2) 100%);}
+.pc.cat-Logo    .pc-overlay{background:linear-gradient(to top,rgba(10,7,0,1) 0%,rgba(10,7,0,.95) 38%,rgba(40,25,0,.65) 65%,rgba(70,42,5,.2) 100%);}
+.pc.cat-Branding .pc-overlay{background:linear-gradient(to top,rgba(3,6,20,1) 0%,rgba(3,6,20,.95) 38%,rgba(10,25,70,.65) 65%,rgba(20,45,120,.2) 100%);}
+
+/* ── Card info — always visible ── */
 .pc-info{
   position:absolute;bottom:0;inset-inline:0;
-  padding:20px;
-  transform:translateY(8px);opacity:0;
-  transition:transform .35s,opacity .35s;
+  padding:18px 20px 20px;
+  z-index:2;
 }
-.pc:hover .pc-info{transform:translateY(0);opacity:1;}
 .pc-cat{
-  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--purple3);font-weight:600;margin-bottom:8px;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:20px;
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(8px);color:#fff;
+  margin-bottom:10px;
 }
-.pc-title{font-size:clamp(14px,1.8vw,18px);font-weight:700;line-height:1.25;}
+.pc-title{font-size:clamp(15px,1.8vw,20px);font-weight:800;line-height:1.2;color:#fff;letter-spacing:-.01em;}
 html[lang="ar"] .pc-title{font-family:var(--font-ar);}
-.pc-meta{display:flex;align-items:center;gap:12px;margin-top:8px;}
-.pc-year,.pc-views{font-size:11px;color:var(--grey2);}
-
+.pc-sub{font-family:var(--font-ar);font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.4;}
+html[lang="en"] .pc-sub{font-family:var(--font-en);font-size:10px;}
+.pc-bar{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.09);}
+.pc-service{font-size:9px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.4);}
 .pc-arr{
-  position:absolute;top:16px;inset-inline-end:16px;
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(124,58,237,.25);
-  border:1px solid rgba(124,58,237,.5);
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
   backdrop-filter:blur(8px);
   display:flex;align-items:center;justify-content:center;
-  opacity:0;transform:scale(0);
-  transition:opacity .3s,transform .3s;
-  font-size:15px;color:var(--purple3);
+  font-size:13px;color:#fff;
+  transition:background .3s,transform .3s;
 }
-.pc:hover .pc-arr{opacity:1;transform:scale(1);}
+.pc:hover .pc-arr{background:rgba(255,255,255,.2);transform:rotate(45deg);}
+.pc:hover .pc-img{transform:scale(1.05);filter:saturate(1);}
 
 /* ═══ ABOUT ══════════════════════════════════════════════════ */
 
@@ -1236,18 +1247,22 @@ function renderProjects(){
          </div>`;
 
     const noImg = !img ? ' no-img' : '';
+    const sub = p.saudi ? (LANG==='ar' ? 'المملكة العربية السعودية 🇸🇦' : 'Saudi Arabia 🇸🇦') : '';
+    const svc   = LANG==='ar'
+      ? {Social:'سوشيال ميديا',Print:'مطبوعات',Branding:'هوية بصرية',Logo:'شعار & هوية',Other:'تصميم'}[p.cat]||p.cat
+      : {Social:'Social Media',Print:'Print & Editorial',Branding:'Brand Identity',Logo:'Logo & Identity',Other:'Design'}[p.cat]||p.cat;
 
     return `
-    <div class="pc${noImg} ${cls} rv" style="transition-delay:${(i%6)*.08}s;background:${bg}" onclick="openProject(${i})">
+    <div class="pc${noImg} ${cls} cat-${p.cat||'Other'} rv" style="transition-delay:${(i%6)*.08}s;background:${bg}" onclick="openProject(${i})">
       ${imgTag}
       <div class="pc-overlay"></div>
-      <div class="pc-arr">↗</div>
       <div class="pc-info">
-        <div class="pc-cat">${p.cat||''}${p.saudi?' 🇸🇦':''}</div>
+        <div class="pc-cat">${catLabel}</div>
         <div class="pc-title">${title}</div>
-        <div class="pc-meta">
-          <span class="pc-year">${p.year||''}</span>
-          ${p.views ? `<span class="pc-views">👁 ${p.views}</span>` : ''}
+        ${sub ? `<div class="pc-sub">${sub}</div>` : ''}
+        <div class="pc-bar">
+          <span class="pc-service">${svc}</span>
+          <div class="pc-arr">↗</div>
         </div>
       </div>
     </div>`;
