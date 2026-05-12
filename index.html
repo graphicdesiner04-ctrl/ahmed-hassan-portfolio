@@ -1041,9 +1041,7 @@ html[lang="ar"] .ld-name-ar{display:block;}
         <button class="flt active" data-cat="all"><span class="ar">الكل</span><span class="en">All</span></button>
         <button class="flt" data-cat="Social"><span class="ar">سوشيال ميديا</span><span class="en">Social</span></button>
         <button class="flt" data-cat="Print"><span class="ar">مطبوعات</span><span class="en">Print</span></button>
-        <button class="flt" data-cat="Logo"><span class="ar">شعارات</span><span class="en">Logo</span></button>
         <button class="flt" data-cat="Branding"><span class="ar">هوية بصرية</span><span class="en">Branding</span></button>
-        <button class="flt" data-cat="saudi"><span class="ar">🇸🇦 السعودية</span><span class="en">🇸🇦 Saudi</span></button>
       </div>
     </div>
     <div class="pg" id="pg"></div>
@@ -1493,7 +1491,9 @@ function renderProjects(){
          </div>`;
 
     const noImg = !img ? ' no-img' : '';
-    const sub = p.saudi ? (LANG==='ar' ? 'المملكة العربية السعودية 🇸🇦' : 'Saudi Arabia 🇸🇦') : '';
+    const sub = p.saudi ? (LANG==='ar' ? 'المملكة العربية السعودية 🇸🇦' : 'Saudi Arabia 🇸🇦')
+             : p.uae   ? (LANG==='ar' ? 'الإمارات العربية المتحدة 🇦🇪' : 'UAE 🇦🇪')
+             : '';
     const svc   = LANG==='ar'
       ? {Social:'سوشيال ميديا',Print:'مطبوعات',Branding:'هوية بصرية',Logo:'شعار & هوية',Other:'تصميم'}[p.cat]||p.cat
       : {Social:'Social Media',Print:'Print & Editorial',Branding:'Brand Identity',Logo:'Logo & Identity',Other:'Design'}[p.cat]||p.cat;
