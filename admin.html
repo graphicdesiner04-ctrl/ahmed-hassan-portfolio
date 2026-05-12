@@ -10,12 +10,13 @@
   --bg:#0d0d1a;--bg2:#13131f;--bg3:#1c1c2e;
   --purple:#7c3aed;--purple2:#6d28d9;
   --bd:rgba(255,255,255,.08);--gr:rgba(255,255,255,.38);
+  --green:#22c55e;--red:#ef4444;--yellow:#f59e0b;
 }
 body{background:var(--bg);color:#fff;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;}
 
 /* ── Login ── */
 #login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
-.lbox{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:44px;width:100%;max-width:400px;}
+.lbox{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:44px;width:100%;max-width:420px;}
 .lbox-title{font-size:22px;font-weight:800;margin-bottom:4px;}
 .lbox-sub{font-size:12px;color:var(--gr);margin-bottom:28px;}
 
@@ -44,16 +45,22 @@ textarea{resize:vertical;line-height:1.55;}
 
 /* ── Dashboard ── */
 #dash{display:none;}
-.adm-header{display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:var(--bg2);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;height:58px;gap:14px;}
-.adm-logo{font-size:12px;font-weight:700;color:rgba(255,255,255,.45);flex-shrink:0;}
+.adm-header{display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--bg2);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;height:58px;gap:12px;}
+.adm-logo{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);flex-shrink:0;}
 
 /* ── Phase tabs ── */
-.phase-tabs{display:flex;gap:2px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px;flex:1;max-width:500px;}
+.phase-tabs{display:flex;gap:2px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px;flex:1;max-width:480px;}
 .ph-tab{flex:1;padding:7px 10px;border-radius:7px;border:none;cursor:pointer;font-size:12px;font-weight:600;color:rgba(255,255,255,.45);background:transparent;font-family:inherit;transition:.2s;display:flex;align-items:center;justify-content:center;gap:5px;}
 .ph-tab.active{background:var(--purple);color:#fff;}
 .ph-tab:not(.active):hover{background:rgba(255,255,255,.07);color:#fff;}
 .ph-num{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.1);font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ph-tab.active .ph-num{background:rgba(255,255,255,.22);}
+
+/* ── Header right actions ── */
+.hdr-actions{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+.token-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700;}
+.token-badge.ok{background:rgba(34,197,94,.12);color:#86efac;border:1px solid rgba(34,197,94,.25);}
+.token-badge.missing{background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.25);}
 
 /* ── Dirty dot ── */
 .dot-wrap{position:relative;}
@@ -63,16 +70,16 @@ textarea{resize:vertical;line-height:1.55;}
 /* ── Content ── */
 .wrap{padding:24px 28px;max-width:1400px;margin:0 auto;}
 
-/* ── Stats ── */
-.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px;}
+/* ── Stats bar ── */
+.stats{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:20px;}
 .sc{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:14px;text-align:center;}
 .sc .n{font-size:24px;font-weight:800;color:var(--purple);line-height:1;}
 .sc .l{font-size:9px;color:var(--gr);margin-top:4px;letter-spacing:.1em;text-transform:uppercase;}
 
 /* ── Toolbar ── */
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
-.toolbar-l{display:flex;gap:8px;flex:1;flex-wrap:wrap;}
-.toolbar-l input{max-width:250px;}
+.toolbar-l{display:flex;gap:8px;flex:1;flex-wrap:wrap;align-items:center;}
+.toolbar-l input{max-width:240px;}
 .toolbar-l select{max-width:130px;}
 
 /* ── Table ── */
@@ -88,11 +95,15 @@ textarea{resize:vertical;line-height:1.55;}
 .cPrint{background:rgba(15,118,110,.18);color:#5eead4;}
 .cBranding{background:rgba(30,58,138,.18);color:#93c5fd;}
 .cOther{background:rgba(100,100,100,.15);color:#9ca3af;}
+.feat-badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:8px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;margin-inline-start:5px;}
 .acts{display:flex;gap:4px;flex-direction:row-reverse;}
+
+/* ── Review stats ── */
+.rev-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
 
 /* ── Review cards ── */
 .rev-adm{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;transition:opacity .2s;}
-.rev-adm.hidden-rev{opacity:.4;}
+.rev-adm.hidden-rev{opacity:.4;border-style:dashed;}
 .rev-adm-body{flex:1;min-width:0;}
 .rev-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
 .rev-name{font-size:13px;font-weight:700;}
@@ -107,7 +118,7 @@ textarea{resize:vertical;line-height:1.55;}
 .set-card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:22px;margin-bottom:16px;}
 .set-card-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
 .set-card-title h3{font-size:14px;font-weight:700;}
-.set-card p{font-size:12px;color:var(--gr);margin-bottom:16px;line-height:1.5;}
+.set-card>p{font-size:12px;color:var(--gr);margin-bottom:16px;line-height:1.5;}
 .set-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .set-grid .full{grid-column:1/-1;}
 .set-row{display:flex;gap:10px;align-items:flex-end;}
@@ -116,10 +127,15 @@ textarea{resize:vertical;line-height:1.55;}
 .stat-group{background:var(--bg3);border-radius:10px;padding:14px;}
 .stat-group-title{font-size:10px;color:var(--gr);margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
 
+/* ── Token status ── */
+.token-status{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:14px;}
+.token-status.ok{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#86efac;}
+.token-status.bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#fca5a5;}
+
 /* ── Modal ── */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:500;align-items:center;justify-content:center;padding:20px;}
 .modal-bg.open{display:flex;}
-.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;width:100%;max-width:720px;max-height:92vh;overflow-y:auto;padding:30px;}
+.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;width:100%;max-width:740px;max-height:92vh;overflow-y:auto;padding:30px;}
 .mbox h3{font-size:17px;font-weight:800;margin-bottom:20px;}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .fgrid .full{grid-column:1/-1;}
@@ -128,38 +144,48 @@ textarea{resize:vertical;line-height:1.55;}
 .ck-row label{margin:0;cursor:pointer;font-size:12px;color:#fff;text-transform:none;letter-spacing:0;}
 .mfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--bd);}
 
+/* ── Image preview ── */
+.img-preview{width:100%;height:140px;border-radius:8px;background:var(--bg3);border:1px dashed var(--bd);display:flex;align-items:center;justify-content:center;margin-top:8px;overflow:hidden;font-size:11px;color:var(--gr);}
+.img-preview img{width:100%;height:100%;object-fit:cover;}
+
 /* ── Star picker ── */
 .star-pick{display:flex;gap:4px;margin-top:6px;}
-.star-pick span{font-size:24px;cursor:pointer;color:#f59e0b;opacity:.2;transition:opacity .15s,transform .15s;user-select:none;line-height:1;}
+.star-pick span{font-size:26px;cursor:pointer;color:#f59e0b;opacity:.2;transition:opacity .15s,transform .15s;user-select:none;line-height:1;}
 .star-pick span.on{opacity:1;}
 .star-pick span:hover{transform:scale(1.15);}
 
 /* ── Toast ── */
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a30;border:1px solid rgba(124,58,237,.4);padding:11px 22px;border-radius:10px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:9999;white-space:nowrap;}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a30;border:1px solid rgba(124,58,237,.4);padding:11px 22px;border-radius:10px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:9999;white-space:nowrap;max-width:90vw;}
 #toast.on{opacity:1;}
 
 /* ── Divider ── */
 .divider{border:none;border-top:1px solid var(--bd);margin:20px 0;}
 
 /* ── Responsive ── */
-@media(max-width:900px){
-  .stats{grid-template-columns:repeat(3,1fr);}
+@media(max-width:1000px){
+  .stats{grid-template-columns:repeat(4,1fr);}
+  .rev-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:700px){
+  .stats{grid-template-columns:repeat(2,1fr);}
   .fgrid{grid-template-columns:1fr;} .fgrid .full{grid-column:1;}
   .set-grid{grid-template-columns:1fr;} .set-grid .full{grid-column:1;}
   .stat-grid{grid-template-columns:1fr;}
-  .adm-header{flex-wrap:wrap;height:auto;padding:10px 16px;gap:8px;}
-  .wrap{padding:16px;} .phase-tabs{max-width:100%;}
+  .adm-header{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px;}
+  .wrap{padding:14px 16px;} .phase-tabs{max-width:100%;}
+  .token-badge span.lbl{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- ══════════════ LOGIN ══════════════ -->
+<!-- ══════════════════════ LOGIN ══════════════════════ -->
 <div id="login">
   <div class="lbox">
     <div class="lbox-title">⚙ لوحة التحكم</div>
     <div class="lbox-sub">Ahmed Hassan Portfolio — Admin</div>
 
+    <!-- First-time setup -->
     <div id="setup" style="display:none">
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:12px 14px;margin-bottom:18px;font-size:12px;color:#fcd34d;line-height:1.6;">
         ⚠ إعداد أولي — يتم مرة واحدة فقط على هذا الجهاز
@@ -167,13 +193,16 @@ textarea{resize:vertical;line-height:1.55;}
       <div class="frow">
         <label>GitHub Personal Access Token (repo scope)</label>
         <input id="inp-token" type="password" placeholder="ghp_xxxxxxxxxxxxxx" autocomplete="off">
+        <div style="font-size:10px;color:var(--gr);margin-top:5px">اذهب إلى GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic)</div>
       </div>
       <div class="frow">
-        <label>كلمة مرور الأدمن</label>
-        <input id="inp-newpwd" type="password" placeholder="اختر كلمة مرور قوية">
+        <label>كلمة مرور الأدمن (ستُحفظ محلياً)</label>
+        <input id="inp-newpwd" type="password" placeholder="اختر كلمة مرور قوية"
+               onkeydown="if(event.key==='Enter')doLogin()">
       </div>
     </div>
 
+    <!-- Normal login -->
     <div id="loginform">
       <div class="frow">
         <label>كلمة المرور</label>
@@ -188,7 +217,7 @@ textarea{resize:vertical;line-height:1.55;}
   </div>
 </div>
 
-<!-- ══════════════ DASHBOARD ══════════════ -->
+<!-- ══════════════════════ DASHBOARD ══════════════════════ -->
 <div id="dash">
 
   <div class="adm-header">
@@ -206,7 +235,12 @@ textarea{resize:vertical;line-height:1.55;}
       </button>
     </div>
 
-    <div style="display:flex;gap:8px;flex-shrink:0">
+    <div class="hdr-actions">
+      <span id="token-badge" class="token-badge missing" title="لا يوجد GitHub Token — لن تتمكن من النشر">
+        <span>⚠</span><span class="lbl">بدون توكن</span>
+      </span>
+      <a href="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/" target="_blank"
+         class="btn sm btn-g" title="فتح الموقع">🌐</a>
       <div class="dot-wrap">
         <button class="btn sm btn-gr" id="sbtn" onclick="pushToGitHub()">
           💾 نشر على GitHub
@@ -222,21 +256,28 @@ textarea{resize:vertical;line-height:1.55;}
 
     <div class="stats">
       <div class="sc"><div class="n" id="s0">—</div><div class="l">الكل</div></div>
-      <div class="sc"><div class="n" id="s1">—</div><div class="l">Social</div></div>
-      <div class="sc"><div class="n" id="s2">—</div><div class="l">Print</div></div>
-      <div class="sc"><div class="n" id="s3">—</div><div class="l">Branding</div></div>
+      <div class="sc"><div class="n" id="s1">—</div><div class="l">📱 Social</div></div>
+      <div class="sc"><div class="n" id="s2">—</div><div class="l">📄 Print</div></div>
+      <div class="sc"><div class="n" id="s3">—</div><div class="l">✦ Branding</div></div>
       <div class="sc"><div class="n" id="s4">—</div><div class="l">🇸🇦 Saudi</div></div>
       <div class="sc"><div class="n" id="s5">—</div><div class="l">🇦🇪 UAE</div></div>
+      <div class="sc"><div class="n" id="s6">—</div><div class="l">⭐ مميز</div></div>
     </div>
 
     <div class="toolbar">
       <div class="toolbar-l">
-        <input id="srch" type="text" placeholder="🔍 بحث..." oninput="renderTable()">
+        <input id="srch" type="text" placeholder="🔍 بحث بالاسم أو السنة..." oninput="renderTable()">
         <select id="flt" onchange="renderTable()">
           <option value="">كل الفئات</option>
           <option value="Social">📱 Social</option>
           <option value="Print">📄 Print</option>
           <option value="Branding">✦ Branding</option>
+        </select>
+        <select id="flt2" onchange="renderTable()">
+          <option value="">كل المشاريع</option>
+          <option value="featured">⭐ المميزة فقط</option>
+          <option value="saudi">🇸🇦 السعودية</option>
+          <option value="uae">🇦🇪 الإمارات</option>
         </select>
       </div>
       <button class="btn sm btn-p" onclick="openAdd()">＋ مشروع جديد</button>
@@ -245,8 +286,13 @@ textarea{resize:vertical;line-height:1.55;}
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr>
-          <th>#</th><th>صورة</th><th>الاسم EN / AR</th>
-          <th>فئة</th><th>سنة</th><th>🌍</th><th>إجراءات</th>
+          <th style="width:40px">#</th>
+          <th style="width:70px">صورة</th>
+          <th>الاسم EN / AR</th>
+          <th style="width:90px">فئة</th>
+          <th style="width:60px">سنة</th>
+          <th style="width:60px">🌍</th>
+          <th style="width:170px">إجراءات</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
@@ -256,14 +302,22 @@ textarea{resize:vertical;line-height:1.55;}
   <!-- ══ PHASE 2: REVIEWS ══ -->
   <div id="phase2" class="wrap" style="display:none">
 
+    <div class="rev-stats">
+      <div class="sc"><div class="n" id="rs0">—</div><div class="l">إجمالي</div></div>
+      <div class="sc"><div class="n" id="rs1">—</div><div class="l">👁 ظاهر</div></div>
+      <div class="sc"><div class="n" id="rs2">—</div><div class="l">🙈 مخفي</div></div>
+      <div class="sc"><div class="n" id="rs3">—</div><div class="l">★ متوسط</div></div>
+    </div>
+
     <div class="toolbar">
       <div class="toolbar-l">
         <span style="font-size:15px;font-weight:700">⭐ التقييمات</span>
-        <select id="rev-flt" onchange="renderRevList()" style="max-width:150px">
+        <select id="rev-flt" onchange="renderRevList()" style="max-width:160px">
           <option value="">كل التقييمات</option>
           <option value="5">★★★★★ فقط</option>
           <option value="4">★★★★ فأكثر</option>
-          <option value="hidden">المخفية</option>
+          <option value="hidden">المخفية فقط</option>
+          <option value="visible">الظاهرة فقط</option>
         </select>
       </div>
       <button class="btn sm btn-p" onclick="openRevAdd(-1)">＋ تقييم جديد</button>
@@ -275,13 +329,13 @@ textarea{resize:vertical;line-height:1.55;}
   <!-- ══ PHASE 3: SETTINGS ══ -->
   <div id="phase3" class="wrap" style="display:none">
 
-    <!-- الهوية -->
+    <!-- الهوية الشخصية -->
     <div class="set-card">
       <div class="set-card-title">
         <h3>👤 الهوية الشخصية</h3>
         <button class="btn sm btn-p" onclick="saveConfig()">حفظ التغييرات</button>
       </div>
-      <p>الاسم والبايو والأدوار الظاهرة في الهيرو</p>
+      <p>الاسم والبايو والأدوار والصورة الشخصية الظاهرة في الهيرو</p>
       <div class="set-grid">
         <div class="frow">
           <label>الاسم AR — السطر الأول</label>
@@ -310,12 +364,12 @@ textarea{resize:vertical;line-height:1.55;}
         <div class="frow">
           <label>الأدوار (AR) — كل دور في سطر</label>
           <textarea id="cfg-roles-ar" rows="4" dir="rtl"
-            placeholder="مصمم جرافيك&#10;مصمم هوية بصرية"></textarea>
+            placeholder="مصمم جرافيك&#10;مصمم هوية بصرية&#10;مصمم سوشيال ميديا&#10;متخصص ذكاء اصطناعي"></textarea>
         </div>
         <div class="frow">
           <label>الأدوار (EN) — كل دور في سطر</label>
           <textarea id="cfg-roles-en" rows="4"
-            placeholder="Graphic Designer&#10;Visual Identity"></textarea>
+            placeholder="Graphic Designer&#10;Visual Identity Designer&#10;Social Media Designer&#10;AI Design Specialist"></textarea>
         </div>
         <div class="frow">
           <label>الموقع (AR)</label>
@@ -325,10 +379,18 @@ textarea{resize:vertical;line-height:1.55;}
           <label>الموقع (EN)</label>
           <input id="cfg-loc-en" placeholder="Cairo, Egypt">
         </div>
+        <div class="frow full">
+          <label>مسار صورة الهيرو</label>
+          <input id="cfg-hero-photo" placeholder="assets/ahmed-hassan-photo.png"
+                 oninput="updateHeroPreview()">
+          <div id="hero-preview" class="img-preview" style="height:100px">
+            <span>لا توجد صورة</span>
+          </div>
+        </div>
         <div class="full" style="padding:4px 0">
           <div class="ck-row">
             <input type="checkbox" id="cfg-available">
-            <label for="cfg-available" style="font-size:13px;color:#86efac">✦ متاح للعمل حالياً</label>
+            <label for="cfg-available" style="font-size:13px;color:#86efac">✦ متاح للعمل حالياً (يظهر شارة "متاح" في الهيرو)</label>
           </div>
         </div>
       </div>
@@ -340,84 +402,110 @@ textarea{resize:vertical;line-height:1.55;}
         <h3>📊 الإحصائيات</h3>
         <button class="btn sm btn-p" onclick="saveConfig()">حفظ التغييرات</button>
       </div>
-      <p>الأرقام الظاهرة في قسم "عني"</p>
+      <p>الأرقام والتسميات الظاهرة في قسم "عني"</p>
       <div class="stat-grid">
         <div class="stat-group">
           <div class="stat-group-title">📁 المشاريع</div>
-          <div class="frow"><label>العدد</label><input id="cfg-stat-proj-n" type="number" placeholder="30"></div>
+          <div class="frow"><label>العدد</label><input id="cfg-stat-proj-n" type="number" min="0" placeholder="30"></div>
           <div class="frow"><label>التسمية AR</label><input id="cfg-stat-proj-ar" placeholder="مشروع" dir="rtl"></div>
           <div class="frow"><label>التسمية EN</label><input id="cfg-stat-proj-en" placeholder="Projects"></div>
         </div>
         <div class="stat-group">
           <div class="stat-group-title">📅 سنوات الخبرة</div>
-          <div class="frow"><label>العدد</label><input id="cfg-stat-years-n" type="number" placeholder="5"></div>
+          <div class="frow"><label>العدد</label><input id="cfg-stat-years-n" type="number" min="0" placeholder="5"></div>
           <div class="frow"><label>التسمية AR</label><input id="cfg-stat-years-ar" placeholder="سنوات" dir="rtl"></div>
           <div class="frow"><label>التسمية EN</label><input id="cfg-stat-years-en" placeholder="Years"></div>
         </div>
         <div class="stat-group">
           <div class="stat-group-title">🤝 العملاء</div>
-          <div class="frow"><label>العدد</label><input id="cfg-stat-clients-n" type="number" placeholder="20"></div>
+          <div class="frow"><label>العدد</label><input id="cfg-stat-clients-n" type="number" min="0" placeholder="20"></div>
           <div class="frow"><label>التسمية AR</label><input id="cfg-stat-clients-ar" placeholder="عميل" dir="rtl"></div>
           <div class="frow"><label>التسمية EN</label><input id="cfg-stat-clients-en" placeholder="Clients"></div>
         </div>
       </div>
     </div>
 
-    <!-- التواصل -->
+    <!-- بيانات التواصل -->
     <div class="set-card">
       <div class="set-card-title">
         <h3>📬 بيانات التواصل</h3>
         <button class="btn sm btn-p" onclick="saveConfig()">حفظ التغييرات</button>
       </div>
-      <p>الإيميل والواتساب وروابط السوشيال ميديا</p>
+      <p>جميع روابط التواصل والسوشيال ميديا الظاهرة على الموقع</p>
       <div class="set-grid">
         <div class="frow">
           <label>البريد الإلكتروني</label>
           <input id="cfg-email" type="email" placeholder="email@gmail.com">
         </div>
         <div class="frow">
-          <label>واتساب (الرقم بالكامل بالكود الدولي)</label>
+          <label>واتساب (الرقم الكامل + الكود الدولي)</label>
           <input id="cfg-whatsapp" placeholder="201550917070">
         </div>
         <div class="frow">
           <label>رابط انستقرام</label>
-          <input id="cfg-instagram" placeholder="https://instagram.com/...">
+          <input id="cfg-instagram" placeholder="https://www.instagram.com/...">
         </div>
         <div class="frow">
           <label>رابط فيسبوك</label>
-          <input id="cfg-facebook" placeholder="https://facebook.com/...">
+          <input id="cfg-facebook" placeholder="https://www.facebook.com/...">
         </div>
-        <div class="frow full">
+        <div class="frow">
           <label>رابط Behance</label>
-          <input id="cfg-behance" placeholder="https://behance.net/...">
+          <input id="cfg-behance" placeholder="https://www.behance.net/...">
+        </div>
+        <div class="frow">
+          <label>رابط LinkedIn (اختياري)</label>
+          <input id="cfg-linkedin" placeholder="https://www.linkedin.com/in/...">
+        </div>
+        <div class="frow">
+          <label>رابط TikTok (اختياري)</label>
+          <input id="cfg-tiktok" placeholder="https://www.tiktok.com/@...">
+        </div>
+        <div class="frow">
+          <label>رابط YouTube (اختياري)</label>
+          <input id="cfg-youtube" placeholder="https://www.youtube.com/@...">
         </div>
       </div>
     </div>
 
     <!-- الأمان -->
     <div class="set-card">
-      <h3>🔐 الأمان</h3>
-      <p>كلمة المرور والتوكن محفوظان محلياً على هذا الجهاز فقط</p>
-      <div class="set-row" style="margin-bottom:14px">
-        <div class="frow">
-          <label>كلمة مرور جديدة</label>
-          <input id="set-pwd" type="password" placeholder="اكتب كلمة مرور جديدة">
-        </div>
-        <button class="btn btn-p sm" onclick="changePwd()" style="flex-shrink:0">حفظ</button>
+      <div class="set-card-title">
+        <h3>🔐 الأمان</h3>
       </div>
-      <div class="set-row">
+      <p>كلمة المرور والتوكن محفوظان محلياً على هذا الجهاز فقط ولا يُرسلان لأي خادم</p>
+
+      <div id="token-status-card" class="token-status bad">
+        <span id="token-status-icon">❌</span>
+        <span id="token-status-text">لا يوجد GitHub Token — لن تتمكن من النشر</span>
+      </div>
+
+      <div class="set-row" style="margin-bottom:18px">
         <div class="frow">
           <label>GitHub Token جديد (repo scope)</label>
           <input id="set-token" type="password" placeholder="ghp_xxxxxxxxxxxxxx" autocomplete="off">
+          <div style="font-size:10px;color:var(--gr);margin-top:5px">
+            GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → repo ✓
+          </div>
         </div>
         <button class="btn btn-p sm" onclick="changeToken()" style="flex-shrink:0">حفظ</button>
+      </div>
+
+      <div class="set-row">
+        <div class="frow">
+          <label>كلمة مرور جديدة للأدمن</label>
+          <input id="set-pwd" type="password" placeholder="اكتب كلمة مرور جديدة">
+        </div>
+        <button class="btn btn-p sm" onclick="changePwd()" style="flex-shrink:0">حفظ</button>
       </div>
     </div>
 
     <!-- النسخ الاحتياطي -->
     <div class="set-card">
-      <h3>💾 النسخ الاحتياطي</h3>
-      <p>تصدير واستيراد كل بيانات الموقع (مشاريع + تقييمات + إعدادات)</p>
+      <div class="set-card-title">
+        <h3>💾 النسخ الاحتياطي</h3>
+      </div>
+      <p>تصدير واستيراد كل بيانات الموقع دفعة واحدة (مشاريع + تقييمات + إعدادات)</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn sm btn-b" onclick="exportBackup()">📥 تصدير نسخة احتياطية</button>
         <label class="btn sm btn-o" style="cursor:pointer">
@@ -426,25 +514,41 @@ textarea{resize:vertical;line-height:1.55;}
         </label>
         <button class="btn sm btn-g" onclick="reloadFromGitHub()">🔄 إعادة تحميل من GitHub</button>
       </div>
+      <div id="last-push" style="font-size:11px;color:var(--gr);margin-top:14px"></div>
+    </div>
+
+    <!-- نشر سريع -->
+    <div class="set-card" style="border-color:rgba(124,58,237,.3)">
+      <div class="set-card-title">
+        <h3>🚀 نشر على الموقع</h3>
+      </div>
+      <p>بعد حفظ التغييرات، اضغط النشر لتطبيقها مباشرة على الموقع (GitHub Pages)</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-p" onclick="pushToGitHub()">💾 نشر الآن على GitHub</button>
+        <a href="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/" target="_blank"
+           class="btn btn-g">🌐 فتح الموقع</a>
+      </div>
     </div>
 
     <!-- Danger zone -->
     <div class="set-card" style="border-color:rgba(239,68,68,.3)">
-      <h3 style="color:#fca5a5">⚠ منطقة الخطر</h3>
-      <p>مسح بيانات تسجيل الدخول من هذا الجهاز — ستحتاج إعداد جديد</p>
-      <button class="btn sm btn-r" onclick="clearLocalData()">🗑 مسح البيانات المحلية</button>
+      <div class="set-card-title">
+        <h3 style="color:#fca5a5">⚠ منطقة الخطر</h3>
+      </div>
+      <p>مسح بيانات تسجيل الدخول من هذا الجهاز — ستحتاج إعداد جديد بتوكن وكلمة مرور</p>
+      <button class="btn sm btn-r" onclick="clearLocalData()">🗑 مسح البيانات المحلية وتسجيل الخروج</button>
     </div>
 
   </div><!-- /phase3 -->
 </div><!-- /dash -->
 
-<!-- ══════════════ PROJECT MODAL ══════════════ -->
+<!-- ══════════════════════ PROJECT MODAL ══════════════════════ -->
 <div class="modal-bg" id="proj-mbg" onclick="if(event.target.id==='proj-mbg')closeM()">
   <div class="mbox">
     <h3 id="mtitle">تعديل مشروع</h3>
     <div class="fgrid">
-      <div class="frow"><label>العنوان (EN)</label><input id="f0" placeholder="Brand Identity — Client"></div>
-      <div class="frow"><label>العنوان (AR)</label><input id="f1" placeholder="هوية بصرية — العميل" dir="rtl"></div>
+      <div class="frow"><label>العنوان (EN)</label><input id="f0" placeholder="Brand Identity — Client Name"></div>
+      <div class="frow"><label>العنوان (AR)</label><input id="f1" placeholder="هوية بصرية — اسم العميل" dir="rtl"></div>
       <div class="frow">
         <label>الفئة</label>
         <select id="f2">
@@ -453,21 +557,26 @@ textarea{resize:vertical;line-height:1.55;}
           <option value="Branding">✦ Branding</option>
         </select>
       </div>
-      <div class="frow"><label>السنة</label><input id="f3" type="number" placeholder="2025"></div>
-      <div class="frow full"><label>مسار الصورة الرئيسية (image)</label><input id="f4" placeholder="assets/projects/p1/Thumbnail.png"></div>
+      <div class="frow"><label>السنة</label><input id="f3" type="number" placeholder="2025" min="2015" max="2030"></div>
       <div class="frow full">
-        <label>قائمة الصور — كل مسار في سطر</label>
-        <textarea id="f5" rows="5" placeholder="assets/projects/p1/img_01.png&#10;assets/projects/p1/img_02.png"></textarea>
+        <label>مسار الصورة الرئيسية (Thumbnail)</label>
+        <input id="f4" placeholder="assets/projects/p1/Thumbnail.png" oninput="updateThumbPreview()">
+        <div id="thumb-preview" class="img-preview"><span>أدخل مسار الصورة لرؤية المعاينة</span></div>
       </div>
-      <div class="frow full"><label>الوصف (EN)</label><textarea id="f6" rows="3"></textarea></div>
-      <div class="frow full"><label>الوصف (AR)</label><textarea id="f7" rows="3" dir="rtl"></textarea></div>
-      <div class="frow"><label>Tags EN — مفصولة بفاصلة</label><input id="f8" placeholder="Social Media, Egypt"></div>
-      <div class="frow"><label>Tags AR — مفصولة بفاصلة</label><input id="f9" placeholder="سوشيال, مصر" dir="rtl"></div>
-      <div class="frow"><label>رابط Behance (اختياري)</label><input id="f10" placeholder="https://behance.net/gallery/..."></div>
+      <div class="frow full">
+        <label>قائمة الصور — كل مسار في سطر منفصل</label>
+        <textarea id="f5" rows="5" placeholder="assets/projects/p1/img_01.png&#10;assets/projects/p1/img_02.png&#10;assets/projects/p1/img_03.png"></textarea>
+      </div>
+      <div class="frow full"><label>الوصف (EN)</label><textarea id="f6" rows="3" placeholder="Brief description of the project in English..."></textarea></div>
+      <div class="frow full"><label>الوصف (AR)</label><textarea id="f7" rows="3" dir="rtl" placeholder="وصف مختصر للمشروع بالعربية..."></textarea></div>
+      <div class="frow"><label>Tags EN — مفصولة بفاصلة</label><input id="f8" placeholder="Social Media, Egypt, Brand"></div>
+      <div class="frow"><label>Tags AR — مفصولة بفاصلة</label><input id="f9" placeholder="سوشيال ميديا, مصر, براند" dir="rtl"></div>
+      <div class="frow"><label>رابط Behance (اختياري)</label><input id="f10" placeholder="https://www.behance.net/gallery/..."></div>
       <div class="frow"><label>خلفية CSS (اختياري)</label><input id="f12" placeholder="linear-gradient(135deg,#07051c,#100a30)"></div>
-      <div class="full" style="display:flex;gap:28px;padding:6px 0">
+      <div class="full" style="display:flex;gap:28px;padding:8px 0;flex-wrap:wrap">
         <div class="ck-row"><input type="checkbox" id="f11"><label for="f11">سعودي 🇸🇦</label></div>
         <div class="ck-row"><input type="checkbox" id="f13"><label for="f13">إماراتي 🇦🇪</label></div>
+        <div class="ck-row"><input type="checkbox" id="f14"><label for="f14">⭐ مميز (يظهر أولاً في الفلتر)</label></div>
       </div>
     </div>
     <div class="mfoot">
@@ -477,12 +586,12 @@ textarea{resize:vertical;line-height:1.55;}
   </div>
 </div>
 
-<!-- ══════════════ REVIEW MODAL ══════════════ -->
+<!-- ══════════════════════ REVIEW MODAL ══════════════════════ -->
 <div class="modal-bg" id="rev-mbg" onclick="if(event.target.id==='rev-mbg')closeRevM()">
-  <div class="mbox" style="max-width:560px">
+  <div class="mbox" style="max-width:580px">
     <h3 id="rev-mtitle">تقييم جديد</h3>
     <div class="frow"><label>اسم العميل</label><input id="rv-name" placeholder="الاسم الكامل"></div>
-    <div class="frow"><label>الشركة / المسمى</label><input id="rv-company" placeholder="Apex Agency · مصر"></div>
+    <div class="frow"><label>الشركة / المسمى الوظيفي</label><input id="rv-company" placeholder="Apex Agency · مصر"></div>
     <div class="frow">
       <label>التقييم</label>
       <div class="star-pick" id="star-pick">
@@ -491,9 +600,9 @@ textarea{resize:vertical;line-height:1.55;}
         <span onclick="setStar(5)">★</span>
       </div>
     </div>
-    <div class="frow"><label>نص التقييم (EN)</label><textarea id="rv-text" rows="3" placeholder="Review in English..."></textarea></div>
-    <div class="frow"><label>نص التقييم (AR)</label><textarea id="rv-textAr" rows="3" placeholder="التقييم بالعربية..." dir="rtl"></textarea></div>
-    <div class="frow"><label>التاريخ</label><input id="rv-date" placeholder="يناير 2025"></div>
+    <div class="frow"><label>نص التقييم (EN)</label><textarea id="rv-text" rows="3" placeholder="Write review in English..."></textarea></div>
+    <div class="frow"><label>نص التقييم (AR)</label><textarea id="rv-textAr" rows="3" placeholder="اكتب التقييم بالعربية..." dir="rtl"></textarea></div>
+    <div class="frow"><label>تاريخ التقييم</label><input id="rv-date" placeholder="يناير 2025"></div>
     <div class="mfoot">
       <button class="btn btn-g" onclick="closeRevM()">إلغاء</button>
       <button class="btn btn-p" onclick="saveRev()">💾 حفظ التقييم</button>
@@ -539,6 +648,33 @@ function toast(msg, ms=3500){
 function markDirty(){ dirty=true;  F('dirty').classList.add('on'); }
 function clearDirty(){ dirty=false; F('dirty').classList.remove('on'); }
 
+function updateTokenBadge(){
+  const token = localStorage.getItem('adm_token');
+  const ok = token && token !== 'null' && token.startsWith('ghp');
+  // Header badge
+  const badge = F('token-badge');
+  if(ok){
+    badge.className='token-badge ok';
+    badge.innerHTML='<span>✅</span><span class="lbl">توكن موجود</span>';
+  } else {
+    badge.className='token-badge missing';
+    badge.innerHTML='<span>⚠</span><span class="lbl">بدون توكن</span>';
+  }
+  // Security card status
+  const card = F('token-status-card');
+  if(card){
+    if(ok){
+      card.className='token-status ok';
+      F('token-status-icon').textContent='✅';
+      F('token-status-text').textContent='GitHub Token موجود — يمكنك النشر';
+    } else {
+      card.className='token-status bad';
+      F('token-status-icon').textContent='❌';
+      F('token-status-text').textContent='لا يوجد GitHub Token — أدخله أدناه للتمكن من النشر';
+    }
+  }
+}
+
 /* ═══════════════════════════════════════════════════
    AUTH
 ═══════════════════════════════════════════════════ */
@@ -548,6 +684,13 @@ window.onload = ()=>{
     F('loginform').style.display='none';
   }
   setStar(5);
+};
+
+window.onbeforeunload = (e)=>{
+  if(dirty){
+    e.preventDefault();
+    return 'لديك تغييرات غير منشورة. هل تريد المغادرة؟';
+  }
 };
 
 async function doLogin(){
@@ -571,13 +714,16 @@ async function doLogin(){
 async function startDash(){
   F('login').style.display='none';
   F('dash').style.display='block';
+  updateTokenBadge();
   toast('⏳ جاري تحميل البيانات...');
   await Promise.all([fetchProjects(), fetchReviews(), fetchConfig()]);
-  renderStats(); renderTable(); renderRevList(); populateConfigForm();
+  renderStats(); renderTable(); renderRevStats(); renderRevList(); populateConfigForm();
+  updateLastPush();
   toast('✅ جاهز — '+PROJECTS.length+' مشروع، '+REVIEWS.length+' تقييم');
 }
 
 function doLogout(){
+  if(dirty && !confirm('لديك تغييرات غير منشورة. هل تريد الخروج بدون نشر؟')) return;
   F('dash').style.display='none';
   F('login').style.display='flex';
   F('inp-pwd').value='';
@@ -592,7 +738,8 @@ function setPhase(n){
     F('phase'+i).style.display = i===n?'block':'none';
     F('ph'+i).classList.toggle('active', i===n);
   });
-  if(n===2) renderRevList();
+  if(n===2){ renderRevStats(); renderRevList(); }
+  if(n===3){ updateTokenBadge(); updateLastPush(); }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -614,11 +761,14 @@ async function fetchProjects(){
 }
 
 function renderStats(){
-  const c={Social:0,Print:0,Branding:0,sa:0,uae:0};
+  const c={Social:0,Print:0,Branding:0,sa:0,uae:0,feat:0};
   PROJECTS.forEach(p=>{
-    if(c[p.cat]!==undefined) c[p.cat]++;
-    if(p.saudi) c.sa++;
-    if(p.uae)   c.uae++;
+    if(p.cat==='Social')   c.Social++;
+    if(p.cat==='Print')    c.Print++;
+    if(p.cat==='Branding') c.Branding++;
+    if(p.saudi)    c.sa++;
+    if(p.uae)      c.uae++;
+    if(p.featured) c.feat++;
   });
   F('s0').textContent=PROJECTS.length;
   F('s1').textContent=c.Social;
@@ -626,14 +776,19 @@ function renderStats(){
   F('s3').textContent=c.Branding;
   F('s4').textContent=c.sa;
   F('s5').textContent=c.uae;
+  F('s6').textContent=c.feat;
 }
 
 function renderTable(){
-  const q   = (F('srch').value||'').toLowerCase();
-  const cat = F('flt').value;
+  const q    = (F('srch').value||'').toLowerCase();
+  const cat  = F('flt').value;
+  const flt2 = F('flt2').value;
 
   const rows = PROJECTS.reduce((acc,p,i)=>{
     if(cat && p.cat!==cat) return acc;
+    if(flt2==='featured' && !p.featured) return acc;
+    if(flt2==='saudi'    && !p.saudi)    return acc;
+    if(flt2==='uae'      && !p.uae)      return acc;
     if(q){
       const hay=((p.title||'')+(p.titleAr||'')+(p.cat||'')+(p.year||'')).toLowerCase();
       if(!hay.includes(q)) return acc;
@@ -646,22 +801,22 @@ function renderTable(){
     return;
   }
 
-  F('tbody').innerHTML = rows.map(({p,i})=>{
+  F('tbody').innerHTML = rows.map(({p,i},ri)=>{
     const img  = p.image||p.cover||'';
-    const flag = (p.saudi?'🇸🇦':'')+(p.uae?'🇦🇪':'');
+    const flag = (p.saudi?'🇸🇦 ':'')+(p.uae?'🇦🇪':'');
     const isFirst = i===0, isLast = i===PROJECTS.length-1;
     return `<tr>
       <td style="color:var(--gr);font-size:11px">${i+1}</td>
       <td>${img
-        ?`<img class="thumb" src="${img}" onerror="this.style.opacity=.08">`
-        :`<div class="thumb"></div>`}</td>
+        ?`<img class="thumb" src="${img}" onerror="this.style.opacity=.08" title="${p.title||''}">`
+        :`<div class="thumb" style="display:flex;align-items:center;justify-content:center;font-size:18px">🖼</div>`}</td>
       <td>
-        <div style="font-weight:600;font-size:13px">${p.title||'—'}</div>
+        <div style="font-weight:600;font-size:13px">${p.title||'—'}${p.featured?'<span class="feat-badge">⭐ مميز</span>':''}</div>
         <div style="font-size:11px;color:var(--gr);margin-top:2px">${p.titleAr||''}</div>
       </td>
       <td><span class="cb c${p.cat||'Other'}">${p.cat||'—'}</span></td>
       <td style="font-size:12px;color:var(--gr)">${p.year||'—'}</td>
-      <td style="font-size:15px;letter-spacing:2px">${flag}</td>
+      <td style="font-size:15px;letter-spacing:1px">${flag||'🌍'}</td>
       <td>
         <div class="acts">
           <button class="btn sm btn-r" onclick="delProj(${i})" title="حذف">🗑</button>
@@ -691,24 +846,34 @@ function dupProj(i){
   const copy = JSON.parse(JSON.stringify(PROJECTS[i]));
   copy.id = Date.now();
   copy.title = (copy.title||'') + ' — نسخة';
+  delete copy.featured;
   PROJECTS.splice(i+1,0,copy);
   markDirty(); renderStats(); renderTable();
   toast('📋 تم نسخ المشروع');
 }
 
 /* ── Project modal ── */
+function updateThumbPreview(){
+  const src = F('f4').value.trim();
+  const prev = F('thumb-preview');
+  if(!src){ prev.innerHTML='<span>أدخل مسار الصورة لرؤية المعاينة</span>'; return; }
+  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:var(--red)>⚠ لم يتم العثور على الصورة</span>'">`;
+}
+
 function openEdit(i){
   editIdx=i; const p=PROJECTS[i];
   F('mtitle').textContent='تعديل: '+(p.title||'');
-  F('f0').value=p.title||'';       F('f1').value=p.titleAr||'';
-  F('f2').value=p.cat||'Social';   F('f3').value=p.year||'';
+  F('f0').value=p.title||'';         F('f1').value=p.titleAr||'';
+  F('f2').value=p.cat||'Social';     F('f3').value=p.year||'';
   F('f4').value=p.image||p.cover||'';
   F('f5').value=(p.images||[]).join('\n');
-  F('f6').value=p.desc||'';        F('f7').value=p.descAr||'';
+  F('f6').value=p.desc||'';          F('f7').value=p.descAr||'';
   F('f8').value=(p.tags||[]).join(', ');
   F('f9').value=(p.tagsAr||[]).join(', ');
-  F('f10').value=p.link||'';       F('f12').value=p._bg||'';
-  F('f11').checked=!!p.saudi;      F('f13').checked=!!p.uae;
+  F('f10').value=p.link||'';         F('f12').value=p._bg||'';
+  F('f11').checked=!!p.saudi;        F('f13').checked=!!p.uae;
+  F('f14').checked=!!p.featured;
+  updateThumbPreview();
   F('proj-mbg').classList.add('open');
 }
 
@@ -716,7 +881,8 @@ function openAdd(){
   editIdx=-1; F('mtitle').textContent='مشروع جديد';
   ['f0','f1','f4','f5','f6','f7','f8','f9','f10','f12'].forEach(id=>F(id).value='');
   F('f2').value='Social'; F('f3').value=new Date().getFullYear();
-  F('f11').checked=false; F('f13').checked=false;
+  F('f11').checked=false; F('f13').checked=false; F('f14').checked=false;
+  F('thumb-preview').innerHTML='<span>أدخل مسار الصورة لرؤية المعاينة</span>';
   F('proj-mbg').classList.add('open');
 }
 
@@ -724,20 +890,21 @@ function closeM(){ F('proj-mbg').classList.remove('open'); }
 
 function saveProj(){
   const title=F('f0').value.trim();
-  if(!title){ toast('⚠ أدخل عنوان المشروع'); return; }
+  if(!title){ toast('⚠ أدخل عنوان المشروع (EN)'); return; }
   const csv = s=>s.split(',').map(x=>x.trim()).filter(Boolean);
   const imgs = F('f5').value.split('\n').map(x=>x.trim()).filter(Boolean);
   const p={
-    id: editIdx>=0?PROJECTS[editIdx].id:Date.now(),
+    id: editIdx>=0 ? PROJECTS[editIdx].id : Date.now(),
     title, titleAr:F('f1').value.trim(),
     cat:F('f2').value, year:F('f3').value,
-    image:F('f4').value.trim(), images:imgs,
+    cover:F('f4').value.trim(), images:imgs,
     desc:F('f6').value.trim(), descAr:F('f7').value.trim(),
     tags:csv(F('f8').value), tagsAr:csv(F('f9').value),
   };
   if(F('f10').value.trim()) p.link=F('f10').value.trim();
   if(F('f11').checked) p.saudi=true;
   if(F('f13').checked) p.uae=true;
+  if(F('f14').checked) p.featured=true;
   if(F('f12').value.trim()) p._bg=F('f12').value.trim();
   editIdx>=0?PROJECTS[editIdx]=p:PROJECTS.push(p);
   markDirty(); closeM(); renderStats(); renderTable();
@@ -745,10 +912,10 @@ function saveProj(){
 }
 
 function delProj(i){
-  if(!confirm(`حذف "${PROJECTS[i].title||'هذا المشروع'}"؟`)) return;
+  if(!confirm(`حذف "${PROJECTS[i].title||'هذا المشروع'}"؟\nلا يمكن التراجع بعد النشر.`)) return;
   PROJECTS.splice(i,1);
   markDirty(); renderStats(); renderTable();
-  toast('🗑 حُذف — اضغط نشر للتطبيق');
+  toast('🗑 حُذف — اضغط "نشر" للتطبيق');
 }
 
 /* ═══════════════════════════════════════════════════
@@ -767,25 +934,42 @@ async function fetchReviews(){
   } catch(e){ REVIEWS=[]; }
 }
 
+function renderRevStats(){
+  const total=REVIEWS.length;
+  const hidden=REVIEWS.filter(r=>r.hidden).length;
+  const visible=total-hidden;
+  const avg=total?( REVIEWS.reduce((s,r)=>s+(r.rating||5),0)/total ).toFixed(1):'—';
+  F('rs0').textContent=total;
+  F('rs1').textContent=visible;
+  F('rs2').textContent=hidden;
+  F('rs3').textContent=avg;
+}
+
 function renderRevList(){
   const flt = F('rev-flt').value;
   let list = REVIEWS;
-  if(flt==='hidden') list=REVIEWS.filter(r=>r.hidden);
-  else if(flt) list=REVIEWS.filter(r=>(r.rating||5)>=parseInt(flt));
+  if(flt==='hidden')  list=REVIEWS.filter(r=>r.hidden);
+  else if(flt==='visible') list=REVIEWS.filter(r=>!r.hidden);
+  else if(flt)        list=REVIEWS.filter(r=>(r.rating||5)>=parseInt(flt));
 
   if(!list.length){
-    F('rev-list').innerHTML='<p style="color:var(--gr);padding:30px 0;text-align:center">لا توجد تقييمات</p>';
+    F('rev-list').innerHTML='<p style="color:var(--gr);padding:40px 0;text-align:center">لا توجد تقييمات في هذه الفئة</p>';
     return;
   }
-  F('rev-list').innerHTML=list.map((r,_)=>{
+  F('rev-list').innerHTML=list.map((r)=>{
     const realIdx=REVIEWS.indexOf(r);
+    const isFirst=realIdx===0, isLast=realIdx===REVIEWS.length-1;
     return `<div class="rev-adm ${r.hidden?'hidden-rev':''}">
+      <div style="display:flex;flex-direction:column;gap:4px;margin-inline-end:8px">
+        <button class="btn sm btn-g" onclick="moveRevUp(${realIdx})" ${isFirst?'disabled':''} title="تحريك لأعلى">↑</button>
+        <button class="btn sm btn-g" onclick="moveRevDown(${realIdx})" ${isLast?'disabled':''} title="تحريك لأسفل">↓</button>
+      </div>
       <div class="rev-adm-body">
         <div class="rev-meta">
           <span class="rev-name">${r.name||'—'}</span>
           <span class="rev-company">${r.company||''}</span>
           <span class="rev-stars">${'★'.repeat(r.rating||5)}</span>
-          ${r.hidden?'<span class="rev-badge">مخفي</span>':''}
+          ${r.hidden?'<span class="rev-badge">🙈 مخفي</span>':''}
           <span class="rev-date">${r.date||''}</span>
         </div>
         <div class="rev-text">${r.text||''}</div>
@@ -801,10 +985,21 @@ function renderRevList(){
   }).join('');
 }
 
+function moveRevUp(i){
+  if(i<=0) return;
+  [REVIEWS[i-1],REVIEWS[i]]=[REVIEWS[i],REVIEWS[i-1]];
+  markDirty(); renderRevStats(); renderRevList();
+}
+function moveRevDown(i){
+  if(i>=REVIEWS.length-1) return;
+  [REVIEWS[i],REVIEWS[i+1]]=[REVIEWS[i+1],REVIEWS[i]];
+  markDirty(); renderRevStats(); renderRevList();
+}
+
 function toggleRevHidden(i){
   REVIEWS[i].hidden=!REVIEWS[i].hidden;
-  markDirty(); renderRevList();
-  toast(REVIEWS[i].hidden?'🙈 تقييم مخفي عن الزوار':'👁 تقييم ظاهر للزوار');
+  markDirty(); renderRevStats(); renderRevList();
+  toast(REVIEWS[i].hidden?'🙈 التقييم مخفي عن الزوار':'👁 التقييم ظاهر للزوار');
 }
 
 function setStar(n){
@@ -817,9 +1012,9 @@ function openRevAdd(i){
   if(i>=0){
     const r=REVIEWS[i];
     F('rev-mtitle').textContent='تعديل تقييم';
-    F('rv-name').value=r.name||'';   F('rv-company').value=r.company||'';
-    F('rv-text').value=r.text||'';   F('rv-textAr').value=r.textAr||'';
-    F('rv-date').value=r.date||'';   setStar(r.rating||5);
+    F('rv-name').value=r.name||'';     F('rv-company').value=r.company||'';
+    F('rv-text').value=r.text||'';     F('rv-textAr').value=r.textAr||'';
+    F('rv-date').value=r.date||'';     setStar(r.rating||5);
   } else {
     F('rev-mtitle').textContent='تقييم جديد';
     ['rv-name','rv-company','rv-text','rv-textAr','rv-date'].forEach(id=>F(id).value='');
@@ -834,7 +1029,7 @@ function saveRev(){
   const name=F('rv-name').value.trim();
   if(!name){ toast('⚠ أدخل اسم العميل'); return; }
   const rev={
-    id: revEditIdx>=0?REVIEWS[revEditIdx].id:Date.now(),
+    id: revEditIdx>=0 ? REVIEWS[revEditIdx].id : Date.now(),
     name, company:F('rv-company').value.trim(),
     rating:starVal,
     text:F('rv-text').value.trim(),
@@ -843,14 +1038,15 @@ function saveRev(){
   };
   if(revEditIdx>=0 && REVIEWS[revEditIdx].hidden) rev.hidden=true;
   revEditIdx>=0?REVIEWS[revEditIdx]=rev:REVIEWS.push(rev);
-  markDirty(); closeRevM(); renderRevList();
-  toast(revEditIdx>=0?'✓ تم التعديل':'✓ أُضيف التقييم — اضغط "نشر" للتطبيق');
+  markDirty(); closeRevM(); renderRevStats(); renderRevList();
+  toast(revEditIdx>=0?'✓ تم تعديل التقييم':'✓ أُضيف التقييم — اضغط "نشر" للتطبيق');
 }
 
 function delRev(i){
   if(!confirm(`حذف تقييم "${REVIEWS[i].name}"؟`)) return;
-  REVIEWS.splice(i,1); markDirty(); renderRevList();
-  toast('🗑 حُذف — اضغط نشر للتطبيق');
+  REVIEWS.splice(i,1);
+  markDirty(); renderRevStats(); renderRevList();
+  toast('🗑 حُذف — اضغط "نشر" للتطبيق');
 }
 
 /* ═══════════════════════════════════════════════════
@@ -872,37 +1068,52 @@ async function fetchConfig(){
 }
 
 function populateConfigForm(){
-  const c=CFG_OBJ;
-  if(!c.name) return;
-  F('cfg-name-ar1').value=c.name?.ar?.line1||'';
-  F('cfg-name-ar2').value=c.name?.ar?.line2||'';
-  F('cfg-name-en1').value=c.name?.en?.line1||'';
-  F('cfg-name-en2').value=c.name?.en?.line2||'';
-  F('cfg-bio-ar').value=c.bio?.ar||'';
-  F('cfg-bio-en').value=c.bio?.en||'';
-  F('cfg-loc-ar').value=c.location?.ar||'';
-  F('cfg-loc-en').value=c.location?.en||'';
-  F('cfg-available').checked=!!c.available;
-  F('cfg-roles-ar').value=(c.role?.ar||[]).join('\n');
-  F('cfg-roles-en').value=(c.role?.en||[]).join('\n');
-  F('cfg-email').value=c.email||'';
-  F('cfg-whatsapp').value=c.whatsapp||'';
-  F('cfg-instagram').value=c.instagram||'';
-  F('cfg-facebook').value=c.facebook||'';
-  F('cfg-behance').value=c.behanceUrl||'';
-  F('cfg-stat-proj-n').value=c.stats?.projects?.n||'';
-  F('cfg-stat-proj-ar').value=c.stats?.projects?.label?.ar||'';
-  F('cfg-stat-proj-en').value=c.stats?.projects?.label?.en||'';
-  F('cfg-stat-years-n').value=c.stats?.years?.n||'';
-  F('cfg-stat-years-ar').value=c.stats?.years?.label?.ar||'';
-  F('cfg-stat-years-en').value=c.stats?.years?.label?.en||'';
-  F('cfg-stat-clients-n').value=c.stats?.clients?.n||'';
-  F('cfg-stat-clients-ar').value=c.stats?.clients?.label?.ar||'';
-  F('cfg-stat-clients-en').value=c.stats?.clients?.label?.en||'';
+  const c = CFG_OBJ || {};
+  // Identity
+  F('cfg-name-ar1').value = c.name?.ar?.line1 || 'أحمد';
+  F('cfg-name-ar2').value = c.name?.ar?.line2 || 'حسن بهاء';
+  F('cfg-name-en1').value = c.name?.en?.line1 || 'AHMED';
+  F('cfg-name-en2').value = c.name?.en?.line2 || 'HASSAN BAHAA';
+  F('cfg-bio-ar').value   = c.bio?.ar  || '';
+  F('cfg-bio-en').value   = c.bio?.en  || '';
+  F('cfg-loc-ar').value   = c.location?.ar || 'القاهرة، مصر';
+  F('cfg-loc-en').value   = c.location?.en || 'Cairo, Egypt';
+  F('cfg-available').checked = c.available !== false;
+  F('cfg-roles-ar').value = (c.role?.ar || ['مصمم جرافيك','مصمم هوية بصرية','مصمم سوشيال ميديا','متخصص ذكاء اصطناعي']).join('\n');
+  F('cfg-roles-en').value = (c.role?.en || ['Graphic Designer','Visual Identity Designer','Social Media Designer','AI Design Specialist']).join('\n');
+  // Hero photo
+  F('cfg-hero-photo').value = c.heroPhoto || 'assets/ahmed-hassan-photo.png';
+  updateHeroPreview();
+  // Contact
+  F('cfg-email').value     = c.email     || '';
+  F('cfg-whatsapp').value  = c.whatsapp  || '';
+  F('cfg-instagram').value = c.instagram || '';
+  F('cfg-facebook').value  = c.facebook  || '';
+  F('cfg-behance').value   = c.behanceUrl|| '';
+  F('cfg-linkedin').value  = c.linkedin  || '';
+  F('cfg-tiktok').value    = c.tiktok    || '';
+  F('cfg-youtube').value   = c.youtube   || '';
+  // Stats
+  F('cfg-stat-proj-n').value    = c.stats?.projects?.n    || 30;
+  F('cfg-stat-proj-ar').value   = c.stats?.projects?.label?.ar || 'مشروع';
+  F('cfg-stat-proj-en').value   = c.stats?.projects?.label?.en || 'Projects';
+  F('cfg-stat-years-n').value   = c.stats?.years?.n       || 5;
+  F('cfg-stat-years-ar').value  = c.stats?.years?.label?.ar    || 'سنوات';
+  F('cfg-stat-years-en').value  = c.stats?.years?.label?.en    || 'Years';
+  F('cfg-stat-clients-n').value = c.stats?.clients?.n     || 20;
+  F('cfg-stat-clients-ar').value= c.stats?.clients?.label?.ar  || 'عميل';
+  F('cfg-stat-clients-en').value= c.stats?.clients?.label?.en  || 'Clients';
+}
+
+function updateHeroPreview(){
+  const src = F('cfg-hero-photo').value.trim();
+  const prev = F('hero-preview');
+  if(!src){ prev.innerHTML='<span>لا توجد صورة</span>'; return; }
+  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:var(--red)>⚠ الصورة غير موجودة</span>'" style="width:100%;height:100%;object-fit:cover;border-radius:8px">`;
 }
 
 function saveConfig(){
-  const lines = ta => F(ta).value.split('\n').map(x=>x.trim()).filter(Boolean);
+  const lines = id => F(id).value.split('\n').map(x=>x.trim()).filter(Boolean);
   CFG_OBJ = {
     ...CFG_OBJ,
     name:{
@@ -922,11 +1133,15 @@ function saveConfig(){
       en:F('cfg-loc-en').value.trim(),
     },
     available:F('cfg-available').checked,
+    heroPhoto:F('cfg-hero-photo').value.trim(),
     email:F('cfg-email').value.trim(),
     whatsapp:F('cfg-whatsapp').value.trim(),
     instagram:F('cfg-instagram').value.trim(),
     facebook:F('cfg-facebook').value.trim(),
     behanceUrl:F('cfg-behance').value.trim(),
+    linkedin:F('cfg-linkedin').value.trim(),
+    tiktok:F('cfg-tiktok').value.trim(),
+    youtube:F('cfg-youtube').value.trim(),
     stats:{
       projects:{ n:parseInt(F('cfg-stat-proj-n').value)||0,    label:{ar:F('cfg-stat-proj-ar').value.trim(),    en:F('cfg-stat-proj-en').value.trim()} },
       years:   { n:parseInt(F('cfg-stat-years-n').value)||0,   label:{ar:F('cfg-stat-years-ar').value.trim(),   en:F('cfg-stat-years-en').value.trim()} },
@@ -934,44 +1149,58 @@ function saveConfig(){
     },
   };
   markDirty();
-  toast('✓ تم حفظ الإعدادات في الذاكرة — اضغط "نشر" للتطبيق على الموقع');
+  toast('✓ تم حفظ الإعدادات — اضغط "نشر" لتطبيقها على الموقع');
 }
 
 /* ── Security ── */
 async function changePwd(){
   const p=F('set-pwd').value;
-  if(!p){ toast('⚠ أدخل كلمة مرور'); return; }
+  if(p.length<6){ toast('⚠ كلمة المرور يجب أن تكون 6 أحرف على الأقل'); return; }
   localStorage.setItem('adm_hash',await h256(p));
   F('set-pwd').value='';
-  toast('✅ تم تغيير كلمة المرور');
+  toast('✅ تم تغيير كلمة المرور بنجاح');
 }
 
 function changeToken(){
   const t=F('set-token').value.trim();
   if(!t){ toast('⚠ أدخل التوكن'); return; }
+  if(!t.startsWith('ghp')&&!t.startsWith('github_')){ toast('⚠ التوكن يبدو غير صحيح — يجب أن يبدأ بـ ghp_'); return; }
   localStorage.setItem('adm_token',t);
   F('set-token').value='';
-  toast('✅ تم حفظ التوكن الجديد');
+  updateTokenBadge();
+  toast('✅ تم حفظ التوكن — يمكنك الآن النشر');
+}
+
+function updateLastPush(){
+  const el=F('last-push');
+  if(!el) return;
+  const d=localStorage.getItem('last_push');
+  el.textContent = d ? '⏱ آخر نشر: '+d : 'لم يتم النشر بعد على هذا الجهاز';
 }
 
 async function reloadFromGitHub(){
-  toast('⏳ إعادة تحميل...');
+  toast('⏳ إعادة تحميل من GitHub...');
   await Promise.all([fetchProjects(),fetchReviews(),fetchConfig()]);
-  renderStats(); renderTable(); renderRevList(); populateConfigForm();
+  renderStats(); renderTable(); renderRevStats(); renderRevList(); populateConfigForm();
   clearDirty();
-  toast('✅ تم التحديث من GitHub');
+  toast('✅ تم التحديث من GitHub بنجاح');
 }
 
 function clearLocalData(){
-  if(!confirm('سيتم مسح كلمة المرور والتوكن. ستحتاج إعداد جديد. متأكد؟')) return;
+  if(!confirm('سيتم مسح كلمة المرور والتوكن من هذا الجهاز.\nستحتاج إعداد جديد للدخول مرة أخرى.\n\nمتأكد؟')) return;
   localStorage.removeItem('adm_hash');
   localStorage.removeItem('adm_token');
+  localStorage.removeItem('last_push');
   location.reload();
 }
 
 /* ── Backup ── */
 function exportBackup(){
-  const data={ projects:PROJECTS, reviews:REVIEWS, config:CFG_OBJ, exported:new Date().toISOString() };
+  const data={
+    projects:PROJECTS, reviews:REVIEWS, config:CFG_OBJ,
+    exported:new Date().toISOString(),
+    version:'1.0'
+  };
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
@@ -987,12 +1216,14 @@ function importBackup(input){
   r.onload=e=>{
     try {
       const data=JSON.parse(e.target.result);
-      if(!confirm(`استيراد نسخة من ${data.exported||'تاريخ غير معروف'}؟\n${(data.projects||[]).length} مشروع، ${(data.reviews||[]).length} تقييم`)) return;
+      const proj=(data.projects||[]).length;
+      const revs=(data.reviews||[]).length;
+      if(!confirm(`استيراد نسخة احتياطية؟\n\nتاريخ التصدير: ${data.exported||'غير معروف'}\nمشاريع: ${proj}\nتقييمات: ${revs}\n\nسيتم استبدال البيانات الحالية!`)) return;
       if(data.projects) PROJECTS=data.projects;
       if(data.reviews)  REVIEWS=data.reviews;
       if(data.config)   { CFG_OBJ=data.config; populateConfigForm(); }
-      markDirty(); renderStats(); renderTable(); renderRevList();
-      toast('✅ تم استيراد النسخة الاحتياطية — اضغط "نشر" للتطبيق');
+      markDirty(); renderStats(); renderTable(); renderRevStats(); renderRevList();
+      toast('✅ تم الاستيراد — اضغط "نشر" للتطبيق على الموقع');
     } catch(err){ toast('❌ ملف غير صالح: '+err.message); }
   };
   r.readAsText(file);
@@ -1003,9 +1234,14 @@ function importBackup(input){
    PUSH TO GITHUB
 ═══════════════════════════════════════════════════ */
 async function pushToGitHub(){
-  if(!dirty && !confirm('لا توجد تعديلات. نشر على أي حال؟')) return;
+  if(!dirty && !confirm('لا توجد تعديلات غير منشورة.\nهل تريد إعادة النشر على أي حال؟')) return;
   const token=localStorage.getItem('adm_token');
-  if(!token || token==='null'){ toast('❌ لا يوجد توكن GitHub — اذهب للإعدادات ← الأمان وأدخل التوكن'); return; }
+  if(!token || token==='null' || !token.startsWith('ghp')){
+    toast('❌ لا يوجد GitHub Token — اذهب للإعدادات ← الأمان وأدخله');
+    setPhase(3);
+    setTimeout(()=>F('set-token').focus(),400);
+    return;
+  }
 
   const btn=F('sbtn');
   btn.disabled=true; btn.textContent='⏳ جاري النشر...';
@@ -1015,7 +1251,7 @@ async function pushToGitHub(){
     const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{
       method:'PUT',
       headers:{ Authorization:`token ${token}`,'Content-Type':'application/json' },
-      body:JSON.stringify({ message:`Update ${path} via admin dashboard`, content:encoded, sha })
+      body:JSON.stringify({ message:`Update ${path} via admin — ${new Date().toLocaleDateString('ar-EG')}`, content:encoded, sha })
     });
     return r.json();
   };
@@ -1034,14 +1270,17 @@ async function pushToGitHub(){
     const ok=[d1,d2,d3].every(d=>!!d.content);
     if(ok){
       clearDirty();
-      toast('✅ تم النشر بنجاح! سيظهر على الموقع خلال دقيقة', 6000);
+      const now=new Date().toLocaleString('ar-EG');
+      localStorage.setItem('last_push', now);
+      updateLastPush();
+      toast('✅ تم النشر بنجاح! سيظهر على الموقع خلال 1-2 دقيقة', 7000);
     } else {
-      const err=d1.message||d2.message||d3.message||'خطأ';
-      toast('❌ فشل النشر: '+err, 6000);
+      const errs=[d1,d2,d3].map(d=>d.message).filter(Boolean);
+      toast('❌ فشل النشر: '+(errs[0]||'خطأ غير معروف'), 7000);
     }
   } catch(e){ toast('❌ '+e.message, 5000); }
 
-  btn.disabled=false; btn.textContent='💾 نشر على GitHub';
+  btn.disabled=false; btn.innerHTML='💾 نشر على GitHub';
 }
 
 function buildProjectsJs(){
@@ -1050,8 +1289,7 @@ function buildProjectsJs(){
 }
 
 function buildConfigJs(){
-  const c=CFG_OBJ;
-  return `// config.js — updated via admin dashboard\nconst CFG = ${JSON.stringify(c,null,2)};\n`;
+  return `// config.js — updated via admin dashboard on ${new Date().toISOString().slice(0,10)}\nconst CFG = ${JSON.stringify(CFG_OBJ,null,2)};\n`;
 }
 </script>
 </body>
