@@ -1381,8 +1381,8 @@ function toggleLang(){
 }
 
 /* ── Typed role ──────────────────────────────────────────── */
-const ROLES_AR = ['مصمم جرافيك','مصمم هوية بصرية','مصمم سوشيال ميديا','متخصص ذكاء اصطناعي'];
-const ROLES_EN = ['Graphic Designer','Visual Identity Designer','Social Media Designer','AI Design Specialist'];
+let ROLES_AR = ['مصمم جرافيك','مصمم هوية بصرية','مصمم سوشيال ميديا','متخصص ذكاء اصطناعي'];
+let ROLES_EN = ['Graphic Designer','Visual Identity Designer','Social Media Designer','AI Design Specialist'];
 let rIdx=0, cIdx=0, deleting=false, typedTimer;
 function updateTyped(){
   clearTimeout(typedTimer);
@@ -1517,8 +1517,68 @@ function renderProjects(){
   pg.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 }
 
+/* ── Apply config.js settings to live site ───────────────── */
+function applyConfig(){
+  if(typeof CFG === 'undefined') return;
+
+  /* Bio */
+  const bioAr = document.querySelector('.hero-bio.ar');
+  const bioEn = document.querySelector('.hero-bio.en');
+  if(bioAr && CFG.bio?.ar) bioAr.textContent = CFG.bio.ar;
+  if(bioEn && CFG.bio?.en) bioEn.textContent = CFG.bio.en;
+
+  /* Typed roles */
+  if(CFG.role?.ar?.length) ROLES_AR = CFG.role.ar;
+  if(CFG.role?.en?.length) ROLES_EN = CFG.role.en;
+  updateTyped();
+
+  /* Stats counters + labels */
+  const statNs = document.querySelectorAll('.stat-n[data-target]');
+  const statLabelsAr = document.querySelectorAll('.stat-label.ar');
+  const statLabelsEn = document.querySelectorAll('.stat-label.en');
+  const keys = ['projects','years','clients'];
+  statNs.forEach((el,i)=>{
+    const v = CFG.stats?.[keys[i]]?.n;
+    if(v != null) el.dataset.target = v;
+  });
+  statLabelsAr.forEach((el,i)=>{
+    const t = CFG.stats?.[keys[i]]?.label?.ar;
+    if(t) el.textContent = t;
+  });
+  statLabelsEn.forEach((el,i)=>{
+    const t = CFG.stats?.[keys[i]]?.label?.en;
+    if(t) el.textContent = t;
+  });
+
+  /* Contact links */
+  if(CFG.email)        document.querySelectorAll('[href^="mailto:"]').forEach(a=>a.href='mailto:'+CFG.email);
+  if(CFG.whatsapp)     document.querySelectorAll('[href*="wa.me"]').forEach(a=>a.href='https://wa.me/'+CFG.whatsapp);
+  if(CFG.instagram)    document.querySelectorAll('[href*="instagram"]').forEach(a=>a.href=CFG.instagram);
+  if(CFG.facebook)     document.querySelectorAll('[href*="facebook"]').forEach(a=>a.href=CFG.facebook);
+  if(CFG.behanceUrl)   document.querySelectorAll('[href*="behance.net/ahmedhassanbahaa"]').forEach(a=>a.href=CFG.behanceUrl);
+
+  /* Available badge */
+  const badge = document.querySelector('.avail-badge');
+  if(badge){
+    badge.style.display = CFG.available === false ? 'none' : '';
+  }
+
+  /* Hero name */
+  const nameLine = document.getElementById('hero-name-line');
+  if(nameLine){
+    if(LANG==='ar' && CFG.name?.ar){
+      nameLine.textContent = (CFG.name.ar.line1||'') + ' ' + (CFG.name.ar.line2||'');
+    } else if(CFG.name?.en){
+      nameLine.textContent = (CFG.name.en.line1||'') + ' ' + (CFG.name.en.line2||'');
+    }
+  }
+}
+
 // Defer-safe: projects.js loads after HTML parse → wait for DOMContentLoaded
-document.addEventListener('DOMContentLoaded', loadProjects);
+document.addEventListener('DOMContentLoaded', ()=>{
+  loadProjects();
+  applyConfig();
+});
 
 /* ── Filter ──────────────────────────────────────────────── */
 document.getElementById('filters').addEventListener('click',e=>{
@@ -1577,7 +1637,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeOverlay(); })
 (function loadReviews(){
   fetch('reviews.json?v='+Date.now())
     .then(r=>r.json())
-    .then(data=>renderReviews(data))
+    .then(data=>renderReviews(data.filter(r=>!r.hidden)))
     .catch(()=>renderReviews([]));
 })();
 
