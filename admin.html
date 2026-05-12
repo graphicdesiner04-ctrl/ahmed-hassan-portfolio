@@ -600,10 +600,10 @@ function setPhase(n){
 ═══════════════════════════════════════════════════ */
 async function fetchProjects(){
   const token = localStorage.getItem('adm_token');
+  const headers = {};
+  if(token && token !== 'null') headers.Authorization = `token ${token}`;
   try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{
-      headers:{ Authorization:`token ${token}` }
-    });
+    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{ headers });
     const d = await r.json();
     if(!d.sha){ toast('❌ فشل تحميل المشاريع: '+(d.message||'')); return; }
     fileSha = d.sha;
@@ -756,10 +756,10 @@ function delProj(i){
 ═══════════════════════════════════════════════════ */
 async function fetchReviews(){
   const token=localStorage.getItem('adm_token');
+  const headers={};
+  if(token && token !== 'null') headers.Authorization=`token ${token}`;
   try {
-    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${REV_FILE}`,{
-      headers:{ Authorization:`token ${token}` }
-    });
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${REV_FILE}`,{ headers });
     const d=await r.json();
     if(!d.sha) return;
     revSha=d.sha;
@@ -858,10 +858,10 @@ function delRev(i){
 ═══════════════════════════════════════════════════ */
 async function fetchConfig(){
   const token=localStorage.getItem('adm_token');
+  const headers={};
+  if(token && token !== 'null') headers.Authorization=`token ${token}`;
   try {
-    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CFG_FILE}`,{
-      headers:{ Authorization:`token ${token}` }
-    });
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CFG_FILE}`,{ headers });
     const d=await r.json();
     if(!d.sha) return;
     cfgSha=d.sha;
@@ -1005,7 +1005,7 @@ function importBackup(input){
 async function pushToGitHub(){
   if(!dirty && !confirm('لا توجد تعديلات. نشر على أي حال؟')) return;
   const token=localStorage.getItem('adm_token');
-  if(!token){ toast('❌ لا يوجد توكن — الإعدادات ← الأمان'); return; }
+  if(!token || token==='null'){ toast('❌ لا يوجد توكن GitHub — اذهب للإعدادات ← الأمان وأدخل التوكن'); return; }
 
   const btn=F('sbtn');
   btn.disabled=true; btn.textContent='⏳ جاري النشر...';
