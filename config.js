@@ -35,7 +35,7 @@ const CFG = {
   behanceUrl:'https://www.behance.net/ahmedhassanbahaa',
 
   // ── Local assets ───────────────────────────────────────────
-  heroPhoto:  'assets/ahmed-hassan-photo.png',
+  heroPhoto:  'assets/ahmed-hassan-photo.jpg',
   aboutPhoto: 'assets/ahmed-about-photo.png',
   logo:       'assets/ahmed-hassan-logo.webp',
 
