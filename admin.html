@@ -34,12 +34,12 @@ textarea{resize:vertical;line-height:1.55;}
 
 /* ── Buttons ── */
 .btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600;transition:.18s;font-family:inherit;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;}
-.btn-p {background:var(--purple);color:#fff;} .btn-p:hover{background:var(--purple2);}
-.btn-g {background:rgba(255,255,255,.07);color:#fff;} .btn-g:hover{background:rgba(255,255,255,.13);}
+.btn-p {background:var(--purple);color:#fff;}       .btn-p:hover{background:var(--purple2);}
+.btn-g {background:rgba(255,255,255,.07);color:#fff;}.btn-g:hover{background:rgba(255,255,255,.13);}
 .btn-r {background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.2);} .btn-r:hover{background:rgba(239,68,68,.22);}
 .btn-gr{background:rgba(34,197,94,.12);color:#86efac;border:1px solid rgba(34,197,94,.2);} .btn-gr:hover{background:rgba(34,197,94,.22);}
-.btn-o {background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2);} .btn-o:hover{background:rgba(245,158,11,.22);}
-.btn-b {background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.2);} .btn-b:hover{background:rgba(59,130,246,.22);}
+.btn-o {background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.2);}.btn-o:hover{background:rgba(245,158,11,.22);}
+.btn-b {background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.2);}.btn-b:hover{background:rgba(59,130,246,.22);}
 .sm{padding:6px 11px;font-size:11px;border-radius:6px;}
 .btn:disabled{opacity:.45;cursor:not-allowed;}
 
@@ -56,7 +56,7 @@ textarea{resize:vertical;line-height:1.55;}
 .ph-num{width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.1);font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ph-tab.active .ph-num{background:rgba(255,255,255,.22);}
 
-/* ── Header right actions ── */
+/* ── Header actions ── */
 .hdr-actions{display:flex;gap:6px;align-items:center;flex-shrink:0;}
 .token-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:700;}
 .token-badge.ok{background:rgba(34,197,94,.12);color:#86efac;border:1px solid rgba(34,197,94,.25);}
@@ -70,8 +70,9 @@ textarea{resize:vertical;line-height:1.55;}
 /* ── Content ── */
 .wrap{padding:24px 28px;max-width:1400px;margin:0 auto;}
 
-/* ── Stats bar ── */
+/* ── Stats bars ── */
 .stats{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:20px;}
+.rev-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
 .sc{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:14px;text-align:center;}
 .sc .n{font-size:24px;font-weight:800;color:var(--purple);line-height:1;}
 .sc .l{font-size:9px;color:var(--gr);margin-top:4px;letter-spacing:.1em;text-transform:uppercase;}
@@ -79,8 +80,7 @@ textarea{resize:vertical;line-height:1.55;}
 /* ── Toolbar ── */
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
 .toolbar-l{display:flex;gap:8px;flex:1;flex-wrap:wrap;align-items:center;}
-.toolbar-l input{max-width:240px;}
-.toolbar-l select{max-width:130px;}
+.toolbar-l input{max-width:230px;} .toolbar-l select{max-width:130px;}
 
 /* ── Table ── */
 .tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--bd);}
@@ -89,6 +89,10 @@ textarea{resize:vertical;line-height:1.55;}
 .tbl td{padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:middle;}
 .tbl tr:last-child td{border-bottom:none;}
 .tbl tr:hover td{background:rgba(255,255,255,.015);}
+.tbl tr.dragging{opacity:.35;background:rgba(124,58,237,.08);}
+.tbl tr.drag-over td:first-child{border-right:3px solid var(--purple);}
+.drag-handle{cursor:grab;color:var(--gr);padding:0 6px;font-size:16px;user-select:none;}
+.drag-handle:hover{color:#fff;}
 .thumb{width:54px;height:36px;object-fit:cover;border-radius:6px;background:var(--bg3);display:block;}
 .cb{display:inline-block;padding:3px 9px;border-radius:20px;font-size:9px;font-weight:700;}
 .cSocial{background:rgba(124,58,237,.18);color:#a78bfa;}
@@ -98,18 +102,21 @@ textarea{resize:vertical;line-height:1.55;}
 .feat-badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:8px;font-weight:700;background:rgba(245,158,11,.15);color:#fcd34d;margin-inline-start:5px;}
 .acts{display:flex;gap:4px;flex-direction:row-reverse;}
 
-/* ── Review stats ── */
-.rev-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+/* ── Upload ── */
+.upload-row{display:flex;gap:8px;align-items:flex-start;margin-top:8px;}
+.upload-row input[type=file]{display:none;}
+.up-progress{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.25);border-radius:8px;padding:8px 12px;font-size:11px;color:#a78bfa;display:none;align-items:center;gap:8px;}
+.up-progress.on{display:flex;}
+.up-spinner{width:14px;height:14px;border:2px solid rgba(124,58,237,.3);border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* ── Review cards ── */
-.rev-adm{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px;transition:opacity .2s;}
+.rev-adm{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;transition:.2s;}
 .rev-adm.hidden-rev{opacity:.4;border-style:dashed;}
 .rev-adm-body{flex:1;min-width:0;}
 .rev-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
-.rev-name{font-size:13px;font-weight:700;}
-.rev-company{font-size:11px;color:var(--gr);}
-.rev-stars{color:#f59e0b;font-size:13px;}
-.rev-date{font-size:10px;color:var(--gr);margin-inline-start:auto;}
+.rev-name{font-size:13px;font-weight:700;} .rev-company{font-size:11px;color:var(--gr);}
+.rev-stars{color:#f59e0b;font-size:13px;} .rev-date{font-size:10px;color:var(--gr);margin-inline-start:auto;}
 .rev-text{font-size:12px;color:rgba(255,255,255,.6);line-height:1.65;}
 .rev-text-ar{font-size:12px;color:rgba(255,255,255,.35);line-height:1.65;margin-top:5px;}
 .rev-badge{font-size:9px;padding:2px 8px;border-radius:10px;background:rgba(239,68,68,.15);color:#fca5a5;font-weight:700;}
@@ -126,16 +133,20 @@ textarea{resize:vertical;line-height:1.55;}
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .stat-group{background:var(--bg3);border-radius:10px;padding:14px;}
 .stat-group-title{font-size:10px;color:var(--gr);margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
-
-/* ── Token status ── */
 .token-status{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:14px;}
 .token-status.ok{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#86efac;}
 .token-status.bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#fca5a5;}
+.char-count{font-size:10px;color:var(--gr);text-align:left;margin-top:3px;}
+.char-count.warn{color:#f59e0b;} .char-count.over{color:#ef4444;}
+
+/* ── Image preview ── */
+.img-preview{width:100%;height:130px;border-radius:8px;background:var(--bg3);border:1px dashed rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;margin-top:8px;overflow:hidden;font-size:11px;color:var(--gr);}
+.img-preview img{width:100%;height:100%;object-fit:cover;}
 
 /* ── Modal ── */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:500;align-items:center;justify-content:center;padding:20px;}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:500;align-items:center;justify-content:center;padding:20px;}
 .modal-bg.open{display:flex;}
-.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;width:100%;max-width:740px;max-height:92vh;overflow-y:auto;padding:30px;}
+.mbox{background:var(--bg2);border:1px solid var(--bd);border-radius:18px;width:100%;max-width:760px;max-height:92vh;overflow-y:auto;padding:30px;}
 .mbox h3{font-size:17px;font-weight:800;margin-bottom:20px;}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .fgrid .full{grid-column:1/-1;}
@@ -144,36 +155,37 @@ textarea{resize:vertical;line-height:1.55;}
 .ck-row label{margin:0;cursor:pointer;font-size:12px;color:#fff;text-transform:none;letter-spacing:0;}
 .mfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--bd);}
 
-/* ── Image preview ── */
-.img-preview{width:100%;height:140px;border-radius:8px;background:var(--bg3);border:1px dashed var(--bd);display:flex;align-items:center;justify-content:center;margin-top:8px;overflow:hidden;font-size:11px;color:var(--gr);}
-.img-preview img{width:100%;height:100%;object-fit:cover;}
-
 /* ── Star picker ── */
 .star-pick{display:flex;gap:4px;margin-top:6px;}
-.star-pick span{font-size:26px;cursor:pointer;color:#f59e0b;opacity:.2;transition:opacity .15s,transform .15s;user-select:none;line-height:1;}
-.star-pick span.on{opacity:1;}
-.star-pick span:hover{transform:scale(1.15);}
+.star-pick span{font-size:26px;cursor:pointer;color:#f59e0b;opacity:.2;transition:.15s;user-select:none;line-height:1;}
+.star-pick span.on{opacity:1;} .star-pick span:hover{transform:scale(1.15);}
+
+/* ── Preview modal ── */
+#prev-modal .prev-box{width:96vw;height:92vh;background:var(--bg2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--bd);}
+#prev-modal .prev-header{padding:12px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+#prev-frame{flex:1;border:none;width:100%;background:#fff;}
+.prev-device-btns{display:flex;gap:6px;}
+.prev-device-btn{padding:4px 10px;border-radius:6px;border:1px solid var(--bd);background:transparent;color:var(--gr);cursor:pointer;font-size:11px;transition:.2s;}
+.prev-device-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);}
 
 /* ── Toast ── */
 #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a30;border:1px solid rgba(124,58,237,.4);padding:11px 22px;border-radius:10px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:9999;white-space:nowrap;max-width:90vw;}
 #toast.on{opacity:1;}
 
-/* ── Divider ── */
+/* ── Misc ── */
 .divider{border:none;border-top:1px solid var(--bd);margin:20px 0;}
+.hint{font-size:10px;color:var(--gr);margin-top:4px;line-height:1.5;}
 
 /* ── Responsive ── */
-@media(max-width:1000px){
-  .stats{grid-template-columns:repeat(4,1fr);}
-  .rev-stats{grid-template-columns:repeat(2,1fr);}
-}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(4,1fr);}.rev-stats{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:700px){
   .stats{grid-template-columns:repeat(2,1fr);}
-  .fgrid{grid-template-columns:1fr;} .fgrid .full{grid-column:1;}
-  .set-grid{grid-template-columns:1fr;} .set-grid .full{grid-column:1;}
+  .fgrid{grid-template-columns:1fr;}.fgrid .full{grid-column:1;}
+  .set-grid{grid-template-columns:1fr;}.set-grid .full{grid-column:1;}
   .stat-grid{grid-template-columns:1fr;}
   .adm-header{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px;}
-  .wrap{padding:14px 16px;} .phase-tabs{max-width:100%;}
-  .token-badge span.lbl{display:none;}
+  .wrap{padding:14px 16px;}.phase-tabs{max-width:100%;}
+  .token-badge .lbl{display:none;}
 }
 </style>
 </head>
@@ -185,7 +197,6 @@ textarea{resize:vertical;line-height:1.55;}
     <div class="lbox-title">⚙ لوحة التحكم</div>
     <div class="lbox-sub">Ahmed Hassan Portfolio — Admin</div>
 
-    <!-- First-time setup -->
     <div id="setup" style="display:none">
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:12px 14px;margin-bottom:18px;font-size:12px;color:#fcd34d;line-height:1.6;">
         ⚠ إعداد أولي — يتم مرة واحدة فقط على هذا الجهاز
@@ -193,16 +204,15 @@ textarea{resize:vertical;line-height:1.55;}
       <div class="frow">
         <label>GitHub Personal Access Token (repo scope)</label>
         <input id="inp-token" type="password" placeholder="ghp_xxxxxxxxxxxxxx" autocomplete="off">
-        <div style="font-size:10px;color:var(--gr);margin-top:5px">اذهب إلى GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic)</div>
+        <div class="hint">GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → repo ✓</div>
       </div>
       <div class="frow">
-        <label>كلمة مرور الأدمن (ستُحفظ محلياً)</label>
+        <label>كلمة مرور الأدمن</label>
         <input id="inp-newpwd" type="password" placeholder="اختر كلمة مرور قوية"
                onkeydown="if(event.key==='Enter')doLogin()">
       </div>
     </div>
 
-    <!-- Normal login -->
     <div id="loginform">
       <div class="frow">
         <label>كلمة المرور</label>
@@ -224,27 +234,18 @@ textarea{resize:vertical;line-height:1.55;}
     <span class="adm-logo">⚙ Admin Panel</span>
 
     <div class="phase-tabs">
-      <button class="ph-tab active" id="ph1" onclick="setPhase(1)">
-        <span class="ph-num">١</span> المشاريع
-      </button>
-      <button class="ph-tab" id="ph2" onclick="setPhase(2)">
-        <span class="ph-num">٢</span> التقييمات
-      </button>
-      <button class="ph-tab" id="ph3" onclick="setPhase(3)">
-        <span class="ph-num">٣</span> الإعدادات
-      </button>
+      <button class="ph-tab active" id="ph1" onclick="setPhase(1)"><span class="ph-num">١</span> المشاريع</button>
+      <button class="ph-tab" id="ph2" onclick="setPhase(2)"><span class="ph-num">٢</span> التقييمات</button>
+      <button class="ph-tab" id="ph3" onclick="setPhase(3)"><span class="ph-num">٣</span> الإعدادات</button>
     </div>
 
     <div class="hdr-actions">
-      <span id="token-badge" class="token-badge missing" title="لا يوجد GitHub Token — لن تتمكن من النشر">
+      <span id="token-badge" class="token-badge missing" title="لا يوجد توكن — لن تتمكن من النشر أو رفع الصور">
         <span>⚠</span><span class="lbl">بدون توكن</span>
       </span>
-      <a href="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/" target="_blank"
-         class="btn sm btn-g" title="فتح الموقع">🌐</a>
+      <button class="btn sm btn-b" onclick="openPreview()" title="معاينة الموقع المنشور">🌐 معاينة</button>
       <div class="dot-wrap">
-        <button class="btn sm btn-gr" id="sbtn" onclick="pushToGitHub()">
-          💾 نشر على GitHub
-        </button>
+        <button class="btn sm btn-gr" id="sbtn" onclick="pushToGitHub()">💾 نشر على GitHub</button>
         <span id="dirty"></span>
       </div>
       <button class="btn sm btn-g" onclick="doLogout()">خروج</button>
@@ -253,7 +254,6 @@ textarea{resize:vertical;line-height:1.55;}
 
   <!-- ══ PHASE 1: PROJECTS ══ -->
   <div id="phase1" class="wrap">
-
     <div class="stats">
       <div class="sc"><div class="n" id="s0">—</div><div class="l">الكل</div></div>
       <div class="sc"><div class="n" id="s1">—</div><div class="l">📱 Social</div></div>
@@ -266,7 +266,7 @@ textarea{resize:vertical;line-height:1.55;}
 
     <div class="toolbar">
       <div class="toolbar-l">
-        <input id="srch" type="text" placeholder="🔍 بحث بالاسم أو السنة..." oninput="renderTable()">
+        <input id="srch" type="text" placeholder="🔍 بحث..." oninput="renderTable()">
         <select id="flt" onchange="renderTable()">
           <option value="">كل الفئات</option>
           <option value="Social">📱 Social</option>
@@ -275,9 +275,9 @@ textarea{resize:vertical;line-height:1.55;}
         </select>
         <select id="flt2" onchange="renderTable()">
           <option value="">كل المشاريع</option>
-          <option value="featured">⭐ المميزة فقط</option>
-          <option value="saudi">🇸🇦 السعودية</option>
-          <option value="uae">🇦🇪 الإمارات</option>
+          <option value="featured">⭐ مميزة فقط</option>
+          <option value="saudi">🇸🇦 سعودي</option>
+          <option value="uae">🇦🇪 إماراتي</option>
         </select>
       </div>
       <button class="btn sm btn-p" onclick="openAdd()">＋ مشروع جديد</button>
@@ -286,29 +286,29 @@ textarea{resize:vertical;line-height:1.55;}
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr>
+          <th style="width:30px"></th>
           <th style="width:40px">#</th>
-          <th style="width:70px">صورة</th>
+          <th style="width:68px">صورة</th>
           <th>الاسم EN / AR</th>
           <th style="width:90px">فئة</th>
-          <th style="width:60px">سنة</th>
-          <th style="width:60px">🌍</th>
-          <th style="width:170px">إجراءات</th>
+          <th style="width:55px">سنة</th>
+          <th style="width:55px">🌍</th>
+          <th style="width:165px">إجراءات</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
+    <div style="font-size:10px;color:var(--gr);margin-top:8px;padding-right:4px">💡 اسحب ☰ لإعادة ترتيب المشاريع</div>
   </div>
 
   <!-- ══ PHASE 2: REVIEWS ══ -->
   <div id="phase2" class="wrap" style="display:none">
-
     <div class="rev-stats">
       <div class="sc"><div class="n" id="rs0">—</div><div class="l">إجمالي</div></div>
       <div class="sc"><div class="n" id="rs1">—</div><div class="l">👁 ظاهر</div></div>
       <div class="sc"><div class="n" id="rs2">—</div><div class="l">🙈 مخفي</div></div>
       <div class="sc"><div class="n" id="rs3">—</div><div class="l">★ متوسط</div></div>
     </div>
-
     <div class="toolbar">
       <div class="toolbar-l">
         <span style="font-size:15px;font-weight:700">⭐ التقييمات</span>
@@ -316,20 +316,19 @@ textarea{resize:vertical;line-height:1.55;}
           <option value="">كل التقييمات</option>
           <option value="5">★★★★★ فقط</option>
           <option value="4">★★★★ فأكثر</option>
-          <option value="hidden">المخفية فقط</option>
           <option value="visible">الظاهرة فقط</option>
+          <option value="hidden">المخفية فقط</option>
         </select>
       </div>
       <button class="btn sm btn-p" onclick="openRevAdd(-1)">＋ تقييم جديد</button>
     </div>
-
     <div id="rev-list" style="display:flex;flex-direction:column;gap:10px"></div>
   </div>
 
   <!-- ══ PHASE 3: SETTINGS ══ -->
   <div id="phase3" class="wrap" style="display:none">
 
-    <!-- الهوية الشخصية -->
+    <!-- الهوية -->
     <div class="set-card">
       <div class="set-card-title">
         <h3>👤 الهوية الشخصية</h3>
@@ -337,55 +336,35 @@ textarea{resize:vertical;line-height:1.55;}
       </div>
       <p>الاسم والبايو والأدوار والصورة الشخصية الظاهرة في الهيرو</p>
       <div class="set-grid">
-        <div class="frow">
-          <label>الاسم AR — السطر الأول</label>
-          <input id="cfg-name-ar1" placeholder="أحمد">
-        </div>
-        <div class="frow">
-          <label>الاسم AR — السطر الثاني</label>
-          <input id="cfg-name-ar2" placeholder="حسن بهاء">
-        </div>
-        <div class="frow">
-          <label>الاسم EN — السطر الأول</label>
-          <input id="cfg-name-en1" placeholder="AHMED">
-        </div>
-        <div class="frow">
-          <label>الاسم EN — السطر الثاني</label>
-          <input id="cfg-name-en2" placeholder="HASSAN BAHAA">
-        </div>
+        <div class="frow"><label>الاسم AR — السطر الأول</label><input id="cfg-name-ar1" placeholder="أحمد"></div>
+        <div class="frow"><label>الاسم AR — السطر الثاني</label><input id="cfg-name-ar2" placeholder="حسن بهاء"></div>
+        <div class="frow"><label>الاسم EN — السطر الأول</label><input id="cfg-name-en1" placeholder="AHMED"></div>
+        <div class="frow"><label>الاسم EN — السطر الثاني</label><input id="cfg-name-en2" placeholder="HASSAN BAHAA"></div>
         <div class="frow full">
           <label>البايو (AR)</label>
-          <textarea id="cfg-bio-ar" rows="3" dir="rtl"></textarea>
+          <textarea id="cfg-bio-ar" rows="3" dir="rtl" oninput="countChars(this,'cc-bio-ar',160)"></textarea>
+          <div class="char-count" id="cc-bio-ar">0 / 160</div>
         </div>
         <div class="frow full">
           <label>البايو (EN)</label>
-          <textarea id="cfg-bio-en" rows="3"></textarea>
+          <textarea id="cfg-bio-en" rows="3" oninput="countChars(this,'cc-bio-en',160)"></textarea>
+          <div class="char-count" id="cc-bio-en">0 / 160</div>
         </div>
-        <div class="frow">
-          <label>الأدوار (AR) — كل دور في سطر</label>
-          <textarea id="cfg-roles-ar" rows="4" dir="rtl"
-            placeholder="مصمم جرافيك&#10;مصمم هوية بصرية&#10;مصمم سوشيال ميديا&#10;متخصص ذكاء اصطناعي"></textarea>
-        </div>
-        <div class="frow">
-          <label>الأدوار (EN) — كل دور في سطر</label>
-          <textarea id="cfg-roles-en" rows="4"
-            placeholder="Graphic Designer&#10;Visual Identity Designer&#10;Social Media Designer&#10;AI Design Specialist"></textarea>
-        </div>
-        <div class="frow">
-          <label>الموقع (AR)</label>
-          <input id="cfg-loc-ar" placeholder="القاهرة، مصر" dir="rtl">
-        </div>
-        <div class="frow">
-          <label>الموقع (EN)</label>
-          <input id="cfg-loc-en" placeholder="Cairo, Egypt">
-        </div>
+        <div class="frow"><label>الأدوار (AR) — كل دور في سطر</label><textarea id="cfg-roles-ar" rows="4" dir="rtl" placeholder="مصمم جرافيك&#10;مصمم هوية بصرية&#10;مصمم سوشيال ميديا&#10;متخصص ذكاء اصطناعي"></textarea></div>
+        <div class="frow"><label>الأدوار (EN) — كل دور في سطر</label><textarea id="cfg-roles-en" rows="4" placeholder="Graphic Designer&#10;Visual Identity Designer&#10;Social Media Designer&#10;AI Design Specialist"></textarea></div>
+        <div class="frow"><label>الموقع (AR)</label><input id="cfg-loc-ar" placeholder="القاهرة، مصر" dir="rtl"></div>
+        <div class="frow"><label>الموقع (EN)</label><input id="cfg-loc-en" placeholder="Cairo, Egypt"></div>
         <div class="frow full">
-          <label>مسار صورة الهيرو</label>
-          <input id="cfg-hero-photo" placeholder="assets/ahmed-hassan-photo.png"
-                 oninput="updateHeroPreview()">
-          <div id="hero-preview" class="img-preview" style="height:100px">
-            <span>لا توجد صورة</span>
+          <label>صورة الهيرو (مسار الصورة)</label>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <input id="cfg-hero-photo" placeholder="assets/ahmed-hassan-photo.png" oninput="updateHeroPreview()" style="flex:1">
+            <label class="btn sm btn-b" style="cursor:pointer;flex-shrink:0">
+              📎 رفع صورة
+              <input type="file" accept="image/*" onchange="handleHeroUpload(this)" style="display:none">
+            </label>
           </div>
+          <div id="hero-preview" class="img-preview" style="height:110px;margin-top:8px"><span>أدخل مسار الصورة</span></div>
+          <div id="hero-up-progress" class="up-progress"><div class="up-spinner"></div><span id="hero-up-text">جاري الرفع...</span></div>
         </div>
         <div class="full" style="padding:4px 0">
           <div class="ck-row">
@@ -425,7 +404,7 @@ textarea{resize:vertical;line-height:1.55;}
       </div>
     </div>
 
-    <!-- بيانات التواصل -->
+    <!-- التواصل -->
     <div class="set-card">
       <div class="set-card-title">
         <h3>📬 بيانات التواصل</h3>
@@ -433,68 +412,72 @@ textarea{resize:vertical;line-height:1.55;}
       </div>
       <p>جميع روابط التواصل والسوشيال ميديا الظاهرة على الموقع</p>
       <div class="set-grid">
-        <div class="frow">
-          <label>البريد الإلكتروني</label>
-          <input id="cfg-email" type="email" placeholder="email@gmail.com">
+        <div class="frow"><label>البريد الإلكتروني</label><input id="cfg-email" type="email" placeholder="email@gmail.com"></div>
+        <div class="frow"><label>واتساب (رقم كامل + كود دولي)</label><input id="cfg-whatsapp" placeholder="201550917070"></div>
+        <div class="frow"><label>رابط انستقرام</label><input id="cfg-instagram" placeholder="https://www.instagram.com/..."></div>
+        <div class="frow"><label>رابط فيسبوك</label><input id="cfg-facebook" placeholder="https://www.facebook.com/..."></div>
+        <div class="frow"><label>رابط Behance</label><input id="cfg-behance" placeholder="https://www.behance.net/..."></div>
+        <div class="frow"><label>رابط LinkedIn (اختياري)</label><input id="cfg-linkedin" placeholder="https://www.linkedin.com/in/..."></div>
+        <div class="frow"><label>رابط TikTok (اختياري)</label><input id="cfg-tiktok" placeholder="https://www.tiktok.com/@..."></div>
+        <div class="frow"><label>رابط YouTube (اختياري)</label><input id="cfg-youtube" placeholder="https://www.youtube.com/@..."></div>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div class="set-card">
+      <div class="set-card-title">
+        <h3>🔍 SEO وتحسين البحث</h3>
+        <button class="btn sm btn-p" onclick="saveConfig()">حفظ التغييرات</button>
+      </div>
+      <p>عنوان الصفحة والوصف وصورة المشاركة على السوشيال ميديا (Open Graph)</p>
+      <div class="set-grid">
+        <div class="frow full">
+          <label>عنوان الصفحة (Page Title)</label>
+          <input id="cfg-seo-title" placeholder="Ahmed Hassan Bahaa — Graphic Designer"
+                 oninput="countChars(this,'cc-seo-title',60)">
+          <div class="char-count" id="cc-seo-title">0 / 60</div>
         </div>
-        <div class="frow">
-          <label>واتساب (الرقم الكامل + الكود الدولي)</label>
-          <input id="cfg-whatsapp" placeholder="201550917070">
+        <div class="frow full">
+          <label>وصف الصفحة (Meta Description)</label>
+          <textarea id="cfg-seo-desc" rows="2"
+                    placeholder="مصمم جرافيك مصري متخصص في الهوية البصرية وسوشيال ميديا والمطبوعات..."
+                    oninput="countChars(this,'cc-seo-desc',160)"></textarea>
+          <div class="char-count" id="cc-seo-desc">0 / 160</div>
         </div>
-        <div class="frow">
-          <label>رابط انستقرام</label>
-          <input id="cfg-instagram" placeholder="https://www.instagram.com/...">
-        </div>
-        <div class="frow">
-          <label>رابط فيسبوك</label>
-          <input id="cfg-facebook" placeholder="https://www.facebook.com/...">
-        </div>
-        <div class="frow">
-          <label>رابط Behance</label>
-          <input id="cfg-behance" placeholder="https://www.behance.net/...">
-        </div>
-        <div class="frow">
-          <label>رابط LinkedIn (اختياري)</label>
-          <input id="cfg-linkedin" placeholder="https://www.linkedin.com/in/...">
-        </div>
-        <div class="frow">
-          <label>رابط TikTok (اختياري)</label>
-          <input id="cfg-tiktok" placeholder="https://www.tiktok.com/@...">
-        </div>
-        <div class="frow">
-          <label>رابط YouTube (اختياري)</label>
-          <input id="cfg-youtube" placeholder="https://www.youtube.com/@...">
+        <div class="frow full">
+          <label>صورة المشاركة OG Image (رابط كامل أو مسار محلي)</label>
+          <div style="display:flex;gap:8px">
+            <input id="cfg-seo-ogimage" placeholder="https://...jpg أو assets/og-image.jpg" oninput="updateOgPreview()" style="flex:1">
+            <label class="btn sm btn-b" style="cursor:pointer;flex-shrink:0">
+              📎 رفع
+              <input type="file" accept="image/*" onchange="handleOgUpload(this)" style="display:none">
+            </label>
+          </div>
+          <div id="og-preview" class="img-preview" style="height:100px;margin-top:8px;aspect-ratio:1200/628"><span>1200×628 مثالية للمشاركة</span></div>
         </div>
       </div>
     </div>
 
     <!-- الأمان -->
     <div class="set-card">
-      <div class="set-card-title">
-        <h3>🔐 الأمان</h3>
-      </div>
+      <div class="set-card-title"><h3>🔐 الأمان</h3></div>
       <p>كلمة المرور والتوكن محفوظان محلياً على هذا الجهاز فقط ولا يُرسلان لأي خادم</p>
-
       <div id="token-status-card" class="token-status bad">
         <span id="token-status-icon">❌</span>
-        <span id="token-status-text">لا يوجد GitHub Token — لن تتمكن من النشر</span>
+        <span id="token-status-text">لا يوجد GitHub Token — أدخله أدناه للنشر ورفع الصور</span>
       </div>
-
       <div class="set-row" style="margin-bottom:18px">
         <div class="frow">
           <label>GitHub Token جديد (repo scope)</label>
           <input id="set-token" type="password" placeholder="ghp_xxxxxxxxxxxxxx" autocomplete="off">
-          <div style="font-size:10px;color:var(--gr);margin-top:5px">
-            GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → repo ✓
-          </div>
+          <div class="hint">GitHub → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → ✓ repo</div>
         </div>
         <button class="btn btn-p sm" onclick="changeToken()" style="flex-shrink:0">حفظ</button>
       </div>
-
       <div class="set-row">
         <div class="frow">
-          <label>كلمة مرور جديدة للأدمن</label>
-          <input id="set-pwd" type="password" placeholder="اكتب كلمة مرور جديدة">
+          <label>كلمة مرور جديدة (6 أحرف على الأقل)</label>
+          <input id="set-pwd" type="password" placeholder="••••••••">
         </div>
         <button class="btn btn-p sm" onclick="changePwd()" style="flex-shrink:0">حفظ</button>
       </div>
@@ -502,9 +485,7 @@ textarea{resize:vertical;line-height:1.55;}
 
     <!-- النسخ الاحتياطي -->
     <div class="set-card">
-      <div class="set-card-title">
-        <h3>💾 النسخ الاحتياطي</h3>
-      </div>
+      <div class="set-card-title"><h3>💾 النسخ الاحتياطي</h3></div>
       <p>تصدير واستيراد كل بيانات الموقع دفعة واحدة (مشاريع + تقييمات + إعدادات)</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn sm btn-b" onclick="exportBackup()">📥 تصدير نسخة احتياطية</button>
@@ -519,23 +500,18 @@ textarea{resize:vertical;line-height:1.55;}
 
     <!-- نشر سريع -->
     <div class="set-card" style="border-color:rgba(124,58,237,.3)">
-      <div class="set-card-title">
-        <h3>🚀 نشر على الموقع</h3>
-      </div>
+      <div class="set-card-title"><h3>🚀 نشر على الموقع</h3></div>
       <p>بعد حفظ التغييرات، اضغط النشر لتطبيقها مباشرة على الموقع (GitHub Pages)</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
         <button class="btn btn-p" onclick="pushToGitHub()">💾 نشر الآن على GitHub</button>
-        <a href="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/" target="_blank"
-           class="btn btn-g">🌐 فتح الموقع</a>
+        <button class="btn btn-b" onclick="openPreview()">🌐 معاينة الموقع</button>
       </div>
     </div>
 
     <!-- Danger zone -->
     <div class="set-card" style="border-color:rgba(239,68,68,.3)">
-      <div class="set-card-title">
-        <h3 style="color:#fca5a5">⚠ منطقة الخطر</h3>
-      </div>
-      <p>مسح بيانات تسجيل الدخول من هذا الجهاز — ستحتاج إعداد جديد بتوكن وكلمة مرور</p>
+      <div class="set-card-title"><h3 style="color:#fca5a5">⚠ منطقة الخطر</h3></div>
+      <p>مسح بيانات تسجيل الدخول من هذا الجهاز — ستحتاج إعداد جديد</p>
       <button class="btn sm btn-r" onclick="clearLocalData()">🗑 مسح البيانات المحلية وتسجيل الخروج</button>
     </div>
 
@@ -557,23 +533,43 @@ textarea{resize:vertical;line-height:1.55;}
           <option value="Branding">✦ Branding</option>
         </select>
       </div>
-      <div class="frow"><label>السنة</label><input id="f3" type="number" placeholder="2025" min="2015" max="2030"></div>
+      <div class="frow"><label>السنة</label><input id="f3" type="number" placeholder="2025" min="2015" max="2035"></div>
+
+      <!-- Cover image -->
       <div class="frow full">
-        <label>مسار الصورة الرئيسية (Thumbnail)</label>
-        <input id="f4" placeholder="assets/projects/p1/Thumbnail.png" oninput="updateThumbPreview()">
+        <label>صورة الغلاف الرئيسية (Thumbnail)</label>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <input id="f4" placeholder="assets/projects/p1/Thumbnail.png" oninput="updateThumbPreview()" style="flex:1">
+          <label class="btn sm btn-b" style="cursor:pointer;flex-shrink:0">
+            📎 رفع
+            <input type="file" accept="image/*" onchange="handleCoverUpload(this)" style="display:none">
+          </label>
+        </div>
         <div id="thumb-preview" class="img-preview"><span>أدخل مسار الصورة لرؤية المعاينة</span></div>
+        <div id="cover-up-progress" class="up-progress"><div class="up-spinner"></div><span id="cover-up-text">جاري الرفع...</span></div>
       </div>
+
+      <!-- Gallery images -->
       <div class="frow full">
-        <label>قائمة الصور — كل مسار في سطر منفصل</label>
-        <textarea id="f5" rows="5" placeholder="assets/projects/p1/img_01.png&#10;assets/projects/p1/img_02.png&#10;assets/projects/p1/img_03.png"></textarea>
+        <label>قائمة صور الجاليري — كل مسار في سطر</label>
+        <textarea id="f5" rows="5" placeholder="assets/projects/p1/img_01.png&#10;assets/projects/p1/img_02.png"></textarea>
+        <div class="upload-row">
+          <label class="btn sm btn-b" style="cursor:pointer">
+            📎 رفع صور متعددة للجاليري
+            <input type="file" accept="image/*" multiple onchange="handleGalleryUpload(this)" style="display:none">
+          </label>
+          <span style="font-size:10px;color:var(--gr);padding-top:8px">يمكنك اختيار عدة صور دفعة واحدة</span>
+        </div>
+        <div id="gallery-up-progress" class="up-progress"><div class="up-spinner"></div><span id="gallery-up-text">جاري الرفع...</span></div>
       </div>
-      <div class="frow full"><label>الوصف (EN)</label><textarea id="f6" rows="3" placeholder="Brief description of the project in English..."></textarea></div>
+
+      <div class="frow full"><label>الوصف (EN)</label><textarea id="f6" rows="3" placeholder="Brief description of the project..."></textarea></div>
       <div class="frow full"><label>الوصف (AR)</label><textarea id="f7" rows="3" dir="rtl" placeholder="وصف مختصر للمشروع بالعربية..."></textarea></div>
       <div class="frow"><label>Tags EN — مفصولة بفاصلة</label><input id="f8" placeholder="Social Media, Egypt, Brand"></div>
-      <div class="frow"><label>Tags AR — مفصولة بفاصلة</label><input id="f9" placeholder="سوشيال ميديا, مصر, براند" dir="rtl"></div>
+      <div class="frow"><label>Tags AR — مفصولة بفاصلة</label><input id="f9" placeholder="سوشيال, مصر, براند" dir="rtl"></div>
       <div class="frow"><label>رابط Behance (اختياري)</label><input id="f10" placeholder="https://www.behance.net/gallery/..."></div>
       <div class="frow"><label>خلفية CSS (اختياري)</label><input id="f12" placeholder="linear-gradient(135deg,#07051c,#100a30)"></div>
-      <div class="full" style="display:flex;gap:28px;padding:8px 0;flex-wrap:wrap">
+      <div class="full" style="display:flex;gap:24px;padding:8px 0;flex-wrap:wrap">
         <div class="ck-row"><input type="checkbox" id="f11"><label for="f11">سعودي 🇸🇦</label></div>
         <div class="ck-row"><input type="checkbox" id="f13"><label for="f13">إماراتي 🇦🇪</label></div>
         <div class="ck-row"><input type="checkbox" id="f14"><label for="f14">⭐ مميز (يظهر أولاً في الفلتر)</label></div>
@@ -600,12 +596,37 @@ textarea{resize:vertical;line-height:1.55;}
         <span onclick="setStar(5)">★</span>
       </div>
     </div>
-    <div class="frow"><label>نص التقييم (EN)</label><textarea id="rv-text" rows="3" placeholder="Write review in English..."></textarea></div>
-    <div class="frow"><label>نص التقييم (AR)</label><textarea id="rv-textAr" rows="3" placeholder="اكتب التقييم بالعربية..." dir="rtl"></textarea></div>
-    <div class="frow"><label>تاريخ التقييم</label><input id="rv-date" placeholder="يناير 2025"></div>
+    <div class="frow"><label>نص التقييم (EN)</label><textarea id="rv-text" rows="3" placeholder="Review in English..."></textarea></div>
+    <div class="frow"><label>نص التقييم (AR)</label><textarea id="rv-textAr" rows="3" placeholder="التقييم بالعربية..." dir="rtl"></textarea></div>
+    <div class="frow"><label>التاريخ</label><input id="rv-date" placeholder="يناير 2025"></div>
     <div class="mfoot">
       <button class="btn btn-g" onclick="closeRevM()">إلغاء</button>
       <button class="btn btn-p" onclick="saveRev()">💾 حفظ التقييم</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PREVIEW MODAL ══════════════════════ -->
+<div class="modal-bg" id="prev-modal" onclick="if(event.target.id==='prev-modal')closePreview()">
+  <div class="prev-box">
+    <div class="prev-header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:13px;font-weight:700">🌐 معاينة الموقع</span>
+        <span style="font-size:10px;color:var(--gr)">النسخة المنشورة على GitHub Pages</span>
+        <div class="prev-device-btns">
+          <button class="prev-device-btn active" onclick="setPreviewWidth('100%',this)">🖥 كمبيوتر</button>
+          <button class="prev-device-btn" onclick="setPreviewWidth('768px',this)">📱 تابلت</button>
+          <button class="prev-device-btn" onclick="setPreviewWidth('390px',this)">📱 موبايل</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn sm btn-g" onclick="reloadPreview()" title="تحديث">🔄</button>
+        <a href="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/" target="_blank" class="btn sm btn-g">↗ فتح في تاب جديد</a>
+        <button class="btn sm btn-r" onclick="closePreview()">✕ إغلاق</button>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#111;overflow:hidden;">
+      <iframe id="prev-frame" src="" style="height:100%;border:none;transition:width .3s;background:#fff" width="100%"></iframe>
     </div>
   </div>
 </div>
@@ -620,12 +641,14 @@ const REPO     = 'graphicdesiner04-ctrl/ahmed-hassan-portfolio';
 const FILE     = 'projects.js';
 const REV_FILE = 'reviews.json';
 const CFG_FILE = 'config.js';
+const UPLOADS_PATH = 'assets/projects/uploads';
 
 let PROJECTS = [], fileSha  = '';
 let REVIEWS  = [], revSha   = '';
 let CFG_OBJ  = {}, cfgSha   = '';
 let editIdx  = -1, revEditIdx = -1;
 let starVal  = 5,  dirty = false;
+let dragSrcIdx = -1;
 
 const F = id => document.getElementById(id);
 
@@ -638,106 +661,177 @@ async function h256(s){
 }
 
 function toast(msg, ms=3500){
-  const t = F('toast');
-  t.textContent = msg;
-  t.classList.add('on');
-  clearTimeout(t._t);
-  t._t = setTimeout(()=>t.classList.remove('on'), ms);
+  const t=F('toast'); t.textContent=msg; t.classList.add('on');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),ms);
 }
 
 function markDirty(){ dirty=true;  F('dirty').classList.add('on'); }
 function clearDirty(){ dirty=false; F('dirty').classList.remove('on'); }
 
+function countChars(el, counterId, max){
+  const n=el.value.length;
+  const cc=F(counterId);
+  if(!cc) return;
+  cc.textContent=`${n} / ${max}`;
+  cc.className='char-count'+(n>max?' over':n>max*.85?' warn':'');
+}
+
 function updateTokenBadge(){
-  const token = localStorage.getItem('adm_token');
-  const ok = token && token !== 'null' && token.startsWith('ghp');
-  // Header badge
-  const badge = F('token-badge');
-  if(ok){
-    badge.className='token-badge ok';
-    badge.innerHTML='<span>✅</span><span class="lbl">توكن موجود</span>';
-  } else {
-    badge.className='token-badge missing';
-    badge.innerHTML='<span>⚠</span><span class="lbl">بدون توكن</span>';
+  const token=localStorage.getItem('adm_token');
+  const ok=token&&token!=='null'&&token.startsWith('ghp');
+  const badge=F('token-badge');
+  if(ok){ badge.className='token-badge ok'; badge.innerHTML='<span>✅</span><span class="lbl">توكن موجود</span>'; }
+  else  { badge.className='token-badge missing'; badge.innerHTML='<span>⚠</span><span class="lbl">بدون توكن</span>'; }
+  const card=F('token-status-card');
+  if(!card) return;
+  if(ok){ card.className='token-status ok'; F('token-status-icon').textContent='✅'; F('token-status-text').textContent='GitHub Token موجود — يمكنك النشر ورفع الصور'; }
+  else  { card.className='token-status bad'; F('token-status-icon').textContent='❌'; F('token-status-text').textContent='لا يوجد GitHub Token — أدخله أدناه للنشر ورفع الصور'; }
+}
+
+/* ═══════════════════════════════════════════════════
+   IMAGE UPLOAD TO GITHUB
+═══════════════════════════════════════════════════ */
+async function uploadFile(file, targetPath, progressId, textId){
+  const token=localStorage.getItem('adm_token');
+  if(!token||token==='null'||!token.startsWith('ghp')){
+    toast('❌ لا يوجد توكن GitHub — اذهب للإعدادات وأدخله أولاً');
+    return null;
   }
-  // Security card status
-  const card = F('token-status-card');
-  if(card){
-    if(ok){
-      card.className='token-status ok';
-      F('token-status-icon').textContent='✅';
-      F('token-status-text').textContent='GitHub Token موجود — يمكنك النشر';
-    } else {
-      card.className='token-status bad';
-      F('token-status-icon').textContent='❌';
-      F('token-status-text').textContent='لا يوجد GitHub Token — أدخله أدناه للتمكن من النشر';
-    }
+  if(progressId){ const p=F(progressId); if(p){p.classList.add('on'); F(textId).textContent=`جاري رفع ${file.name}...`;} }
+  try {
+    // Read as base64
+    const base64=await new Promise((res,rej)=>{
+      const rd=new FileReader();
+      rd.onload=e=>res(e.target.result.split(',')[1]);
+      rd.onerror=rej;
+      rd.readAsDataURL(file);
+    });
+    // Check if exists (get SHA for update)
+    let sha;
+    try{
+      const ck=await fetch(`https://api.github.com/repos/${REPO}/contents/${targetPath}`,{headers:{Authorization:`token ${token}`}});
+      if(ck.ok){ const d=await ck.json(); sha=d.sha; }
+    }catch(e){}
+    // Upload
+    const body={message:`Upload: ${file.name}`, content:base64};
+    if(sha) body.sha=sha;
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${targetPath}`,{
+      method:'PUT',
+      headers:{Authorization:`token ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    const d=await r.json();
+    if(progressId){ const p=F(progressId); if(p) p.classList.remove('on'); }
+    if(d.content){ toast('✅ تم رفع: '+file.name); return targetPath; }
+    else{ toast('❌ فشل الرفع: '+(d.message||'خطأ')); return null; }
+  }catch(e){
+    if(progressId){ const p=F(progressId); if(p) p.classList.remove('on'); }
+    toast('❌ '+e.message); return null;
   }
+}
+
+function safeName(file){
+  return file.name.replace(/[^a-zA-Z0-9._-]/g,'_').toLowerCase();
+}
+
+async function handleCoverUpload(input){
+  const file=input.files[0]; if(!file) return;
+  const path=`${UPLOADS_PATH}/${Date.now()}_${safeName(file)}`;
+  const uploaded=await uploadFile(file,path,'cover-up-progress','cover-up-text');
+  if(uploaded){ F('f4').value=uploaded; updateThumbPreview(); }
+  input.value='';
+}
+
+async function handleGalleryUpload(input){
+  const files=Array.from(input.files); if(!files.length) return;
+  F('gallery-up-progress').classList.add('on');
+  F('gallery-up-text').textContent=`جاري رفع ${files.length} صورة...`;
+  const paths=[];
+  for(let i=0;i<files.length;i++){
+    const file=files[i];
+    F('gallery-up-text').textContent=`رفع ${i+1}/${files.length}: ${file.name}`;
+    const path=`${UPLOADS_PATH}/${Date.now()}_${safeName(file)}`;
+    const token=localStorage.getItem('adm_token');
+    if(!token||token==='null'||!token.startsWith('ghp')){ toast('❌ لا يوجد توكن'); break; }
+    try{
+      const base64=await new Promise((res,rej)=>{const rd=new FileReader();rd.onload=e=>res(e.target.result.split(',')[1]);rd.onerror=rej;rd.readAsDataURL(file);});
+      const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{
+        method:'PUT', headers:{Authorization:`token ${token}`,'Content-Type':'application/json'},
+        body:JSON.stringify({message:`Upload: ${file.name}`, content:base64})
+      });
+      const d=await r.json();
+      if(d.content) paths.push(path);
+    }catch(e){ toast('❌ '+e.message); }
+  }
+  F('gallery-up-progress').classList.remove('on');
+  if(paths.length){
+    const existing=F('f5').value.trim();
+    F('f5').value=(existing?existing+'\n':'')+paths.join('\n');
+    toast(`✅ تم رفع ${paths.length} صورة بنجاح`);
+  }
+  input.value='';
+}
+
+async function handleHeroUpload(input){
+  const file=input.files[0]; if(!file) return;
+  const path=`assets/${Date.now()}_${safeName(file)}`;
+  const uploaded=await uploadFile(file,path,'hero-up-progress','hero-up-text');
+  if(uploaded){ F('cfg-hero-photo').value=uploaded; updateHeroPreview(); }
+  input.value='';
+}
+
+async function handleOgUpload(input){
+  const file=input.files[0]; if(!file) return;
+  const path=`assets/og-${Date.now()}.${file.name.split('.').pop()}`;
+  const uploaded=await uploadFile(file,path,null,null);
+  if(uploaded){ F('cfg-seo-ogimage').value=uploaded; updateOgPreview(); }
+  input.value='';
 }
 
 /* ═══════════════════════════════════════════════════
    AUTH
 ═══════════════════════════════════════════════════ */
-window.onload = ()=>{
-  if(!localStorage.getItem('adm_hash')){
-    F('setup').style.display='block';
-    F('loginform').style.display='none';
-  }
+window.onload=()=>{
+  if(!localStorage.getItem('adm_hash')){ F('setup').style.display='block'; F('loginform').style.display='none'; }
   setStar(5);
 };
 
-window.onbeforeunload = (e)=>{
-  if(dirty){
-    e.preventDefault();
-    return 'لديك تغييرات غير منشورة. هل تريد المغادرة؟';
-  }
-};
+window.onbeforeunload=(e)=>{ if(dirty){ e.preventDefault(); return 'لديك تغييرات غير منشورة.'; } };
 
 async function doLogin(){
-  const stored = localStorage.getItem('adm_hash');
+  const stored=localStorage.getItem('adm_hash');
   if(!stored){
-    const token = F('inp-token').value.trim();
-    const pwd   = F('inp-newpwd').value;
+    const token=F('inp-token').value.trim(), pwd=F('inp-newpwd').value;
     if(!token||!pwd){ toast('⚠ أدخل التوكن وكلمة المرور'); return; }
-    localStorage.setItem('adm_token', token);
-    localStorage.setItem('adm_hash',  await h256(pwd));
+    localStorage.setItem('adm_token',token);
+    localStorage.setItem('adm_hash',await h256(pwd));
     startDash();
   } else {
-    if(await h256(F('inp-pwd').value) !== stored){
-      F('lerr').style.display='block'; return;
-    }
-    F('lerr').style.display='none';
-    startDash();
+    if(await h256(F('inp-pwd').value)!==stored){ F('lerr').style.display='block'; return; }
+    F('lerr').style.display='none'; startDash();
   }
 }
 
 async function startDash(){
-  F('login').style.display='none';
-  F('dash').style.display='block';
+  F('login').style.display='none'; F('dash').style.display='block';
   updateTokenBadge();
   toast('⏳ جاري تحميل البيانات...');
-  await Promise.all([fetchProjects(), fetchReviews(), fetchConfig()]);
-  renderStats(); renderTable(); renderRevStats(); renderRevList(); populateConfigForm();
-  updateLastPush();
+  await Promise.all([fetchProjects(),fetchReviews(),fetchConfig()]);
+  renderStats(); renderTable(); renderRevStats(); renderRevList(); populateConfigForm(); updateLastPush();
   toast('✅ جاهز — '+PROJECTS.length+' مشروع، '+REVIEWS.length+' تقييم');
 }
 
 function doLogout(){
-  if(dirty && !confirm('لديك تغييرات غير منشورة. هل تريد الخروج بدون نشر؟')) return;
-  F('dash').style.display='none';
-  F('login').style.display='flex';
-  F('inp-pwd').value='';
-  PROJECTS=[]; REVIEWS=[]; CFG_OBJ={}; dirty=false;
+  if(dirty&&!confirm('لديك تغييرات غير منشورة. تريد الخروج بدون نشر؟')) return;
+  F('dash').style.display='none'; F('login').style.display='flex';
+  F('inp-pwd').value=''; PROJECTS=[]; REVIEWS=[]; CFG_OBJ={}; dirty=false;
 }
 
 /* ═══════════════════════════════════════════════════
    PHASE SWITCHER
 ═══════════════════════════════════════════════════ */
 function setPhase(n){
-  [1,2,3].forEach(i=>{
-    F('phase'+i).style.display = i===n?'block':'none';
-    F('ph'+i).classList.toggle('active', i===n);
-  });
+  [1,2,3].forEach(i=>{ F('phase'+i).style.display=i===n?'block':'none'; F('ph'+i).classList.toggle('active',i===n); });
   if(n===2){ renderRevStats(); renderRevList(); }
   if(n===3){ updateTokenBadge(); updateLastPush(); }
 }
@@ -746,18 +840,16 @@ function setPhase(n){
    PHASE 1 — PROJECTS
 ═══════════════════════════════════════════════════ */
 async function fetchProjects(){
-  const token = localStorage.getItem('adm_token');
-  const headers = {};
-  if(token && token !== 'null') headers.Authorization = `token ${token}`;
-  try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{ headers });
-    const d = await r.json();
+  const token=localStorage.getItem('adm_token');
+  const headers={}; if(token&&token!=='null') headers.Authorization=`token ${token}`;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{headers});
+    const d=await r.json();
     if(!d.sha){ toast('❌ فشل تحميل المشاريع: '+(d.message||'')); return; }
-    fileSha = d.sha;
-    const src = atob(d.content.replace(/\n/g,''));
-    const fn = new Function(src+'\nreturn typeof PROJECTS!=="undefined"?PROJECTS:[];');
-    PROJECTS = fn();
-  } catch(e){ toast('❌ '+e.message); PROJECTS=[]; }
+    fileSha=d.sha;
+    const src=atob(d.content.replace(/\n/g,''));
+    PROJECTS=new Function(src+'\nreturn typeof PROJECTS!=="undefined"?PROJECTS:[];')();
+  }catch(e){ toast('❌ '+e.message); PROJECTS=[]; }
 }
 
 function renderStats(){
@@ -770,111 +862,115 @@ function renderStats(){
     if(p.uae)      c.uae++;
     if(p.featured) c.feat++;
   });
-  F('s0').textContent=PROJECTS.length;
-  F('s1').textContent=c.Social;
-  F('s2').textContent=c.Print;
-  F('s3').textContent=c.Branding;
-  F('s4').textContent=c.sa;
-  F('s5').textContent=c.uae;
-  F('s6').textContent=c.feat;
+  ['s0','s1','s2','s3','s4','s5','s6'].forEach((id,i)=>{
+    F(id).textContent=[PROJECTS.length,c.Social,c.Print,c.Branding,c.sa,c.uae,c.feat][i];
+  });
 }
 
 function renderTable(){
-  const q    = (F('srch').value||'').toLowerCase();
-  const cat  = F('flt').value;
-  const flt2 = F('flt2').value;
-
-  const rows = PROJECTS.reduce((acc,p,i)=>{
-    if(cat && p.cat!==cat) return acc;
-    if(flt2==='featured' && !p.featured) return acc;
-    if(flt2==='saudi'    && !p.saudi)    return acc;
-    if(flt2==='uae'      && !p.uae)      return acc;
-    if(q){
-      const hay=((p.title||'')+(p.titleAr||'')+(p.cat||'')+(p.year||'')).toLowerCase();
-      if(!hay.includes(q)) return acc;
-    }
+  const q=( F('srch').value||'').toLowerCase();
+  const cat=F('flt').value, flt2=F('flt2').value;
+  const rows=PROJECTS.reduce((acc,p,i)=>{
+    if(cat&&p.cat!==cat) return acc;
+    if(flt2==='featured'&&!p.featured) return acc;
+    if(flt2==='saudi'&&!p.saudi) return acc;
+    if(flt2==='uae'&&!p.uae) return acc;
+    if(q){ const hay=((p.title||'')+(p.titleAr||'')+(p.cat||'')+(p.year||'')).toLowerCase(); if(!hay.includes(q)) return acc; }
     acc.push({p,i}); return acc;
   },[]);
 
   if(!rows.length){
-    F('tbody').innerHTML=`<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--gr)">لا توجد نتائج</td></tr>`;
+    F('tbody').innerHTML=`<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--gr)">لا توجد نتائج</td></tr>`;
     return;
   }
 
-  F('tbody').innerHTML = rows.map(({p,i},ri)=>{
-    const img  = p.image||p.cover||'';
-    const flag = (p.saudi?'🇸🇦 ':'')+(p.uae?'🇦🇪':'');
-    const isFirst = i===0, isLast = i===PROJECTS.length-1;
-    return `<tr>
+  F('tbody').innerHTML=rows.map(({p,i})=>{
+    const img=p.cover||p.image||'';
+    const flag=(p.saudi?'🇸🇦':'')+(p.uae?'🇦🇪':'');
+    const isFirst=i===0, isLast=i===PROJECTS.length-1;
+    return `<tr draggable="true"
+      ondragstart="dStart(event,${i})" ondragover="dOver(event)"
+      ondrop="dDrop(event,${i})" ondragend="dEnd(event)">
+      <td><span class="drag-handle" title="اسحب لإعادة الترتيب">☰</span></td>
       <td style="color:var(--gr);font-size:11px">${i+1}</td>
-      <td>${img
-        ?`<img class="thumb" src="${img}" onerror="this.style.opacity=.08" title="${p.title||''}">`
-        :`<div class="thumb" style="display:flex;align-items:center;justify-content:center;font-size:18px">🖼</div>`}</td>
+      <td>${img?`<img class="thumb" src="${img}" onerror="this.style.opacity=.08">`
+              :`<div class="thumb" style="display:flex;align-items:center;justify-content:center;font-size:18px">🖼</div>`}</td>
       <td>
-        <div style="font-weight:600;font-size:13px">${p.title||'—'}${p.featured?'<span class="feat-badge">⭐ مميز</span>':''}</div>
+        <div style="font-weight:600;font-size:13px">${p.title||'—'}${p.featured?'<span class="feat-badge">⭐</span>':''}</div>
         <div style="font-size:11px;color:var(--gr);margin-top:2px">${p.titleAr||''}</div>
       </td>
       <td><span class="cb c${p.cat||'Other'}">${p.cat||'—'}</span></td>
       <td style="font-size:12px;color:var(--gr)">${p.year||'—'}</td>
-      <td style="font-size:15px;letter-spacing:1px">${flag||'🌍'}</td>
+      <td style="font-size:15px;letter-spacing:1px">${flag||'—'}</td>
       <td>
         <div class="acts">
           <button class="btn sm btn-r" onclick="delProj(${i})" title="حذف">🗑</button>
           <button class="btn sm btn-g" onclick="dupProj(${i})" title="نسخ">📋</button>
           <button class="btn sm btn-g" onclick="openEdit(${i})" title="تعديل">✏</button>
-          <button class="btn sm btn-g" onclick="moveDown(${i})" title="تحريك لأسفل" ${isLast?'disabled':''}>↓</button>
-          <button class="btn sm btn-g" onclick="moveUp(${i})"   title="تحريك لأعلى" ${isFirst?'disabled':''}>↑</button>
+          <button class="btn sm btn-g" onclick="moveDown(${i})" ${isLast?'disabled':''} title="أسفل">↓</button>
+          <button class="btn sm btn-g" onclick="moveUp(${i})"   ${isFirst?'disabled':''} title="أعلى">↑</button>
         </div>
       </td>
     </tr>`;
   }).join('');
 }
 
-function moveUp(i){
-  if(i<=0) return;
-  [PROJECTS[i-1],PROJECTS[i]]=[PROJECTS[i],PROJECTS[i-1]];
-  markDirty(); renderTable();
+/* ── Drag & Drop ── */
+function dStart(e,i){
+  dragSrcIdx=i; e.dataTransfer.effectAllowed='move';
+  setTimeout(()=>e.currentTarget.classList.add('dragging'),0);
+}
+function dOver(e){
+  e.preventDefault(); e.dataTransfer.dropEffect='move';
+  document.querySelectorAll('#tbody tr').forEach(r=>r.classList.remove('drag-over'));
+  e.currentTarget.classList.add('drag-over');
+}
+function dDrop(e,targetIdx){
+  e.stopPropagation();
+  document.querySelectorAll('#tbody tr').forEach(r=>r.classList.remove('drag-over','dragging'));
+  if(dragSrcIdx!==-1&&dragSrcIdx!==targetIdx){
+    const item=PROJECTS.splice(dragSrcIdx,1)[0];
+    PROJECTS.splice(targetIdx,0,item);
+    markDirty(); renderStats(); renderTable();
+    toast('↕ تم إعادة الترتيب');
+  }
+}
+function dEnd(e){
+  document.querySelectorAll('#tbody tr').forEach(r=>r.classList.remove('drag-over','dragging'));
+  dragSrcIdx=-1;
 }
 
-function moveDown(i){
-  if(i>=PROJECTS.length-1) return;
-  [PROJECTS[i],PROJECTS[i+1]]=[PROJECTS[i+1],PROJECTS[i]];
-  markDirty(); renderTable();
-}
+/* ── Reorder buttons ── */
+function moveUp(i)  { if(i<=0) return; [PROJECTS[i-1],PROJECTS[i]]=[PROJECTS[i],PROJECTS[i-1]]; markDirty(); renderTable(); }
+function moveDown(i){ if(i>=PROJECTS.length-1) return; [PROJECTS[i],PROJECTS[i+1]]=[PROJECTS[i+1],PROJECTS[i]]; markDirty(); renderTable(); }
 
 function dupProj(i){
-  const copy = JSON.parse(JSON.stringify(PROJECTS[i]));
-  copy.id = Date.now();
-  copy.title = (copy.title||'') + ' — نسخة';
-  delete copy.featured;
-  PROJECTS.splice(i+1,0,copy);
-  markDirty(); renderStats(); renderTable();
+  const copy=JSON.parse(JSON.stringify(PROJECTS[i]));
+  copy.id=Date.now(); copy.title=(copy.title||'')+' — نسخة'; delete copy.featured;
+  PROJECTS.splice(i+1,0,copy); markDirty(); renderStats(); renderTable();
   toast('📋 تم نسخ المشروع');
 }
 
 /* ── Project modal ── */
 function updateThumbPreview(){
-  const src = F('f4').value.trim();
-  const prev = F('thumb-preview');
+  const src=F('f4').value.trim(), prev=F('thumb-preview');
   if(!src){ prev.innerHTML='<span>أدخل مسار الصورة لرؤية المعاينة</span>'; return; }
-  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:var(--red)>⚠ لم يتم العثور على الصورة</span>'">`;
+  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:#ef4444>⚠ الصورة غير موجودة</span>'">`;
 }
 
 function openEdit(i){
   editIdx=i; const p=PROJECTS[i];
   F('mtitle').textContent='تعديل: '+(p.title||'');
-  F('f0').value=p.title||'';         F('f1').value=p.titleAr||'';
-  F('f2').value=p.cat||'Social';     F('f3').value=p.year||'';
-  F('f4').value=p.image||p.cover||'';
+  F('f0').value=p.title||'';      F('f1').value=p.titleAr||'';
+  F('f2').value=p.cat||'Social';  F('f3').value=p.year||'';
+  F('f4').value=p.cover||p.image||'';
   F('f5').value=(p.images||[]).join('\n');
-  F('f6').value=p.desc||'';          F('f7').value=p.descAr||'';
+  F('f6').value=p.desc||'';       F('f7').value=p.descAr||'';
   F('f8').value=(p.tags||[]).join(', ');
   F('f9').value=(p.tagsAr||[]).join(', ');
-  F('f10').value=p.link||'';         F('f12').value=p._bg||'';
-  F('f11').checked=!!p.saudi;        F('f13').checked=!!p.uae;
-  F('f14').checked=!!p.featured;
-  updateThumbPreview();
-  F('proj-mbg').classList.add('open');
+  F('f10').value=p.link||'';      F('f12').value=p._bg||'';
+  F('f11').checked=!!p.saudi;     F('f13').checked=!!p.uae;  F('f14').checked=!!p.featured;
+  updateThumbPreview(); F('proj-mbg').classList.add('open');
 }
 
 function openAdd(){
@@ -891,10 +987,10 @@ function closeM(){ F('proj-mbg').classList.remove('open'); }
 function saveProj(){
   const title=F('f0').value.trim();
   if(!title){ toast('⚠ أدخل عنوان المشروع (EN)'); return; }
-  const csv = s=>s.split(',').map(x=>x.trim()).filter(Boolean);
-  const imgs = F('f5').value.split('\n').map(x=>x.trim()).filter(Boolean);
+  const csv=s=>s.split(',').map(x=>x.trim()).filter(Boolean);
+  const imgs=F('f5').value.split('\n').map(x=>x.trim()).filter(Boolean);
   const p={
-    id: editIdx>=0 ? PROJECTS[editIdx].id : Date.now(),
+    id: editIdx>=0?PROJECTS[editIdx].id:Date.now(),
     title, titleAr:F('f1').value.trim(),
     cat:F('f2').value, year:F('f3').value,
     cover:F('f4').value.trim(), images:imgs,
@@ -912,9 +1008,8 @@ function saveProj(){
 }
 
 function delProj(i){
-  if(!confirm(`حذف "${PROJECTS[i].title||'هذا المشروع'}"؟\nلا يمكن التراجع بعد النشر.`)) return;
-  PROJECTS.splice(i,1);
-  markDirty(); renderStats(); renderTable();
+  if(!confirm(`حذف "${PROJECTS[i].title||'هذا المشروع'}"؟`)) return;
+  PROJECTS.splice(i,1); markDirty(); renderStats(); renderTable();
   toast('🗑 حُذف — اضغط "نشر" للتطبيق');
 }
 
@@ -923,46 +1018,36 @@ function delProj(i){
 ═══════════════════════════════════════════════════ */
 async function fetchReviews(){
   const token=localStorage.getItem('adm_token');
-  const headers={};
-  if(token && token !== 'null') headers.Authorization=`token ${token}`;
-  try {
-    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${REV_FILE}`,{ headers });
-    const d=await r.json();
-    if(!d.sha) return;
-    revSha=d.sha;
-    REVIEWS=JSON.parse(atob(d.content.replace(/\n/g,'')));
-  } catch(e){ REVIEWS=[]; }
+  const headers={}; if(token&&token!=='null') headers.Authorization=`token ${token}`;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${REV_FILE}`,{headers});
+    const d=await r.json(); if(!d.sha) return;
+    revSha=d.sha; REVIEWS=JSON.parse(atob(d.content.replace(/\n/g,'')));
+  }catch(e){ REVIEWS=[]; }
 }
 
 function renderRevStats(){
-  const total=REVIEWS.length;
-  const hidden=REVIEWS.filter(r=>r.hidden).length;
-  const visible=total-hidden;
-  const avg=total?( REVIEWS.reduce((s,r)=>s+(r.rating||5),0)/total ).toFixed(1):'—';
-  F('rs0').textContent=total;
-  F('rs1').textContent=visible;
-  F('rs2').textContent=hidden;
-  F('rs3').textContent=avg;
+  const total=REVIEWS.length, hidden=REVIEWS.filter(r=>r.hidden).length;
+  const avg=total?(REVIEWS.reduce((s,r)=>s+(r.rating||5),0)/total).toFixed(1):'—';
+  F('rs0').textContent=total; F('rs1').textContent=total-hidden;
+  F('rs2').textContent=hidden; F('rs3').textContent=avg;
 }
 
 function renderRevList(){
-  const flt = F('rev-flt').value;
-  let list = REVIEWS;
+  const flt=F('rev-flt').value;
+  let list=REVIEWS;
   if(flt==='hidden')  list=REVIEWS.filter(r=>r.hidden);
   else if(flt==='visible') list=REVIEWS.filter(r=>!r.hidden);
-  else if(flt)        list=REVIEWS.filter(r=>(r.rating||5)>=parseInt(flt));
+  else if(flt) list=REVIEWS.filter(r=>(r.rating||5)>=parseInt(flt));
 
-  if(!list.length){
-    F('rev-list').innerHTML='<p style="color:var(--gr);padding:40px 0;text-align:center">لا توجد تقييمات في هذه الفئة</p>';
-    return;
-  }
-  F('rev-list').innerHTML=list.map((r)=>{
-    const realIdx=REVIEWS.indexOf(r);
-    const isFirst=realIdx===0, isLast=realIdx===REVIEWS.length-1;
+  if(!list.length){ F('rev-list').innerHTML='<p style="color:var(--gr);padding:40px 0;text-align:center">لا توجد تقييمات في هذه الفئة</p>'; return; }
+
+  F('rev-list').innerHTML=list.map(r=>{
+    const ri=REVIEWS.indexOf(r), isFirst=ri===0, isLast=ri===REVIEWS.length-1;
     return `<div class="rev-adm ${r.hidden?'hidden-rev':''}">
-      <div style="display:flex;flex-direction:column;gap:4px;margin-inline-end:8px">
-        <button class="btn sm btn-g" onclick="moveRevUp(${realIdx})" ${isFirst?'disabled':''} title="تحريك لأعلى">↑</button>
-        <button class="btn sm btn-g" onclick="moveRevDown(${realIdx})" ${isLast?'disabled':''} title="تحريك لأسفل">↓</button>
+      <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+        <button class="btn sm btn-g" onclick="moveRevUp(${ri})" ${isFirst?'disabled':''}>↑</button>
+        <button class="btn sm btn-g" onclick="moveRevDown(${ri})" ${isLast?'disabled':''}>↓</button>
       </div>
       <div class="rev-adm-body">
         <div class="rev-meta">
@@ -973,33 +1058,23 @@ function renderRevList(){
           <span class="rev-date">${r.date||''}</span>
         </div>
         <div class="rev-text">${r.text||''}</div>
-        ${r.textAr&&r.textAr!==r.text
-          ?`<div class="rev-text-ar" dir="rtl">${r.textAr}</div>`:''}
+        ${r.textAr&&r.textAr!==r.text?`<div class="rev-text-ar" dir="rtl">${r.textAr}</div>`:''}
       </div>
       <div class="acts" style="flex-shrink:0;flex-direction:column;gap:5px">
-        <button class="btn sm btn-g" onclick="openRevAdd(${realIdx})" title="تعديل">✏</button>
-        <button class="btn sm ${r.hidden?'btn-gr':'btn-o'}" onclick="toggleRevHidden(${realIdx})" title="${r.hidden?'إظهار':'إخفاء'}">${r.hidden?'👁':'🙈'}</button>
-        <button class="btn sm btn-r" onclick="delRev(${realIdx})" title="حذف">🗑</button>
+        <button class="btn sm btn-g" onclick="openRevAdd(${ri})">✏</button>
+        <button class="btn sm ${r.hidden?'btn-gr':'btn-o'}" onclick="toggleRevHidden(${ri})">${r.hidden?'👁':'🙈'}</button>
+        <button class="btn sm btn-r" onclick="delRev(${ri})">🗑</button>
       </div>
     </div>`;
   }).join('');
 }
 
-function moveRevUp(i){
-  if(i<=0) return;
-  [REVIEWS[i-1],REVIEWS[i]]=[REVIEWS[i],REVIEWS[i-1]];
-  markDirty(); renderRevStats(); renderRevList();
-}
-function moveRevDown(i){
-  if(i>=REVIEWS.length-1) return;
-  [REVIEWS[i],REVIEWS[i+1]]=[REVIEWS[i+1],REVIEWS[i]];
-  markDirty(); renderRevStats(); renderRevList();
-}
+function moveRevUp(i)  { if(i<=0) return; [REVIEWS[i-1],REVIEWS[i]]=[REVIEWS[i],REVIEWS[i-1]]; markDirty(); renderRevStats(); renderRevList(); }
+function moveRevDown(i){ if(i>=REVIEWS.length-1) return; [REVIEWS[i],REVIEWS[i+1]]=[REVIEWS[i+1],REVIEWS[i]]; markDirty(); renderRevStats(); renderRevList(); }
 
 function toggleRevHidden(i){
-  REVIEWS[i].hidden=!REVIEWS[i].hidden;
-  markDirty(); renderRevStats(); renderRevList();
-  toast(REVIEWS[i].hidden?'🙈 التقييم مخفي عن الزوار':'👁 التقييم ظاهر للزوار');
+  REVIEWS[i].hidden=!REVIEWS[i].hidden; markDirty(); renderRevStats(); renderRevList();
+  toast(REVIEWS[i].hidden?'🙈 التقييم مخفي':'👁 التقييم ظاهر');
 }
 
 function setStar(n){
@@ -1010,11 +1085,10 @@ function setStar(n){
 function openRevAdd(i){
   revEditIdx=i;
   if(i>=0){
-    const r=REVIEWS[i];
-    F('rev-mtitle').textContent='تعديل تقييم';
-    F('rv-name').value=r.name||'';     F('rv-company').value=r.company||'';
-    F('rv-text').value=r.text||'';     F('rv-textAr').value=r.textAr||'';
-    F('rv-date').value=r.date||'';     setStar(r.rating||5);
+    const r=REVIEWS[i]; F('rev-mtitle').textContent='تعديل تقييم';
+    F('rv-name').value=r.name||''; F('rv-company').value=r.company||'';
+    F('rv-text').value=r.text||''; F('rv-textAr').value=r.textAr||'';
+    F('rv-date').value=r.date||''; setStar(r.rating||5);
   } else {
     F('rev-mtitle').textContent='تقييم جديد';
     ['rv-name','rv-company','rv-text','rv-textAr','rv-date'].forEach(id=>F(id).value='');
@@ -1022,30 +1096,26 @@ function openRevAdd(i){
   }
   F('rev-mbg').classList.add('open');
 }
-
 function closeRevM(){ F('rev-mbg').classList.remove('open'); }
 
 function saveRev(){
-  const name=F('rv-name').value.trim();
-  if(!name){ toast('⚠ أدخل اسم العميل'); return; }
+  const name=F('rv-name').value.trim(); if(!name){ toast('⚠ أدخل اسم العميل'); return; }
   const rev={
-    id: revEditIdx>=0 ? REVIEWS[revEditIdx].id : Date.now(),
-    name, company:F('rv-company').value.trim(),
-    rating:starVal,
+    id:revEditIdx>=0?REVIEWS[revEditIdx].id:Date.now(),
+    name, company:F('rv-company').value.trim(), rating:starVal,
     text:F('rv-text').value.trim(),
     textAr:F('rv-textAr').value.trim()||F('rv-text').value.trim(),
     date:F('rv-date').value.trim(),
   };
-  if(revEditIdx>=0 && REVIEWS[revEditIdx].hidden) rev.hidden=true;
+  if(revEditIdx>=0&&REVIEWS[revEditIdx].hidden) rev.hidden=true;
   revEditIdx>=0?REVIEWS[revEditIdx]=rev:REVIEWS.push(rev);
   markDirty(); closeRevM(); renderRevStats(); renderRevList();
-  toast(revEditIdx>=0?'✓ تم تعديل التقييم':'✓ أُضيف التقييم — اضغط "نشر" للتطبيق');
+  toast(revEditIdx>=0?'✓ تم التعديل':'✓ أُضيف التقييم — اضغط "نشر"');
 }
 
 function delRev(i){
   if(!confirm(`حذف تقييم "${REVIEWS[i].name}"؟`)) return;
-  REVIEWS.splice(i,1);
-  markDirty(); renderRevStats(); renderRevList();
+  REVIEWS.splice(i,1); markDirty(); renderRevStats(); renderRevList();
   toast('🗑 حُذف — اضغط "نشر" للتطبيق');
 }
 
@@ -1054,84 +1124,84 @@ function delRev(i){
 ═══════════════════════════════════════════════════ */
 async function fetchConfig(){
   const token=localStorage.getItem('adm_token');
-  const headers={};
-  if(token && token !== 'null') headers.Authorization=`token ${token}`;
-  try {
-    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CFG_FILE}`,{ headers });
-    const d=await r.json();
-    if(!d.sha) return;
+  const headers={}; if(token&&token!=='null') headers.Authorization=`token ${token}`;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CFG_FILE}`,{headers});
+    const d=await r.json(); if(!d.sha) return;
     cfgSha=d.sha;
     const src=atob(d.content.replace(/\n/g,''));
-    const fn=new Function(src+'\nreturn typeof CFG!=="undefined"?CFG:{};');
-    CFG_OBJ=fn();
-  } catch(e){ CFG_OBJ={}; }
+    CFG_OBJ=new Function(src+'\nreturn typeof CFG!=="undefined"?CFG:{}')();
+  }catch(e){ CFG_OBJ={}; }
 }
 
 function populateConfigForm(){
-  const c = CFG_OBJ || {};
+  const c=CFG_OBJ||{};
   // Identity
-  F('cfg-name-ar1').value = c.name?.ar?.line1 || 'أحمد';
-  F('cfg-name-ar2').value = c.name?.ar?.line2 || 'حسن بهاء';
-  F('cfg-name-en1').value = c.name?.en?.line1 || 'AHMED';
-  F('cfg-name-en2').value = c.name?.en?.line2 || 'HASSAN BAHAA';
-  F('cfg-bio-ar').value   = c.bio?.ar  || '';
-  F('cfg-bio-en').value   = c.bio?.en  || '';
-  F('cfg-loc-ar').value   = c.location?.ar || 'القاهرة، مصر';
-  F('cfg-loc-en').value   = c.location?.en || 'Cairo, Egypt';
-  F('cfg-available').checked = c.available !== false;
-  F('cfg-roles-ar').value = (c.role?.ar || ['مصمم جرافيك','مصمم هوية بصرية','مصمم سوشيال ميديا','متخصص ذكاء اصطناعي']).join('\n');
-  F('cfg-roles-en').value = (c.role?.en || ['Graphic Designer','Visual Identity Designer','Social Media Designer','AI Design Specialist']).join('\n');
-  // Hero photo
-  F('cfg-hero-photo').value = c.heroPhoto || 'assets/ahmed-hassan-photo.png';
+  F('cfg-name-ar1').value=c.name?.ar?.line1||'أحمد';
+  F('cfg-name-ar2').value=c.name?.ar?.line2||'حسن بهاء';
+  F('cfg-name-en1').value=c.name?.en?.line1||'AHMED';
+  F('cfg-name-en2').value=c.name?.en?.line2||'HASSAN BAHAA';
+  F('cfg-bio-ar').value=c.bio?.ar||'';
+  F('cfg-bio-en').value=c.bio?.en||'';
+  F('cfg-loc-ar').value=c.location?.ar||'القاهرة، مصر';
+  F('cfg-loc-en').value=c.location?.en||'Cairo, Egypt';
+  F('cfg-available').checked=c.available!==false;
+  F('cfg-roles-ar').value=(c.role?.ar||['مصمم جرافيك','مصمم هوية بصرية','مصمم سوشيال ميديا','متخصص ذكاء اصطناعي']).join('\n');
+  F('cfg-roles-en').value=(c.role?.en||['Graphic Designer','Visual Identity Designer','Social Media Designer','AI Design Specialist']).join('\n');
+  F('cfg-hero-photo').value=c.heroPhoto||'assets/ahmed-hassan-photo.png';
   updateHeroPreview();
   // Contact
-  F('cfg-email').value     = c.email     || '';
-  F('cfg-whatsapp').value  = c.whatsapp  || '';
-  F('cfg-instagram').value = c.instagram || '';
-  F('cfg-facebook').value  = c.facebook  || '';
-  F('cfg-behance').value   = c.behanceUrl|| '';
-  F('cfg-linkedin').value  = c.linkedin  || '';
-  F('cfg-tiktok').value    = c.tiktok    || '';
-  F('cfg-youtube').value   = c.youtube   || '';
+  F('cfg-email').value=c.email||'';
+  F('cfg-whatsapp').value=c.whatsapp||'';
+  F('cfg-instagram').value=c.instagram||'';
+  F('cfg-facebook').value=c.facebook||'';
+  F('cfg-behance').value=c.behanceUrl||'';
+  F('cfg-linkedin').value=c.linkedin||'';
+  F('cfg-tiktok').value=c.tiktok||'';
+  F('cfg-youtube').value=c.youtube||'';
   // Stats
-  F('cfg-stat-proj-n').value    = c.stats?.projects?.n    || 30;
-  F('cfg-stat-proj-ar').value   = c.stats?.projects?.label?.ar || 'مشروع';
-  F('cfg-stat-proj-en').value   = c.stats?.projects?.label?.en || 'Projects';
-  F('cfg-stat-years-n').value   = c.stats?.years?.n       || 5;
-  F('cfg-stat-years-ar').value  = c.stats?.years?.label?.ar    || 'سنوات';
-  F('cfg-stat-years-en').value  = c.stats?.years?.label?.en    || 'Years';
-  F('cfg-stat-clients-n').value = c.stats?.clients?.n     || 20;
-  F('cfg-stat-clients-ar').value= c.stats?.clients?.label?.ar  || 'عميل';
-  F('cfg-stat-clients-en').value= c.stats?.clients?.label?.en  || 'Clients';
+  F('cfg-stat-proj-n').value=c.stats?.projects?.n??30;
+  F('cfg-stat-proj-ar').value=c.stats?.projects?.label?.ar||'مشروع';
+  F('cfg-stat-proj-en').value=c.stats?.projects?.label?.en||'Projects';
+  F('cfg-stat-years-n').value=c.stats?.years?.n??5;
+  F('cfg-stat-years-ar').value=c.stats?.years?.label?.ar||'سنوات';
+  F('cfg-stat-years-en').value=c.stats?.years?.label?.en||'Years';
+  F('cfg-stat-clients-n').value=c.stats?.clients?.n??20;
+  F('cfg-stat-clients-ar').value=c.stats?.clients?.label?.ar||'عميل';
+  F('cfg-stat-clients-en').value=c.stats?.clients?.label?.en||'Clients';
+  // SEO
+  F('cfg-seo-title').value=c.seo?.title||'Ahmed Hassan Bahaa — Graphic Designer';
+  F('cfg-seo-desc').value=c.seo?.desc||'';
+  F('cfg-seo-ogimage').value=c.seo?.ogImage||'';
+  updateOgPreview();
+  // Char counts
+  ['cfg-bio-ar','cfg-bio-en'].forEach(id=>{ const el=F(id); if(el) countChars(el,'cc-'+id.replace('cfg-',''),160); });
+  countChars(F('cfg-seo-title'),'cc-seo-title',60);
+  countChars(F('cfg-seo-desc'),'cc-seo-desc',160);
 }
 
 function updateHeroPreview(){
-  const src = F('cfg-hero-photo').value.trim();
-  const prev = F('hero-preview');
-  if(!src){ prev.innerHTML='<span>لا توجد صورة</span>'; return; }
-  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:var(--red)>⚠ الصورة غير موجودة</span>'" style="width:100%;height:100%;object-fit:cover;border-radius:8px">`;
+  const src=F('cfg-hero-photo').value.trim(), prev=F('hero-preview');
+  if(!prev) return;
+  if(!src){ prev.innerHTML='<span>أدخل مسار الصورة</span>'; return; }
+  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:#ef4444>⚠ الصورة غير موجودة</span>'" style="width:100%;height:100%;object-fit:cover;border-radius:8px">`;
+}
+
+function updateOgPreview(){
+  const src=F('cfg-seo-ogimage').value.trim(), prev=F('og-preview');
+  if(!prev) return;
+  if(!src){ prev.innerHTML='<span>1200×628 مثالية للمشاركة</span>'; return; }
+  prev.innerHTML=`<img src="${src}" onerror="this.parentElement.innerHTML='<span style=color:#ef4444>⚠ الصورة غير موجودة</span>'" style="width:100%;height:100%;object-fit:cover;border-radius:8px">`;
 }
 
 function saveConfig(){
-  const lines = id => F(id).value.split('\n').map(x=>x.trim()).filter(Boolean);
-  CFG_OBJ = {
+  const lines=id=>F(id).value.split('\n').map(x=>x.trim()).filter(Boolean);
+  CFG_OBJ={
     ...CFG_OBJ,
-    name:{
-      ar:{ line1:F('cfg-name-ar1').value.trim(), line2:F('cfg-name-ar2').value.trim() },
-      en:{ line1:F('cfg-name-en1').value.trim(), line2:F('cfg-name-en2').value.trim() },
-    },
-    bio:{
-      ar:F('cfg-bio-ar').value.trim(),
-      en:F('cfg-bio-en').value.trim(),
-    },
-    role:{
-      ar:lines('cfg-roles-ar'),
-      en:lines('cfg-roles-en'),
-    },
-    location:{
-      ar:F('cfg-loc-ar').value.trim(),
-      en:F('cfg-loc-en').value.trim(),
-    },
+    name:{ar:{line1:F('cfg-name-ar1').value.trim(),line2:F('cfg-name-ar2').value.trim()},en:{line1:F('cfg-name-en1').value.trim(),line2:F('cfg-name-en2').value.trim()}},
+    bio:{ar:F('cfg-bio-ar').value.trim(),en:F('cfg-bio-en').value.trim()},
+    role:{ar:lines('cfg-roles-ar'),en:lines('cfg-roles-en')},
+    location:{ar:F('cfg-loc-ar').value.trim(),en:F('cfg-loc-en').value.trim()},
     available:F('cfg-available').checked,
     heroPhoto:F('cfg-hero-photo').value.trim(),
     email:F('cfg-email').value.trim(),
@@ -1143,151 +1213,138 @@ function saveConfig(){
     tiktok:F('cfg-tiktok').value.trim(),
     youtube:F('cfg-youtube').value.trim(),
     stats:{
-      projects:{ n:parseInt(F('cfg-stat-proj-n').value)||0,    label:{ar:F('cfg-stat-proj-ar').value.trim(),    en:F('cfg-stat-proj-en').value.trim()} },
-      years:   { n:parseInt(F('cfg-stat-years-n').value)||0,   label:{ar:F('cfg-stat-years-ar').value.trim(),   en:F('cfg-stat-years-en').value.trim()} },
-      clients: { n:parseInt(F('cfg-stat-clients-n').value)||0, label:{ar:F('cfg-stat-clients-ar').value.trim(), en:F('cfg-stat-clients-en').value.trim()} },
+      projects:{n:parseInt(F('cfg-stat-proj-n').value)||0,    label:{ar:F('cfg-stat-proj-ar').value.trim(),    en:F('cfg-stat-proj-en').value.trim()}},
+      years:   {n:parseInt(F('cfg-stat-years-n').value)||0,   label:{ar:F('cfg-stat-years-ar').value.trim(),   en:F('cfg-stat-years-en').value.trim()}},
+      clients: {n:parseInt(F('cfg-stat-clients-n').value)||0, label:{ar:F('cfg-stat-clients-ar').value.trim(), en:F('cfg-stat-clients-en').value.trim()}},
+    },
+    seo:{
+      title:F('cfg-seo-title').value.trim(),
+      desc:F('cfg-seo-desc').value.trim(),
+      ogImage:F('cfg-seo-ogimage').value.trim(),
     },
   };
   markDirty();
-  toast('✓ تم حفظ الإعدادات — اضغط "نشر" لتطبيقها على الموقع');
+  toast('✓ تم حفظ الإعدادات في الذاكرة — اضغط "نشر" للتطبيق على الموقع');
 }
 
 /* ── Security ── */
 async function changePwd(){
   const p=F('set-pwd').value;
-  if(p.length<6){ toast('⚠ كلمة المرور يجب أن تكون 6 أحرف على الأقل'); return; }
-  localStorage.setItem('adm_hash',await h256(p));
-  F('set-pwd').value='';
-  toast('✅ تم تغيير كلمة المرور بنجاح');
+  if(p.length<6){ toast('⚠ كلمة المرور 6 أحرف على الأقل'); return; }
+  localStorage.setItem('adm_hash',await h256(p)); F('set-pwd').value='';
+  toast('✅ تم تغيير كلمة المرور');
 }
-
 function changeToken(){
   const t=F('set-token').value.trim();
   if(!t){ toast('⚠ أدخل التوكن'); return; }
-  if(!t.startsWith('ghp')&&!t.startsWith('github_')){ toast('⚠ التوكن يبدو غير صحيح — يجب أن يبدأ بـ ghp_'); return; }
-  localStorage.setItem('adm_token',t);
-  F('set-token').value='';
-  updateTokenBadge();
-  toast('✅ تم حفظ التوكن — يمكنك الآن النشر');
+  if(!t.startsWith('ghp')&&!t.startsWith('github_')){ toast('⚠ التوكن يبدو غير صحيح — يبدأ بـ ghp_'); return; }
+  localStorage.setItem('adm_token',t); F('set-token').value='';
+  updateTokenBadge(); toast('✅ تم حفظ التوكن — يمكنك الآن النشر ورفع الصور');
 }
 
 function updateLastPush(){
-  const el=F('last-push');
-  if(!el) return;
+  const el=F('last-push'); if(!el) return;
   const d=localStorage.getItem('last_push');
-  el.textContent = d ? '⏱ آخر نشر: '+d : 'لم يتم النشر بعد على هذا الجهاز';
+  el.textContent=d?'⏱ آخر نشر: '+d:'لم يتم النشر بعد على هذا الجهاز';
 }
 
 async function reloadFromGitHub(){
-  toast('⏳ إعادة تحميل من GitHub...');
+  toast('⏳ إعادة تحميل...');
   await Promise.all([fetchProjects(),fetchReviews(),fetchConfig()]);
   renderStats(); renderTable(); renderRevStats(); renderRevList(); populateConfigForm();
-  clearDirty();
-  toast('✅ تم التحديث من GitHub بنجاح');
+  clearDirty(); toast('✅ تم التحديث من GitHub');
 }
 
 function clearLocalData(){
-  if(!confirm('سيتم مسح كلمة المرور والتوكن من هذا الجهاز.\nستحتاج إعداد جديد للدخول مرة أخرى.\n\nمتأكد؟')) return;
-  localStorage.removeItem('adm_hash');
-  localStorage.removeItem('adm_token');
-  localStorage.removeItem('last_push');
+  if(!confirm('سيتم مسح كلمة المرور والتوكن.\nستحتاج إعداد جديد للدخول.\n\nمتأكد؟')) return;
+  ['adm_hash','adm_token','last_push'].forEach(k=>localStorage.removeItem(k));
   location.reload();
 }
 
 /* ── Backup ── */
 function exportBackup(){
-  const data={
-    projects:PROJECTS, reviews:REVIEWS, config:CFG_OBJ,
-    exported:new Date().toISOString(),
-    version:'1.0'
-  };
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const data={projects:PROJECTS,reviews:REVIEWS,config:CFG_OBJ,exported:new Date().toISOString(),version:'2.0'};
   const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
   a.download=`portfolio-backup-${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-  toast('📥 تم تصدير النسخة الاحتياطية');
+  a.click(); toast('📥 تم تصدير النسخة الاحتياطية');
 }
 
 function importBackup(input){
-  const file=input.files[0];
-  if(!file) return;
+  const file=input.files[0]; if(!file) return;
   const r=new FileReader();
   r.onload=e=>{
-    try {
+    try{
       const data=JSON.parse(e.target.result);
-      const proj=(data.projects||[]).length;
-      const revs=(data.reviews||[]).length;
-      if(!confirm(`استيراد نسخة احتياطية؟\n\nتاريخ التصدير: ${data.exported||'غير معروف'}\nمشاريع: ${proj}\nتقييمات: ${revs}\n\nسيتم استبدال البيانات الحالية!`)) return;
+      if(!confirm(`استيراد نسخة احتياطية؟\nتاريخ: ${data.exported||'غير معروف'}\nمشاريع: ${(data.projects||[]).length} | تقييمات: ${(data.reviews||[]).length}\n\nسيُستبدل المحتوى الحالي!`)) return;
       if(data.projects) PROJECTS=data.projects;
       if(data.reviews)  REVIEWS=data.reviews;
       if(data.config)   { CFG_OBJ=data.config; populateConfigForm(); }
       markDirty(); renderStats(); renderTable(); renderRevStats(); renderRevList();
-      toast('✅ تم الاستيراد — اضغط "نشر" للتطبيق على الموقع');
-    } catch(err){ toast('❌ ملف غير صالح: '+err.message); }
+      toast('✅ تم الاستيراد — اضغط "نشر" للتطبيق');
+    }catch(err){ toast('❌ ملف غير صالح: '+err.message); }
   };
-  r.readAsText(file);
-  input.value='';
+  r.readAsText(file); input.value='';
+}
+
+/* ── Preview ── */
+function openPreview(){
+  F('prev-frame').src='https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/?v='+Date.now();
+  F('prev-modal').classList.add('open');
+}
+function closePreview(){ F('prev-modal').classList.remove('open'); F('prev-frame').src=''; }
+function reloadPreview(){ F('prev-frame').src='https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/?v='+Date.now(); }
+function setPreviewWidth(w,btn){
+  F('prev-frame').style.width=w;
+  document.querySelectorAll('.prev-device-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
 }
 
 /* ═══════════════════════════════════════════════════
    PUSH TO GITHUB
 ═══════════════════════════════════════════════════ */
 async function pushToGitHub(){
-  if(!dirty && !confirm('لا توجد تعديلات غير منشورة.\nهل تريد إعادة النشر على أي حال؟')) return;
+  if(!dirty&&!confirm('لا توجد تعديلات غير منشورة.\nهل تريد إعادة النشر على أي حال؟')) return;
   const token=localStorage.getItem('adm_token');
-  if(!token || token==='null' || !token.startsWith('ghp')){
-    toast('❌ لا يوجد GitHub Token — اذهب للإعدادات ← الأمان وأدخله');
-    setPhase(3);
-    setTimeout(()=>F('set-token').focus(),400);
-    return;
+  if(!token||token==='null'||!token.startsWith('ghp')){
+    toast('❌ لا يوجد GitHub Token — اذهب للإعدادات وأدخله');
+    setPhase(3); setTimeout(()=>F('set-token').focus(),400); return;
   }
-
-  const btn=F('sbtn');
-  btn.disabled=true; btn.textContent='⏳ جاري النشر...';
-
+  const btn=F('sbtn'); btn.disabled=true; btn.textContent='⏳ جاري النشر...';
   const push=async(path,sha,content)=>{
     const encoded=btoa(unescape(encodeURIComponent(content)));
     const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`,{
       method:'PUT',
-      headers:{ Authorization:`token ${token}`,'Content-Type':'application/json' },
-      body:JSON.stringify({ message:`Update ${path} via admin — ${new Date().toLocaleDateString('ar-EG')}`, content:encoded, sha })
+      headers:{Authorization:`token ${token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({message:`Update ${path} via admin — ${new Date().toLocaleDateString('ar-EG')}`,content:encoded,sha})
     });
     return r.json();
   };
-
-  try {
+  try{
     const [d1,d2,d3]=await Promise.all([
-      push(FILE,     fileSha, buildProjectsJs()),
-      push(REV_FILE, revSha,  JSON.stringify(REVIEWS,null,2)),
-      push(CFG_FILE, cfgSha,  buildConfigJs()),
+      push(FILE,fileSha,buildProjectsJs()),
+      push(REV_FILE,revSha,JSON.stringify(REVIEWS,null,2)),
+      push(CFG_FILE,cfgSha,buildConfigJs()),
     ]);
-
     if(d1.content?.sha) fileSha=d1.content.sha;
     if(d2.content?.sha) revSha=d2.content.sha;
     if(d3.content?.sha) cfgSha=d3.content.sha;
-
-    const ok=[d1,d2,d3].every(d=>!!d.content);
-    if(ok){
+    if([d1,d2,d3].every(d=>!!d.content)){
       clearDirty();
       const now=new Date().toLocaleString('ar-EG');
-      localStorage.setItem('last_push', now);
-      updateLastPush();
-      toast('✅ تم النشر بنجاح! سيظهر على الموقع خلال 1-2 دقيقة', 7000);
+      localStorage.setItem('last_push',now); updateLastPush();
+      toast('✅ تم النشر بنجاح! سيظهر على الموقع خلال دقيقة',7000);
     } else {
-      const errs=[d1,d2,d3].map(d=>d.message).filter(Boolean);
-      toast('❌ فشل النشر: '+(errs[0]||'خطأ غير معروف'), 7000);
+      const err=[d1,d2,d3].map(d=>d.message).filter(Boolean)[0]||'خطأ';
+      toast('❌ فشل النشر: '+err,7000);
     }
-  } catch(e){ toast('❌ '+e.message, 5000); }
-
-  btn.disabled=false; btn.innerHTML='💾 نشر على GitHub';
+  }catch(e){ toast('❌ '+e.message,5000); }
+  btn.disabled=false; btn.textContent='💾 نشر على GitHub';
 }
 
 function buildProjectsJs(){
-  const date=new Date().toISOString().slice(0,10);
-  return `// projects.js — updated via admin dashboard on ${date}\nconst PROJECTS = ${JSON.stringify(PROJECTS,null,2)};\n`;
+  return `// projects.js — updated via admin dashboard on ${new Date().toISOString().slice(0,10)}\nconst PROJECTS = ${JSON.stringify(PROJECTS,null,2)};\n`;
 }
-
 function buildConfigJs(){
   return `// config.js — updated via admin dashboard on ${new Date().toISOString().slice(0,10)}\nconst CFG = ${JSON.stringify(CFG_OBJ,null,2)};\n`;
 }

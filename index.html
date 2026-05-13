@@ -1572,6 +1572,40 @@ function applyConfig(){
       nameLine.textContent = (CFG.name.en.line1||'') + ' ' + (CFG.name.en.line2||'');
     }
   }
+
+  /* Hero photo */
+  if(CFG.heroPhoto){
+    const heroImg = document.querySelector('.hero-photo, .hero-img, img[alt*="Ahmed"], img[alt*="أحمد"]');
+    if(heroImg) heroImg.src = CFG.heroPhoto;
+  }
+
+  /* SEO — title + meta tags */
+  if(CFG.seo?.title){
+    document.title = CFG.seo.title;
+    const ogT = document.querySelector('meta[property="og:title"]');
+    const twT = document.querySelector('meta[name="twitter:title"]');
+    if(ogT) ogT.content = CFG.seo.title;
+    if(twT) twT.content = CFG.seo.title;
+  }
+  if(CFG.seo?.desc){
+    const m   = document.querySelector('meta[name="description"]');
+    const ogD = document.querySelector('meta[property="og:description"]');
+    const twD = document.querySelector('meta[name="twitter:description"]');
+    if(m)   m.content   = CFG.seo.desc;
+    if(ogD) ogD.content = CFG.seo.desc;
+    if(twD) twD.content = CFG.seo.desc;
+  }
+  if(CFG.seo?.ogImage){
+    const ogI = document.querySelector('meta[property="og:image"]');
+    const twI = document.querySelector('meta[name="twitter:image"]');
+    if(ogI) ogI.content = CFG.seo.ogImage;
+    if(twI) twI.content = CFG.seo.ogImage;
+  }
+
+  /* LinkedIn / TikTok / YouTube links */
+  if(CFG.linkedin)  document.querySelectorAll('[href*="linkedin"]').forEach(a=>a.href=CFG.linkedin);
+  if(CFG.tiktok)    document.querySelectorAll('[href*="tiktok"]').forEach(a=>a.href=CFG.tiktok);
+  if(CFG.youtube)   document.querySelectorAll('[href*="youtube"]').forEach(a=>a.href=CFG.youtube);
 }
 
 // Defer-safe: projects.js loads after HTML parse → wait for DOMContentLoaded
