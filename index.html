@@ -167,8 +167,8 @@ nav.s{
 .hero-split{
   width:100%;
   display:grid;
-  grid-template-columns:1fr min(38vw,420px);
-  gap:clamp(40px,6vw,90px);
+  grid-template-columns:1fr min(42vw,460px);
+  gap:clamp(32px,5vw,80px);
   align-items:center;
 }
 
@@ -393,6 +393,13 @@ html[lang="ar"] .photo-tag-2{inset-inline-end:auto;inset-inline-start:-24px;}
   bottom:-50px;inset-inline-end:-60px;
 }
 
+/* Mobile-only / desktop-only tag groups */
+.hero-mobile-tags{display:none;}
+@media(max-width:880px){
+  .desktop-tag{display:none!important;}
+  .hero-mobile-tags{display:flex;}
+}
+
 /* Scroll hint */
 .scroll-hint{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
@@ -406,7 +413,42 @@ html[lang="ar"] .photo-tag-2{inset-inline-end:auto;inset-inline-start:-24px;}
 
 /* Responsive hero */
 @media(max-width:880px){
-  .hero-split{grid-template-columns:1fr;gap:40px;}
+  #hero{padding-top:calc(var(--nav) + 24px);padding-bottom:40px;align-items:flex-start;}
+  .hero-split{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  /* ── الصورة أول ── */
+  .hero-photo-side{
+    order:-1;
+    max-width:100%;
+    width:100%;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .hero-photo-frame{
+    width:min(72vw,280px);
+    border-radius:18px;
+  }
+  .hero-photo-frame img{aspect-ratio:4/5;object-position:top center;}
+  /* ── بطاقات التعريف على الموبايل ── */
+  .photo-tag{
+    position:static;
+    display:inline-flex;
+    animation:none;
+    padding:7px 12px;
+    font-size:11px;
+  }
+  .hero-mobile-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:12px;
+  }
+  /* ── النص ── */
   .hero-text-side{align-items:center;text-align:center;}
   html[lang="ar"] .hero-text-side{align-items:center;}
   .hero-bio{max-width:520px;text-align:center;}
@@ -414,13 +456,14 @@ html[lang="ar"] .photo-tag-2{inset-inline-end:auto;inset-inline-start:-24px;}
   html[lang="ar"] .hero-btns{justify-content:center;}
   .hero-stats{justify-content:center;}
   html[lang="ar"] .hero-stats{flex-direction:row;}
-  .hero-photo-side{max-width:320px;width:100%;margin:0 auto;}
-  .photo-tag-1,.photo-tag-2{display:none;}
+  .hero-tag{margin-bottom:18px;}
 }
 @media(max-width:500px){
-  .hero-name{font-size:clamp(42px,12vw,64px);}
-  .hero-stats{gap:16px;}
-  .hs-n{font-size:clamp(24px,5vw,30px);}
+  .hero-name{font-size:clamp(38px,11vw,58px);}
+  .hero-stats{gap:14px;}
+  .hs-n{font-size:clamp(22px,5.5vw,30px);}
+  .hero-photo-frame{width:min(80vw,260px);}
+  .btn-primary,.btn-secondary{padding:11px 20px;font-size:13.5px;}
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1040,8 +1083,8 @@ html[lang="ar"] .ld-name{display:none;}html[lang="ar"] .ld-name-ar{display:block
              onerror="this.closest('.hero-photo-frame').style.minHeight='400px';this.remove()">
       </div>
 
-      <!-- Floating info tags -->
-      <div class="photo-tag photo-tag-1">
+      <!-- Desktop floating tags (hidden on mobile, shown inline below) -->
+      <div class="photo-tag photo-tag-1 desktop-tag">
         <div class="photo-tag-icon">🎨</div>
         <div>
           <div style="font-size:13px;font-weight:700">5+ Years</div>
@@ -1051,7 +1094,7 @@ html[lang="ar"] .ld-name{display:none;}html[lang="ar"] .ld-name-ar{display:block
         </div>
       </div>
 
-      <div class="photo-tag photo-tag-2">
+      <div class="photo-tag photo-tag-2 desktop-tag">
         <div class="photo-tag-icon">⭐</div>
         <div>
           <div style="font-size:13px;font-weight:700">
@@ -1059,6 +1102,22 @@ html[lang="ar"] .ld-name{display:none;}html[lang="ar"] .ld-name-ar{display:block
           </div>
           <div style="font-size:10px;color:rgba(240,238,255,.45);margin-top:1px">
             <span class="ar">من تقييمات حقيقية</span><span class="en">From real reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile inline tags -->
+      <div class="hero-mobile-tags">
+        <div class="photo-tag">
+          <div class="photo-tag-icon">🎨</div>
+          <div>
+            <div style="font-weight:700"><span class="ar">خبرة 5+ سنوات</span><span class="en">5+ Years Exp.</span></div>
+          </div>
+        </div>
+        <div class="photo-tag">
+          <div class="photo-tag-icon">⭐</div>
+          <div>
+            <div style="font-weight:700"><span class="ar">5.0 تقييم</span><span class="en">5.0 Rating</span></div>
           </div>
         </div>
       </div>
