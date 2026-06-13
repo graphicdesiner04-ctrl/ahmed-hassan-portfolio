@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>أحمد حسن بهاء — مصمم جرافيك</title>
+<title>أحمد حسن بهاء — مصمم جرافيك | Ahmed Hassan Bahaa</title>
 <meta name="description" content="أحمد حسن بهاء — مصمم جرافيك مصري متخصص في الهوية البصرية وسوشيال ميديا والمطبوعات">
+<meta name="author" content="Ahmed Hassan Bahaa">
+<meta name="theme-color" content="#07070e">
+<link rel="canonical" href="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/">
+<link rel="icon" type="image/png" href="assets/Logo 2.png">
+<link rel="apple-touch-icon" href="assets/Logo 2.png">
 
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/">
@@ -975,6 +980,25 @@ html[lang="ar"] .ld-name{display:none;}html[lang="ar"] .ld-name-ar{display:block
   .footer-links{justify-content:center;}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ahmed Hassan Bahaa",
+  "alternateName": "أحمد حسن بهاء",
+  "jobTitle": "Graphic Designer",
+  "url": "https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/",
+  "image": "https://graphicdesiner04-ctrl.github.io/ahmed-hassan-portfolio/assets/ahmed-hassan-photo.jpg",
+  "email": "ahmed.hassan.bahaa@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+  "knowsAbout": ["Visual Identity","Social Media Design","Print Design","Brand Identity","Logo Design"],
+  "sameAs": [
+    "https://www.behance.net/ahmedhassanbahaa",
+    "https://www.instagram.com/ahmedhassanbahaa",
+    "https://www.facebook.com/share/18dEBWRK3a/"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1097,7 +1121,7 @@ html[lang="ar"] .ld-name{display:none;}html[lang="ar"] .ld-name-ar{display:block
       <div class="photo-glow photo-glow-2"></div>
 
       <div class="hero-photo-frame">
-        <img src="assets/ahmed-hassan-photo.jpg" alt="Ahmed Hassan Bahaa"
+        <img src="assets/ahmed-hassan-photo.jpg" alt="أحمد حسن بهاء — مصمم جرافيك" width="900" height="900"
              fetchpriority="high" decoding="async"
              onerror="this.closest('.hero-photo-frame').style.minHeight='400px';this.remove()">
       </div>
@@ -1461,9 +1485,9 @@ html[lang="ar"] .ld-name{display:none;}html[lang="ar"] .ld-name-ar{display:block
     </div>
 
     <form class="cform rv" style="transition-delay:.2s" onsubmit="sendForm(event)">
-      <input type="text" id="cf-name" placeholder="الاسم / Name" required>
-      <input type="email" id="cf-email" placeholder="البريد / Email" required>
-      <textarea id="cf-msg" placeholder="رسالتك / Your message" required></textarea>
+      <input type="text" id="cf-name" placeholder="الاسم / Name" aria-label="الاسم / Name" autocomplete="name" required>
+      <input type="email" id="cf-email" placeholder="البريد / Email" aria-label="البريد الإلكتروني / Email" autocomplete="email" required>
+      <textarea id="cf-msg" placeholder="رسالتك / Your message" aria-label="رسالتك / Your message" required></textarea>
       <button type="submit" class="btn-primary" style="align-self:flex-start;">
         <span class="ar">إرسال الرسالة ←</span>
         <span class="en">Send Message →</span>
@@ -1838,7 +1862,7 @@ function renderReviews(data){
     return;
   }
   grid.innerHTML = data.map(r=>{
-    const stars = [1,2,3,4,5].map(n=>`<span class="rev-star${n>(r.rating||5)?' off':''}"">★</span>`).join('');
+    const stars = [1,2,3,4,5].map(n=>`<span class="rev-star${n>(r.rating||5)?' off':''}">★</span>`).join('');
     const initials = (r.name||'?').trim().charAt(0).toUpperCase();
     const text = (LANG==='ar' && r.textAr) ? r.textAr : (r.text||'');
     return `<div class="rev-card rv">
@@ -1900,17 +1924,21 @@ function submitReview(e){
 }
 
 /* ── Contact form ────────────────────────────────────────── */
+const CONTACT_EMAIL = 'ahmed.hassan.bahaa@gmail.com';
 function sendForm(e){
   e.preventDefault();
-  const btn = e.target.querySelector('button[type=submit]');
-  btn.style.opacity='.6';
-  const data = new FormData();
-  data.append('name',  document.getElementById('cf-name').value);
-  data.append('email', document.getElementById('cf-email').value);
-  data.append('message', document.getElementById('cf-msg').value);
-  fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',body:data,headers:{Accept:'application/json'}})
-    .then(r=>{ btn.style.opacity='1'; if(r.ok){ e.target.reset(); alert(LANG==='ar'?'تم الإرسال! سأتواصل معك قريباً.':'Sent! I\'ll get back to you soon.'); } })
-    .catch(()=>{ btn.style.opacity='1'; window.location='mailto:ahmed.hassan.bahaa@gmail.com'; });
+  const name  = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const msg   = document.getElementById('cf-msg').value.trim();
+  if(!name || !email || !msg) return;
+  const subject = encodeURIComponent(`💼 ${LANG==='ar'?'رسالة جديدة من':'New message from'} ${name}`);
+  const body    = encodeURIComponent(
+    `${LANG==='ar'?'الاسم':'Name'}: ${name}\n`+
+    `${LANG==='ar'?'البريد':'Email'}: ${email}\n\n`+
+    `${msg}\n\n——\n${LANG==='ar'?'أرسل من موقع Portfolio':'Sent from Portfolio website'}`
+  );
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  e.target.reset();
 }
 </script>
 </body>

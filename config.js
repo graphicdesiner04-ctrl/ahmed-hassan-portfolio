@@ -36,7 +36,7 @@ const CFG = {
 
   // ── Local assets ───────────────────────────────────────────
   heroPhoto:  'assets/ahmed-hassan-photo.jpg',
-  aboutPhoto: 'assets/ahmed-about-photo.png',
+  aboutPhoto: 'assets/ahmed-about-photo.jpg',
   logo:       'assets/ahmed-hassan-logo.webp',
 
   // ── Stats ──────────────────────────────────────────────────
